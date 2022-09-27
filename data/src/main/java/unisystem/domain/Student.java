@@ -17,6 +17,18 @@ public class Student {
         this.email = email;
     }
 
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", gender='" + gender + '\'' +
+                ", age=" + age +
+                ", email='" + email + '\'' +
+                '}';
+    }
+
     public long getId() {
         return id;
     }
