@@ -1,0 +1,4 @@
+rootProject.name = 'university-administration-system'
+include 'app'
+include 'data'
+
