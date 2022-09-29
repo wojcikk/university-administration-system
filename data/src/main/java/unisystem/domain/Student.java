@@ -1,7 +1,7 @@
 package unisystem.domain;
 
 public class Student {
-    private final long id;
+    private long id;
     private final String name;
     private final String surname;
     private final String gender;
@@ -10,6 +10,14 @@ public class Student {
 
     public Student(long id, String name, String surname, String gender, long age, String email) {
         this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.gender = gender;
+        this.age = age;
+        this.email = email;
+    }
+
+    public Student(String name, String surname, String gender, long age, String email) {
         this.name = name;
         this.surname = surname;
         this.gender = gender;
@@ -51,5 +59,9 @@ public class Student {
 
     public String getEmail() {
         return email;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 }

@@ -17,6 +17,7 @@ public class CLIView implements View {
         System.out.println("\nSelect action:");
 
         System.out.println("1 - list students");
+        System.out.println("2 - add student");
         System.out.println("\n0 - quit");
     }
 

@@ -2,6 +2,8 @@ package unisystem;
 
 import unisystem.data.DataStore;
 import unisystem.data.FileDataStore;
+import unisystem.service.DefaultStudentService;
+import unisystem.service.StudentService;
 import unisystem.view.CLIView;
 import unisystem.view.View;
 
@@ -12,9 +14,12 @@ public class Application {
 
     private static void run() {
         DataStore dataStore = new FileDataStore();
+        dataStore.init();
+
+        StudentService studentService = new DefaultStudentService(dataStore);
+
         View view = new CLIView();
 
-        dataStore.init();
 
         view.printWelcomeMessage();
 
@@ -28,6 +33,8 @@ public class Application {
                 dataStore.getStudents().forEach(student -> {
                     System.out.println(student.toString());
                 });
+            } else if(decision == 2) {
+                studentService.addStudent();
             }
         }
 

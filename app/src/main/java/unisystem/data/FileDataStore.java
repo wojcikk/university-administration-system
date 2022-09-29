@@ -17,11 +17,11 @@ public class FileDataStore implements DataStore {
     }
 
     public void init() {
-        getStudents();
+        readStudents();
     }
 
     @Override
-    public List<Student> getStudents() {
+    public List<Student> readStudents() {
 
         getReader(DirPath.DIR_PATH).lines().forEach(line -> {
             String[] lineElements = line.split(",");
@@ -56,5 +56,10 @@ public class FileDataStore implements DataStore {
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    @Override
+    public List<Student> getStudents() {
+        return students;
     }
 }
