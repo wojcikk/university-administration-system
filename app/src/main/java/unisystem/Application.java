@@ -34,7 +34,15 @@ public class Application {
                     System.out.println(student.toString());
                 });
             } else if(decision == 2) {
+                System.out.println("\n::: ADDING STUDENT FUNCTIONALITY :::");
                 studentService.addStudent();
+            } else if(decision == 3) {
+                System.out.println("\n::: DELETING STUDENT FUNCTIONALITY :::");
+                studentService.deleteStudent();
+            } else if(decision == 4) {
+                System.out.println("\n::: SEARCHING STUDENT FUNCTIONALITY :::");
+                view.selectSearchingOption();
+                studentService.searchStudent();
             }
         }
 
