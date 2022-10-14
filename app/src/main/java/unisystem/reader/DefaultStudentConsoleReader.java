@@ -56,9 +56,9 @@ public class DefaultStudentConsoleReader implements StudentConsoleReader {
         String name;
 
         do {
-            System.out.print("Enter student name: ");
+            System.out.print("\nEnter student name: ");
             name = scanner.nextLine();
-        } while(!inputVerification.checkTextInput(name, 1, 12));
+        } while(!(inputVerification.checkTextInput(name) && inputVerification.checkInputLength(name, 1, 24)));
 
         return name;
     }
@@ -67,9 +67,9 @@ public class DefaultStudentConsoleReader implements StudentConsoleReader {
         String surname;
 
         do {
-            System.out.print("Enter student surname: ");
+            System.out.print("\nEnter student surname: ");
             surname = scanner.nextLine();
-        } while(!inputVerification.checkTextInput(surname, 1, 24));
+        } while(!(inputVerification.checkTextInput(surname) && inputVerification.checkInputLength(surname, 1, 24)));
 
         return surname;
     }
@@ -111,7 +111,7 @@ public class DefaultStudentConsoleReader implements StudentConsoleReader {
         do {
             System.out.print("Enter student email: ");
             email = scanner.nextLine();
-        } while(!inputVerification.checkEmailInput(email, 1, 24));
+        } while(!(inputVerification.checkEmailInput(email) && inputVerification.checkInputLength(email, 1, 24)));
 
         return email;
     }

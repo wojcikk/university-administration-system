@@ -4,13 +4,18 @@ import unisystem.data.DataStore;
 import unisystem.domain.Student;
 import unisystem.reader.DefaultStudentConsoleReader;
 import unisystem.reader.StudentConsoleReader;
+import unisystem.service.search.CLISearchView;
 import unisystem.service.search.DefaultStudentSearchService;
+import unisystem.service.search.SearchView;
 import unisystem.service.search.StudentSearchService;
+
+import java.util.List;
 
 public class DefaultStudentService implements StudentService {
     private final DataStore dataStore;
     private static final StudentConsoleReader studentConsoleReader = new DefaultStudentConsoleReader();
     private StudentSearchService studentSearchService;
+    private SearchView searchView = new CLISearchView();
 
     public DefaultStudentService(DataStore dataStore) {
         this.dataStore = dataStore;
@@ -21,7 +26,7 @@ public class DefaultStudentService implements StudentService {
     public void addStudent() {
         Student newStudent = studentConsoleReader.readStudentEntryData();
 
-        newStudent.setId(dataStore.getStudents().size() + (long) 1);
+        newStudent.setId(dataStore.getStudents().size());
 
         System.out.println("Added student: " + newStudent.toString());
 
@@ -38,7 +43,24 @@ public class DefaultStudentService implements StudentService {
     }
 
     @Override
-    public void searchStudent() {
-        studentSearchService.searchStudentById();
+    public void searchStudent(int option) {
+        if(option == 1) {
+            Student searchedStudent = studentSearchService.searchStudentById();
+
+            searchView.printSearchedElement(searchedStudent);
+        } else if(option == 2) {
+            List<Student> searchedStudents = studentSearchService.searchStudentByName();
+
+            searchView.printSearchedList(searchedStudents);
+        } else if(option == 3) {
+            List<Student> searchedStudents = studentSearchService.searchStudentBySurname();
+
+            searchView.printSearchedList(searchedStudents);
+        } else if(option == 4) {
+            List<Student> searchedStudents = studentSearchService.searchStudentByGender();
+
+            searchView.printSearchedList(searchedStudents);
+        }
+
     }
 }

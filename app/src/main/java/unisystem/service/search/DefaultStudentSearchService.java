@@ -5,6 +5,7 @@ import unisystem.domain.Student;
 import unisystem.reader.DefaultStudentConsoleReader;
 import unisystem.reader.StudentConsoleReader;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DefaultStudentSearchService implements StudentSearchService {
@@ -21,29 +22,53 @@ public class DefaultStudentSearchService implements StudentSearchService {
 
         for(Student student : dataStore.getStudents()) {
            if(student.getId() == id) {
-               System.out.println("Searching completed: " + student);
                return student;
            }
         }
-
-        System.out.println("Searching completed: student do not exist");
 
         return null;
     }
 
     @Override
     public List<Student> searchStudentByName() {
-        return null;
+        String name = studentConsoleReader.readStudentName();
+        List<Student> searchedStudents = new ArrayList<>();
+
+        for(Student student : dataStore.getStudents()) {
+            if(student.getName().equalsIgnoreCase(name)) {
+                searchedStudents.add(student);
+            }
+        }
+
+        return searchedStudents;
     }
 
     @Override
     public List<Student> searchStudentBySurname() {
-        return null;
+        String surname = studentConsoleReader.readStudentSurname();
+        List<Student> searchedStudents = new ArrayList<>();
+
+        for(Student student : dataStore.getStudents()) {
+            if(student.getSurname().equalsIgnoreCase(surname)) {
+                searchedStudents.add(student);
+            }
+        }
+
+        return searchedStudents;
     }
 
     @Override
     public List<Student> searchStudentByGender() {
-        return null;
+        String gender = studentConsoleReader.readStudentGender();
+        List<Student> searchedStudents = new ArrayList<>();
+
+        for(Student student : dataStore.getStudents()) {
+            if(student.getGender().equalsIgnoreCase(gender)) {
+                searchedStudents.add(student);
+            }
+        }
+
+        return searchedStudents;
     }
 
     @Override

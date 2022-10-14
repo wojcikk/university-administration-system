@@ -41,8 +41,8 @@ public class Application {
                 studentService.deleteStudent();
             } else if(decision == 4) {
                 System.out.println("\n::: SEARCHING STUDENT FUNCTIONALITY :::");
-                view.selectSearchingOption();
-                studentService.searchStudent();
+
+                studentService.searchStudent(view.selectSearchingOption());
             }
         }
 
