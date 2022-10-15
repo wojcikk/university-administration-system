@@ -2,8 +2,8 @@ package unisystem.service;
 
 import unisystem.data.DataStore;
 import unisystem.domain.Student;
-import unisystem.reader.DefaultStudentConsoleReader;
-import unisystem.reader.StudentConsoleReader;
+import unisystem.reader.console.DefaultStudentConsoleReader;
+import unisystem.reader.console.StudentConsoleReader;
 import unisystem.service.search.CLISearchView;
 import unisystem.service.search.DefaultStudentSearchService;
 import unisystem.service.search.SearchView;
@@ -13,14 +13,36 @@ import java.util.List;
 
 public class DefaultStudentService implements StudentService {
     private final DataStore dataStore;
-    private static final StudentConsoleReader studentConsoleReader = new DefaultStudentConsoleReader();
+    private final StudentConsoleReader studentConsoleReader;
     private StudentSearchService studentSearchService;
     private SearchView searchView = new CLISearchView();
 
     public DefaultStudentService(DataStore dataStore) {
         this.dataStore = dataStore;
+        this.studentConsoleReader = new DefaultStudentConsoleReader(this.dataStore);
         this.studentSearchService = new DefaultStudentSearchService(this.dataStore);
     }
+
+    @Override
+    public void listAllStudents() {
+        System.out.printf("%-5s %-20s %-20s %-10s %-10s %-30s %-30s %-20s %-40s\n",
+                "ID", "NAME", "SURNAME", "GENDER", "AGE", "EMAIL", "FIELD OF STUDY", "DEGREE", "FACULTY"
+        );
+
+        dataStore.getStudents().forEach(student -> {
+            System.out.printf("%-5s %-20s %-20s %-10s %-10s %-30s %-30s %-20s %-40s\n",
+                    student.getId(),
+                    student.getPerson().getName(),
+                    student.getPerson().getSurname(),
+                    student.getPerson().getGender(),
+                    student.getPerson().getAge(),
+                    student.getEmail(),
+                    student.getMajor().getFieldOfStudy().getName(),
+                    student.getMajor().getDegree().getName(),
+                    student.getMajor().getFaculty().getName());
+        });
+    }
+
 
     @Override
     public void addStudent() {
@@ -32,6 +54,7 @@ public class DefaultStudentService implements StudentService {
 
         this.dataStore.getStudents().add(newStudent);
     }
+
 
     @Override
     public void deleteStudent() {

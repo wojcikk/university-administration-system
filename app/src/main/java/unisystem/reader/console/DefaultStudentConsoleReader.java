@@ -1,5 +1,8 @@
-package unisystem.reader;
+package unisystem.reader.console;
 
+import unisystem.data.DataStore;
+import unisystem.domain.Major;
+import unisystem.domain.Person;
 import unisystem.domain.Student;
 import unisystem.reader.validation.DefaultInputVerification;
 import unisystem.reader.validation.InputVerification;
@@ -11,6 +14,11 @@ public class DefaultStudentConsoleReader implements StudentConsoleReader {
     private static final Scanner scanner = new Scanner(System.in);
     private InputVerification inputVerification = new DefaultInputVerification();
     private ConsoleReader consoleReader = new DefaultConsoleReader();
+    private final DataStore dataStore;
+
+    public DefaultStudentConsoleReader(DataStore dataStore) {
+        this.dataStore = dataStore;
+    }
 
     @Override
     public Student readStudentEntryData() {
@@ -24,7 +32,9 @@ public class DefaultStudentConsoleReader implements StudentConsoleReader {
 
         String email = readStudentEmail();
 
-        return new Student(name, surname, gender, age, email);
+        Major major = readStudentMajor();
+
+        return new Student(new Person(name, surname, gender, age), email, major);
     }
 
     @Override
@@ -79,16 +89,18 @@ public class DefaultStudentConsoleReader implements StudentConsoleReader {
         int genderOption = 0;
 
         do {
-            System.out.print("\nChoose student gender: \n1 - MALE\n2 - FEMALE\n3 - OTHER\nChoose option: ");
+            System.out.print("\nChoose student gender: ");
+            printGenderOptions();
+            System.out.println("Choose option: ");
             genderOption = consoleReader.readInteger();
         } while(!inputVerification.checkNumberInput(genderOption, 1, 3));
 
         if(genderOption == 1) {
-            return "MALE";
+            return "Male";
         } else if(genderOption == 2) {
-            return "FEMALE";
+            return "Female";
         } else {
-            return "OTHER";
+            return "Other";
         }
     }
 
@@ -109,10 +121,36 @@ public class DefaultStudentConsoleReader implements StudentConsoleReader {
         String email;
 
         do {
-            System.out.print("Enter student email: ");
+            System.out.print("\nEnter student email: ");
             email = scanner.nextLine();
         } while(!(inputVerification.checkEmailInput(email) && inputVerification.checkInputLength(email, 1, 24)));
 
         return email;
+    }
+
+    @Override
+    public Major readStudentMajor() {
+        System.out.println("\nChoose major option: ");
+        printMajorsOptions();
+        long majorId = 0;
+
+        do {
+            System.out.print("Choose option: ");
+            majorId = consoleReader.readInteger();
+        } while (!inputVerification.checkNumberInput((int) majorId, 1, dataStore.getMajors().size()));
+
+
+        return dataStore.getMajors().get((int) (majorId - 1));
+    }
+
+    private void printMajorsOptions() {
+        int i = 1;
+        for(Major major : dataStore.getMajors()) {
+            System.out.println(i++ + " - " + major.getFieldOfStudy().getName() + ", " + major.getDegree().getName() + ", " + major.getFaculty().getName());
+        }
+    }
+
+    private void printGenderOptions() {
+        System.out.print("\n1 - MALE\n2 - FEMALE\n3 - OTHER");
     }
 }

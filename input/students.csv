@@ -1,21 +1,21 @@
-0,Stuart,Ross,Male,27,s.ross@randatmail.com
-1,Darcy,Anderson,Female,29,d.anderson@randatmail.com
-2,Aldus,Fowler,Male,20,a.fowler@randatmail.com
-3,Frederick,West,Male,25,f.west@randatmail.com
-4,Harold,Cameron,Male,26,h.cameron@randatmail.com
-5,Ellia,Elliott,Female,29,e.elliott@randatmail.com
-6,Elise,Stevens,Female,30,e.stevens@randatmail.com
-7,Adison,Baker,Male,20,a.baker@randatmail.com
-8,Arnold,Mitchel,Male,23,a.mitchell@randatmail.com
-9,Lana,Barnes,Female,26,l.barnes@randatmail.com
-10,Reid,Morris,Male,18,r.morris@randatmail.com
-11,Nicholas,Wilson,Male,30,n.wilson@randatmail.com
-12,Alina,Hamilton,Female,20,a.hamilton@randatmail.com
-13,Garry,Sullivan,Male,20,g.sullivan@randatmail.com
-14,Alissa,West,Female,18,a.west@randatmail.com
-15,Edward,Farrell,Male,29,e.farrell@randatmail.com
-16,Tony,Allen,Male,28,t.allen@randatmail.com
-17,Walter,Harper,Male,19,w.harper@randatmail.com
-18,Elian,Spencer,Male,28,e.spencer@randatmail.com
-19,Cherry,Ross,Female,21,c.ross@randatmail.com
-20,Tony,Evans,Male,22,t.evans@randatmail.com
+0,Stuart,Ross,Male,27,s.ross@student.com,Medicine,Bachelor,Faculty of Medicine
+1,Darcy,Anderson,Female,29,d.anderson@student.com,Medicine,Bachelor,Faculty of Law
+2,Aldus,Fowler,Male,20,a.fowler@student.com,Philosophy,Master,Faculty of Humanities
+3,Frederick,West,Male,25,f.west@student.com,Economics,Bachelor,Faculty of Economics and Business
+4,Harold,Cameron,Male,26,h.cameron@student.com,Medicine,Bachelor,Faculty of Medicine
+5,Ellia,Elliott,Female,29,e.elliott@student.com,Business Administration,Bachelor,Faculty od Economics and Business
+6,Elise,Stevens,Female,30,e.stevens@student.com,Laws,Master,Faculty of Law
+7,Adison,Baker,Male,20,a.baker@student.com,Architecture,Bachelor,Faculty of Engineering
+8,Arnold,Mitchel,Male,23,a.mitchell@student.com,Technology,Bachelor,Faculty od Science
+9,Lana,Barnes,Female,26,l.barnes@student.com,Education,Bachelor,Faculty of Education
+10,Reid,Morris,Male,18,r.morris@student.com,Architecture,Bachelor,Faculty of Engineering
+11,Nicholas,Wilson,Male,30,n.wilson@student.com,Philosophy,Master,Faculty of Humanities
+12,Alina,Hamilton,Female,20,a.hamilton@student.com,Music,Bachelor,Faculty of Art
+13,Garry,Sullivan,Male,20,g.sullivan@student.com,Education,Master,Faculty of Education
+14,Alissa,West,Female,18,a.west@student.com,Technology,Bachelor,Faculty od Science
+15,Edward,Farrell,Male,29,e.farrell@student.com,Engineering,Bachelor,Faculty of Engineering
+16,Tony,Allen,Male,28,t.allen@student.com,Economics,Bachelor,Faculty of Economics and Business
+17,Walter,Harper,Male,19,w.harper@student.com,Engineering,Bachelor,Faculty of Engineering
+18,Elian,Spencer,Male,28,e.spencer@student.com,Pharmacy,Doctor,Faculty of Medicine
+19,Cherry,Ross,Female,21,c.ross@student.com,Economics,Bachelor,Faculty of Economics and Business
+20,Tony,Evans,Male,22,t.evans@student.com,Medicine,Doctor,Faculty of Medicine

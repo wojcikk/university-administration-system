@@ -1,5 +1,6 @@
-package unisystem.reader;
+package unisystem.reader.console;
 
+import unisystem.domain.Major;
 import unisystem.domain.Student;
 
 import java.util.List;
@@ -18,4 +19,5 @@ public interface StudentConsoleReader {
     long readStudentAge();
 
     String readStudentEmail();
+    Major readStudentMajor();
 }

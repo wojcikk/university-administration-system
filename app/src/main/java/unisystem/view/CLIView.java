@@ -1,7 +1,7 @@
 package unisystem.view;
 
-import unisystem.reader.ConsoleReader;
-import unisystem.reader.DefaultConsoleReader;
+import unisystem.reader.console.ConsoleReader;
+import unisystem.reader.console.DefaultConsoleReader;
 import unisystem.reader.validation.DefaultInputVerification;
 import unisystem.reader.validation.InputVerification;
 
@@ -17,7 +17,17 @@ public class CLIView implements View {
     }
 
     @Override
-    public void printMenuOptions() {
+    public void printEntryMenuOptions() {
+        System.out.println("\n- - - - - - - - - - - - - - - - - - - - - - - -");
+        System.out.println("\nSelect action:");
+
+        System.out.println("1 - student service");
+        System.out.println("2 - uni structure service");
+
+        System.out.println("\n0 - quit");
+    }
+    @Override
+    public void printStudentMenuOptions() {
         System.out.println("\n- - - - - - - - - - - - - - - - - - - - - - - -");
         System.out.println("\nSelect action:");
 
@@ -25,6 +35,17 @@ public class CLIView implements View {
         System.out.println("2 - add student");
         System.out.println("3 - delete student");
         System.out.println("4 - search student");
+        System.out.println("\n0 - quit");
+    }
+    @Override
+    public void printUniStructureMenuOptions() {
+        System.out.println("\n- - - - - - - - - - - - - - - - - - - - - - - -");
+        System.out.println("\nSelect action:");
+
+        System.out.println("1 - list majors");
+        System.out.println("2 - list fields of study");
+        System.out.println("3 - list degrees");
+        System.out.println("4 - list faculties");
         System.out.println("\n0 - quit");
     }
 

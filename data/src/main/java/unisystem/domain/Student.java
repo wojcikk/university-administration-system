@@ -2,38 +2,30 @@ package unisystem.domain;
 
 public class Student {
     private long id;
-    private final String name;
-    private final String surname;
-    private final String gender;
-    private final long age;
+    private final Person person;
     private final String email;
+    private final Major major;
 
-    public Student(long id, String name, String surname, String gender, long age, String email) {
-        this.id = id;
-        this.name = name;
-        this.surname = surname;
-        this.gender = gender;
-        this.age = age;
+    public Student(Person person, String email, Major major) {
+        this.person = person;
         this.email = email;
+        this.major = major;
     }
 
-    public Student(String name, String surname, String gender, long age, String email) {
-        this.name = name;
-        this.surname = surname;
-        this.gender = gender;
-        this.age = age;
+    public Student(long id, Person person, String email, Major major) {
+        this.id = id;
+        this.person = person;
         this.email = email;
+        this.major = major;
     }
 
     @Override
     public String toString() {
         return "Student{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", gender='" + gender + '\'' +
-                ", age=" + age +
+                ", person=" + person +
                 ", email='" + email + '\'' +
+                ", major=" + major +
                 '}';
     }
 
@@ -41,27 +33,19 @@ public class Student {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public String getSurname() {
-        return surname;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public long getAge() {
-        return age;
+    public Person getPerson() {
+        return person;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public Major getMajor() {
+        return major;
     }
 }

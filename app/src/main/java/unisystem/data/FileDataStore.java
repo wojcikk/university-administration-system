@@ -1,65 +1,59 @@
 package unisystem.data;
 
-import unisystem.domain.Student;
+import unisystem.domain.*;
+import unisystem.reader.file.DefaultMajorFileReader;
+import unisystem.reader.file.DefaultStudentFileReader;
+import unisystem.reader.file.MajorFileReader;
+import unisystem.reader.file.StudentFileReader;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class FileDataStore implements DataStore {
-    private final List<Student> students;
-    private BufferedReader reader;
+    private List<Student> students;
+    private List<Major> majors;
+    private List<FieldOfStudy> fieldsOfStudies;
+    private List<Degree> degrees;
+    private List<Faculty> faculties;
+
+    private final StudentFileReader studentFileReader;
+    private final MajorFileReader majorFileReader;
 
     public FileDataStore() {
-        this.students =  new ArrayList<>();
-    }
-
-    public void init() {
-        readStudents();
+        this.studentFileReader = new DefaultStudentFileReader();
+        this.majorFileReader = new DefaultMajorFileReader();
     }
 
     @Override
-    public List<Student> readStudents() {
-
-        getReader(DirPath.DIR_PATH).lines().forEach(line -> {
-            String[] lineElements = line.split(",");
-
-            this.students.add(new Student(
-                    Long.parseLong(lineElements[0]),
-                    lineElements[1],
-                    lineElements[2],
-                    lineElements[3],
-                    Long.parseLong(lineElements[4]),
-                    lineElements[5]
-            ));
-        });
-
-        closeReader();
-
-        return this.students;
-    }
-
-    private BufferedReader getReader(String filePath) {
-        try {
-            reader = new BufferedReader(new FileReader(filePath));
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-        return reader;
-    }
-
-    private void closeReader() {
-        try {
-            reader.close();
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
+    public void init() {
+        this.students = studentFileReader.readStudents();
+        this.majors = majorFileReader.readMajors();
+        this.fieldsOfStudies = majorFileReader.readFieldsOfStudy();
+        this.degrees = majorFileReader.readDegrees();
+        this.faculties = majorFileReader.readFaculties();
     }
 
     @Override
     public List<Student> getStudents() {
-        return students;
+        return this.students;
+    }
+
+    @Override
+    public List<Major> getMajors() {
+        return this.majors;
+    }
+
+    @Override
+    public List<FieldOfStudy> getFieldsOfStudies() {
+        return this.fieldsOfStudies;
+    }
+
+    @Override
+    public List<Degree> getDegrees() {
+        return this.degrees;
+    }
+
+    @Override
+    public List<Faculty> getFaculties() {
+        return this.faculties;
     }
 }

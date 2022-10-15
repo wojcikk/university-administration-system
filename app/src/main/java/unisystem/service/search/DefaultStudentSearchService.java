@@ -2,18 +2,19 @@ package unisystem.service.search;
 
 import unisystem.data.DataStore;
 import unisystem.domain.Student;
-import unisystem.reader.DefaultStudentConsoleReader;
-import unisystem.reader.StudentConsoleReader;
+import unisystem.reader.console.DefaultStudentConsoleReader;
+import unisystem.reader.console.StudentConsoleReader;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class DefaultStudentSearchService implements StudentSearchService {
     private final DataStore dataStore;
-    private static final StudentConsoleReader studentConsoleReader = new DefaultStudentConsoleReader();
+    private final StudentConsoleReader studentConsoleReader;
 
     public DefaultStudentSearchService(DataStore dataStore) {
         this.dataStore = dataStore;
+        this.studentConsoleReader = new DefaultStudentConsoleReader(dataStore);
     }
 
     @Override
@@ -35,7 +36,7 @@ public class DefaultStudentSearchService implements StudentSearchService {
         List<Student> searchedStudents = new ArrayList<>();
 
         for(Student student : dataStore.getStudents()) {
-            if(student.getName().equalsIgnoreCase(name)) {
+            if(student.getPerson().getName().equalsIgnoreCase(name)) {
                 searchedStudents.add(student);
             }
         }
@@ -49,7 +50,7 @@ public class DefaultStudentSearchService implements StudentSearchService {
         List<Student> searchedStudents = new ArrayList<>();
 
         for(Student student : dataStore.getStudents()) {
-            if(student.getSurname().equalsIgnoreCase(surname)) {
+            if(student.getPerson().getSurname().equalsIgnoreCase(surname)) {
                 searchedStudents.add(student);
             }
         }
@@ -63,7 +64,7 @@ public class DefaultStudentSearchService implements StudentSearchService {
         List<Student> searchedStudents = new ArrayList<>();
 
         for(Student student : dataStore.getStudents()) {
-            if(student.getGender().equalsIgnoreCase(gender)) {
+            if(student.getPerson().getGender().equalsIgnoreCase(gender)) {
                 searchedStudents.add(student);
             }
         }

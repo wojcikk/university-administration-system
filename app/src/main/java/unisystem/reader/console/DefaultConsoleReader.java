@@ -1,4 +1,4 @@
-package unisystem.reader;
+package unisystem.reader.console;
 
 import java.util.Scanner;
 
