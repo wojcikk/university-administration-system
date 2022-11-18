@@ -23,7 +23,5 @@ Dapp/src/main/java/unisystem/reader/console/DefaultConsoleReader.java,d\5\d5f5d
 Kapp/src/main/java/unisystem/service/search/DefaultStudentSearchService.java,8\9\89f19f9beb384749dc3afe254e638632261bae64
 `
 0data/src/main/java/unisystem/domain/Faculty.java,c\a\cafa68fa30c3475579da03aa3cd2cfb3152d8af6
-t
-Dapp/src/main/java/unisystem/reader/console/StudentConsoleReader.java,6\7\67f3f64f795718725ed3e0e32c02800120cb7e75
 _
 /data/src/main/java/unisystem/domain/Degree.java,a\0\a0a872d90fb511d6344284bbc93c0d7836537f8f

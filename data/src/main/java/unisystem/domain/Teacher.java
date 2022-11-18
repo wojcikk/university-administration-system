@@ -15,6 +15,22 @@ public class Teacher {
         this.faculty = faculty;
     }
 
+    public Teacher(Person person, String email, Faculty faculty) {
+        this.person = person;
+        this.email = email;
+        this.faculty = faculty;
+    }
+
+    @Override
+    public String toString() {
+        return "Teacher{" +
+                "id=" + id +
+                ", person=" + person +
+                ", email='" + email + '\'' +
+                ", faculty=" + faculty +
+                '}';
+    }
+
     public long getId() {
         return id;
     }

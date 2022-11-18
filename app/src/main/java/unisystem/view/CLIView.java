@@ -23,6 +23,7 @@ public class CLIView implements View {
 
         System.out.println("1 - student service");
         System.out.println("2 - uni structure service");
+        System.out.println("3 - teacher service");
 
         System.out.println("\n0 - quit");
     }
@@ -50,6 +51,16 @@ public class CLIView implements View {
     }
 
     @Override
+    public void printTeacherMenuOptions() {
+        System.out.println("\n- - - - - - - - - - - - - - - - - - - - - - - -");
+        System.out.println("\nSelect action:");
+
+        System.out.println("1 - list teachers");
+        System.out.println("2 - add teacher");
+        System.out.println("\n0 - quit");
+    }
+
+    @Override
     public void printSearchingOptions() {
         System.out.println("\nSelect searching:");
 
@@ -67,7 +78,7 @@ public class CLIView implements View {
         do {
             System.out.print("\nSelect option: ");
             option = consoleReader.readInteger();
-        } while(!inputVerification.checkNumberInput(option, 0, 4));
+        } while(!inputVerification.checkNumberInput(option, 0, 5));
 
         System.out.println("\n- - - - - - - - - - - - - - - - - - - - - - - -\n");
 

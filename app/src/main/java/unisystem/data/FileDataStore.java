@@ -60,7 +60,7 @@ public class FileDataStore implements DataStore {
     }
 
     @Override
-    public List<Teacher> getTeacher() {
+    public List<Teacher> getTeachers() {
         return this.teachers;
     }
 }

@@ -1,48 +1,46 @@
 package unisystem.reader.console;
 
 import unisystem.data.DataStore;
-import unisystem.domain.Major;
-import unisystem.domain.Person;
-import unisystem.domain.Student;
+import unisystem.domain.*;
 import unisystem.reader.validation.DefaultInputVerification;
 import unisystem.reader.validation.InputVerification;
 
 import java.util.List;
 import java.util.Scanner;
 
-public class DefaultStudentConsoleReader implements StudentConsoleReader {
+public class DefaultTeacherConsoleReader implements TeacherConsoleReader {
     private static final Scanner scanner = new Scanner(System.in);
     private InputVerification inputVerification = new DefaultInputVerification();
     private ConsoleReader consoleReader = new DefaultConsoleReader();
     private final DataStore dataStore;
 
-    public DefaultStudentConsoleReader(DataStore dataStore) {
+    public DefaultTeacherConsoleReader(DataStore dataStore) {
         this.dataStore = dataStore;
     }
 
     @Override
-    public Student readStudentEntryData() {
-        String name = readStudentName();
+    public Teacher readTeacherEntryData() {
+        String name = readTeacherName();
 
-        String surname = readStudentSurname();
+        String surname = readTeacherSurname();
 
-        String gender = readStudentGender();
+        String gender = readTeacherGender();
 
-        long age = readStudentAge();
+        long age = readTeacherAge();
 
-        String email = readStudentEmail();
+        String email = readTeacherEmail();
 
-        Major major = readStudentMajor();
+        Faculty faculty = readTeacherFaculty();
 
-        return new Student(new Person(name, surname, gender, age), email, major);
+        return new Teacher(new Person(name, surname, gender, age), email, faculty);
     }
 
     @Override
-    public long readStudentId() {
+    public long readTeacherId() {
         long id = 0;
 
         do {
-            System.out.print("\nEnter student id: ");
+            System.out.print("\nEnter teacher id: ");
             id = consoleReader.readInteger();
         } while (!inputVerification.checkNumberInput((int) id, 0, Integer.MAX_VALUE));
 
@@ -50,11 +48,11 @@ public class DefaultStudentConsoleReader implements StudentConsoleReader {
     }
 
     @Override
-    public long readStudentIdToDelete(List<Student> students) {
+    public long readTeacherIdToDelete(List<Student> students) {
         long id = 0;
 
         do {
-            System.out.print("\nEnter student id to delete: ");
+            System.out.print("\nEnter teacher id to delete: ");
             id = consoleReader.readInteger();
         } while (!inputVerification.checkNumberInput((int) id, 0, students.size()));
 
@@ -62,22 +60,22 @@ public class DefaultStudentConsoleReader implements StudentConsoleReader {
     }
 
     @Override
-    public String readStudentName() {
+    public String readTeacherName() {
         String name;
 
         do {
-            System.out.print("\nEnter student name: ");
+            System.out.print("\nEnter teacher name: ");
             name = scanner.nextLine();
         } while(!(inputVerification.checkTextInput(name) && inputVerification.checkInputLength(name, 1, 24)));
 
         return name;
     }
     @Override
-    public String readStudentSurname() {
+    public String readTeacherSurname() {
         String surname;
 
         do {
-            System.out.print("\nEnter student surname: ");
+            System.out.print("\nEnter teacher surname: ");
             surname = scanner.nextLine();
         } while(!(inputVerification.checkTextInput(surname) && inputVerification.checkInputLength(surname, 1, 24)));
 
@@ -85,11 +83,11 @@ public class DefaultStudentConsoleReader implements StudentConsoleReader {
     }
 
     @Override
-    public String readStudentGender() {
+    public String readTeacherGender() {
         int genderOption = 0;
 
         do {
-            System.out.print("\nChoose student gender: ");
+            System.out.print("\nChoose teacher gender: ");
             printGenderOptions();
             System.out.println("\nChoose option: ");
             genderOption = consoleReader.readInteger();
@@ -105,11 +103,11 @@ public class DefaultStudentConsoleReader implements StudentConsoleReader {
     }
 
     @Override
-    public long readStudentAge() {
+    public long readTeacherAge() {
         long age = 0;
 
         do {
-            System.out.print("\nEnter student age: ");
+            System.out.print("\nEnter teacher age: ");
             age = consoleReader.readInteger();
         } while (!inputVerification.checkNumberInput((int) age, 1, Integer.MAX_VALUE));
 
@@ -117,11 +115,11 @@ public class DefaultStudentConsoleReader implements StudentConsoleReader {
     }
 
     @Override
-    public String readStudentEmail() {
+    public String readTeacherEmail() {
         String email;
 
         do {
-            System.out.print("\nEnter student email: ");
+            System.out.print("\nEnter teacher email: ");
             email = scanner.nextLine();
         } while(!(inputVerification.checkEmailInput(email) && inputVerification.checkInputLength(email, 1, 24)));
 
@@ -129,24 +127,24 @@ public class DefaultStudentConsoleReader implements StudentConsoleReader {
     }
 
     @Override
-    public Major readStudentMajor() {
-        System.out.println("\nChoose major option: ");
-        printMajorsOptions();
-        long majorId = 0;
+    public Faculty readTeacherFaculty() {
+        System.out.println("\nChoose faculty option: ");
+        printFacultyOptions();
+        long facultyId = 0;
 
         do {
             System.out.print("\nChoose option: ");
-            majorId = consoleReader.readInteger();
-        } while (!inputVerification.checkNumberInput((int) majorId, 1, dataStore.getMajors().size()));
+            facultyId = consoleReader.readInteger();
+        } while (!inputVerification.checkNumberInput((int) facultyId, 1, dataStore.getFaculties().size()));
 
 
-        return dataStore.getMajors().get((int) (majorId - 1));
+        return dataStore.getFaculties().get((int) (facultyId - 1));
     }
 
-    private void printMajorsOptions() {
+    private void printFacultyOptions() {
         int i = 1;
-        for(Major major : dataStore.getMajors()) {
-            System.out.println(i++ + " - " + major.getFieldOfStudy().getName() + ", " + major.getDegree().getName() + ", " + major.getFaculty().getName());
+        for(Faculty faculty : dataStore.getFaculties()) {
+            System.out.println(i++ + " - " + faculty.getName());
         }
     }
 

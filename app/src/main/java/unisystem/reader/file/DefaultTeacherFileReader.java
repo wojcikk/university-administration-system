@@ -13,7 +13,7 @@ public class DefaultTeacherFileReader implements TeacherFileReader {
     public List<Teacher> readTeachers() {
         List<Teacher> teachers = new ArrayList<>();
 
-        reader.getReader(DirPath.STUDENTS_FILE_PATH).lines().forEach(line -> {
+        reader.getReader(DirPath.TEACHERS_FILE_PATH).lines().forEach(line -> {
             String[] lineElements = line.split(",");
 
             teachers.add(new Teacher(

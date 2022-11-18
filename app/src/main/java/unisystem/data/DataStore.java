@@ -12,5 +12,5 @@ public interface DataStore {
     List<FieldOfStudy> getFieldsOfStudies();
     List<Degree> getDegrees();
     List<Faculty> getFaculties();
-    List<Teacher> getTeacher();
+    List<Teacher> getTeachers();
 }
