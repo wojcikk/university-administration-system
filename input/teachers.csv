@@ -1,30 +1,30 @@
-Martin,Edwards,Male,44,m.edwards@uni.teacher.com
-Carina,Murphy,Female,43,c.murphy@uni.teacher.com
-Alan,Carter,Male,43,a.carter@uni.teacher.com
-Alexia,Reed,Female,44,a.reed@uni.teacher.com
-Melissa,Stewart,Female,40,m.stewart@uni.teacher.com
-Paige,Adams,Female,50,p.adams@uni.teacher.com
-Mike,Harrison,Male,50,m.harrison@uni.teacher.com
-Byron,Cunningham,Male,49,b.cunningham@uni.teacher.com
-Kellan,Holmes,Male,50,k.holmes@uni.teacher.com
-Kate,Harper,Female,49,k.harper@uni.teacher.com
-Honey,Ryan,Female,43,h.ryan@uni.teacher.com
-Paige,Reed,Female,46,p.reed@uni.teacher.com
-Charlie,Walker,Male,46,c.walker@uni.teacher.com
-Alexander,Ross,Male,49,a.ross@uni.teacher.com
-Derek,Harris,Male,47,d.harris@uni.teacher.com
-Amanda,Alexander,Female,46,a.alexander@uni.teacher.com
-Dainton,Adams,Male,48,d.adams@uni.teacher.com
-Justin,Richardson,Male,44,j.richardson@uni.teacher.com
-Steven,Cunningham,Male,48,s.cunningham@uni.teacher.com
-Kelvin,Phillips,Male,43,k.phillips@uni.teacher.com
-Sarah,West,Female,46,s.west@uni.teacher.com
-Roman,Chapman,Male,47,r.chapman@uni.teacher.com
-Frederick,Tucker,Male,46,f.tucker@uni.teacher.com
-Dominik,Anderson,Male,42,d.anderson@uni.teacher.com
-John,Ross,Male,46,j.ross@uni.teacher.com
-Sienna,Cooper,Female,44,s.cooper@uni.teacher.com
-Cherry,Elliott,Female,47,c.elliott@uni.teacher.com
-Sawyer,Ellis,Male,49,s.ellis@uni.teacher.com
-Victor,Ferguson,Male,44,v.ferguson@uni.teacher.com
-Dominik,Moore,Male,45,d.moore@uni.teacher.com
+0,Martin,Edwards,Male,44,m.edwards@uni.teacher.com,Faculty of Medicine
+1,Carina,Murphy,Female,43,c.murphy@uni.teacher.com,Faculty of Medicine
+2,Alan,Carter,Male,43,a.carter@uni.teacher.com,Faculty of Law
+3,Alexia,Reed,Female,44,a.reed@uni.teacher.com,Faculty of Medicine
+4,Melissa,Stewart,Female,40,m.stewart@uni.teacher.com,Faculty of Art
+5,Paige,Adams,Female,50,p.adams@uni.teacher.com,Faculty of Humanities
+6,Mike,Harrison,Male,50,m.harrison@uni.teacher.com,Faculty of Law
+7,Byron,Cunningham,Male,49,b.cunningham@uni.teacher.com,Faculty od Science
+8,Kellan,Holmes,Male,50,k.holmes@uni.teacher.com,Faculty of Economics and Business
+9,Kate,Harper,Female,49,k.harper@uni.teacher.com,Faculty od Science
+10,Honey,Ryan,Female,43,h.ryan@uni.teacher.com,Faculty of Art
+11,Paige,Reed,Female,46,p.reed@uni.teacher.com,Faculty of Economics and Business
+12,Charlie,Walker,Male,46,c.walker@uni.teacher.com,Faculty of Humanities
+13,Alexander,Ross,Male,49,a.ross@uni.teacher.com,Faculty of Humanities
+14,Derek,Harris,Male,47,d.harris@uni.teacher.com,Faculty od Science
+15,Amanda,Alexander,Female,46,a.alexander@uni.teacher.com,Faculty of Humanities
+16,Dainton,Adams,Male,48,d.adams@uni.teacher.com,Faculty of Humanities
+17,Justin,Richardson,Male,44,j.richardson@uni.teacher.com,Faculty of Economics and Business
+18,Steven,Cunningham,Male,48,s.cunningham@uni.teacher.com,Faculty of Humanities
+19,Kelvin,Phillips,Male,43,k.phillips@uni.teacher.com,Faculty of Medicine
+20,Sarah,West,Female,46,s.west@uni.teacher.com,Faculty of Economics and Business
+21,Roman,Chapman,Male,47,r.chapman@uni.teacher.com,Faculty of Medicine
+22,Frederick,Tucker,Male,46,f.tucker@uni.teacher.com,Faculty of Education
+23,Dominik,Anderson,Male,42,d.anderson@uni.teacher.com,Faculty of Engineering
+24,John,Ross,Male,46,j.ross@uni.teacher.com,Faculty of Education
+25,Sienna,Cooper,Female,44,s.cooper@uni.teacher.com,Faculty of Engineering
+26,Cherry,Elliott,Female,47,c.elliott@uni.teacher.com,Faculty of Engineering
+27,Sawyer,Ellis,Male,49,s.ellis@uni.teacher.com,Faculty of Engineering
+28,Victor,Ferguson,Male,44,v.ferguson@uni.teacher.com,Faculty of Engineering
+29,Dominik,Moore,Male,45,d.moore@uni.teacher.com,Faculty of Economics and Business

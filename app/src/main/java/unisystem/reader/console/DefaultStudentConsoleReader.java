@@ -135,7 +135,7 @@ public class DefaultStudentConsoleReader implements StudentConsoleReader {
         long majorId = 0;
 
         do {
-            System.out.print("Choose option: ");
+            System.out.print("\nChoose option: ");
             majorId = consoleReader.readInteger();
         } while (!inputVerification.checkNumberInput((int) majorId, 1, dataStore.getMajors().size()));
 

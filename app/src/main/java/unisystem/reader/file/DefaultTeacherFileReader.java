@@ -6,17 +6,17 @@ import unisystem.domain.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DefaultStudentFileReader implements StudentFileReader {
+public class DefaultTeacherFileReader implements TeacherFileReader {
     private final FileReader reader = new DefaultFileReader();
 
     @Override
-    public List<Student> readStudents() {
-        List<Student> students = new ArrayList<>();
+    public List<Teacher> readTeachers() {
+        List<Teacher> teachers = new ArrayList<>();
 
         reader.getReader(DirPath.STUDENTS_FILE_PATH).lines().forEach(line -> {
             String[] lineElements = line.split(",");
 
-            students.add(new Student(
+            teachers.add(new Teacher(
                     Long.parseLong(lineElements[0]),
                     new Person(
                             lineElements[1],
@@ -25,16 +25,13 @@ public class DefaultStudentFileReader implements StudentFileReader {
                             Long.parseLong(lineElements[4])
                     ),
                     lineElements[5],
-                    new Major(
-                            new FieldOfStudy(lineElements[6]),
-                            new Degree(lineElements[7]),
-                            new Faculty(lineElements[8], null)
-                    )
+                    new Faculty(lineElements[6], null)
             ));
         });
 
         reader.closeReader();
 
-        return students;
+        return teachers;
     }
 }
+
