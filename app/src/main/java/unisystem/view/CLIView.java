@@ -57,6 +57,7 @@ public class CLIView implements View {
 
         System.out.println("1 - list teachers");
         System.out.println("2 - add teacher");
+        System.out.println("3 - delete teacher");
         System.out.println("\n0 - quit");
     }
 

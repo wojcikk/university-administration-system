@@ -95,6 +95,9 @@ public class Application {
             } else if (decision == 2) {
                 System.out.println("\n::: ADDING TEACHER FUNCTIONALITY :::");
                 teacherService.addTeacher();
+            } else if (decision == 3) {
+                System.out.println("\n::: DELETING TEACHER FUNCTIONALITY :::");
+                teacherService.deleteTeacher();
             }
 
         }

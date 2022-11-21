@@ -48,13 +48,13 @@ public class DefaultTeacherConsoleReader implements TeacherConsoleReader {
     }
 
     @Override
-    public long readTeacherIdToDelete(List<Student> students) {
+    public long readTeacherIdToDelete(List<Teacher> teachers) {
         long id = 0;
 
         do {
             System.out.print("\nEnter teacher id to delete: ");
             id = consoleReader.readInteger();
-        } while (!inputVerification.checkNumberInput((int) id, 0, students.size()));
+        } while (!inputVerification.checkNumberInput((int) id, 0, teachers.size()));
 
         return id;
     }

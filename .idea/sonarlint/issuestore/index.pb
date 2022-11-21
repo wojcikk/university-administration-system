@@ -19,8 +19,6 @@ m
 =app/src/main/java/unisystem/reader/console/ConsoleReader.java,6\9\69279a1031c40536a346c05fa57bb1900a338a69
 t
 Dapp/src/main/java/unisystem/reader/console/DefaultConsoleReader.java,d\5\d5f5d67566f573bc4930b0d2d622a29a5215bd8d
-{
-Kapp/src/main/java/unisystem/service/search/DefaultStudentSearchService.java,8\9\89f19f9beb384749dc3afe254e638632261bae64
 `
 0data/src/main/java/unisystem/domain/Faculty.java,c\a\cafa68fa30c3475579da03aa3cd2cfb3152d8af6
 _

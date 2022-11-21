@@ -45,7 +45,11 @@ public class DefaultTeacherService implements TeacherService {
 
     @Override
     public void deleteTeacher() {
+        long idToDelete = teacherConsoleReader.readTeacherIdToDelete(dataStore.getTeachers());
 
+        System.out.println("Deleted teacher: " + this.dataStore.getTeachers().get((int) idToDelete).toString());
+
+        this.dataStore.getTeachers().remove((int) idToDelete);
     }
 
     @Override
