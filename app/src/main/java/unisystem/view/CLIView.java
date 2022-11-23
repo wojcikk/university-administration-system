@@ -58,6 +58,7 @@ public class CLIView implements View {
         System.out.println("1 - list teachers");
         System.out.println("2 - add teacher");
         System.out.println("3 - delete teacher");
+        System.out.println("4 - search teacher");
         System.out.println("\n0 - quit");
     }
 
@@ -69,6 +70,8 @@ public class CLIView implements View {
         System.out.println("2 - search by name");
         System.out.println("3 - search by surname");
         System.out.println("4 - search by gender");
+        System.out.println("5 - search by age");
+        System.out.println("6 - search by email");
         System.out.println("0 - quit");
     }
 

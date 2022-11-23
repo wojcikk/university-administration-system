@@ -98,6 +98,9 @@ public class Application {
             } else if (decision == 3) {
                 System.out.println("\n::: DELETING TEACHER FUNCTIONALITY :::");
                 teacherService.deleteTeacher();
+            } else if (decision == 4) {
+                System.out.println("\n::: SEARCHING TEACHER FUNCTIONALITY :::");
+                teacherService.searchTeacher(view.selectSearchingOption());
             }
 
         }

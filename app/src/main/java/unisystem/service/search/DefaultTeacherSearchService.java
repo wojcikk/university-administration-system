@@ -46,21 +46,57 @@ public class DefaultTeacherSearchService implements TeacherSearchService {
 
     @Override
     public List<Teacher> searchTeacherBySurname() {
-        return null;
+        String surname = teacherConsoleReader.readTeacherSurname();
+        List<Teacher> searchedTeacher = new ArrayList<>();
+
+        for(Teacher teacher : dataStore.getTeachers()) {
+            if(teacher.getPerson().getSurname().equalsIgnoreCase(surname)) {
+                searchedTeacher.add(teacher);
+            }
+        }
+
+        return searchedTeacher;
     }
 
     @Override
     public List<Teacher> searchTeacherByGender() {
-        return null;
+        String gender = teacherConsoleReader.readTeacherGender();
+        List<Teacher> searchedTeachers = new ArrayList<>();
+
+        for(Teacher teacher : dataStore.getTeachers()) {
+            if(teacher.getPerson().getGender().equalsIgnoreCase(gender)) {
+                searchedTeachers.add(teacher);
+            }
+        }
+
+        return searchedTeachers;
     }
 
     @Override
     public List<Teacher> searchTeacherByAge() {
-        return null;
+        long age = teacherConsoleReader.readTeacherAge();
+        List<Teacher> searchedTeachers = new ArrayList<>();
+
+        for(Teacher teacher : dataStore.getTeachers()) {
+            if(teacher.getPerson().getAge() == age) {
+                searchedTeachers.add(teacher);
+            }
+        }
+
+        return searchedTeachers;
     }
 
     @Override
     public List<Teacher> searchTeacherByEmail() {
-        return null;
+        String email = teacherConsoleReader.readTeacherEmail();
+        List<Teacher> searchedTeachers = new ArrayList<>();
+
+        for(Teacher teacher : dataStore.getTeachers()) {
+            if(teacher.getPerson().getGender().equalsIgnoreCase(email)) {
+                searchedTeachers.add(teacher);
+            }
+        }
+
+        return searchedTeachers;
     }
 }

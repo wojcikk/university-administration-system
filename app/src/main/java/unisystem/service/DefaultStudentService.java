@@ -70,19 +70,27 @@ public class DefaultStudentService implements StudentService {
         if(option == 1) {
             Student searchedStudent = studentSearchService.searchStudentById();
 
-            searchView.printSearchedElement(searchedStudent);
+            searchView.printSearchedStudentElement(searchedStudent);
         } else if(option == 2) {
             List<Student> searchedStudents = studentSearchService.searchStudentByName();
 
-            searchView.printSearchedList(searchedStudents);
+            searchView.printSearchedStudentList(searchedStudents);
         } else if(option == 3) {
             List<Student> searchedStudents = studentSearchService.searchStudentBySurname();
 
-            searchView.printSearchedList(searchedStudents);
+            searchView.printSearchedStudentList(searchedStudents);
         } else if(option == 4) {
             List<Student> searchedStudents = studentSearchService.searchStudentByGender();
 
-            searchView.printSearchedList(searchedStudents);
+            searchView.printSearchedStudentList(searchedStudents);
+        } else if(option == 5) {
+            List<Student> searchedStudents = studentSearchService.searchStudentByAge();
+
+            searchView.printSearchedStudentList(searchedStudents);
+        } else if(option == 6) {
+            List<Student> searchedStudents = studentSearchService.searchStudentByEmail();
+
+            searchView.printSearchedStudentList(searchedStudents);
         }
 
     }

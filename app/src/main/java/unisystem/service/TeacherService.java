@@ -4,5 +4,5 @@ public interface TeacherService {
     void listAllTeachers();
     void addTeacher();
     void deleteTeacher();
-    void searchSearch(int option);
+    void searchTeacher(int option);
 }

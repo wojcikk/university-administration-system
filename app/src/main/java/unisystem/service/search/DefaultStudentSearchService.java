@@ -74,11 +74,29 @@ public class DefaultStudentSearchService implements StudentSearchService {
 
     @Override
     public List<Student> searchStudentByAge() {
-        return null;
+        long age = studentConsoleReader.readStudentAge();
+        List<Student> searchedStudents = new ArrayList<>();
+
+        for(Student student : dataStore.getStudents()) {
+            if(student.getPerson().getAge() == age) {
+                searchedStudents.add(student);
+            }
+        }
+
+        return searchedStudents;
     }
 
     @Override
     public List<Student> searchStudentByEmail() {
-        return null;
+        String email = studentConsoleReader.readStudentEmail();
+        List<Student> searchedStudents = new ArrayList<>();
+
+        for(Student student : dataStore.getStudents()) {
+            if(student.getPerson().getGender().equalsIgnoreCase(email)) {
+                searchedStudents.add(student);
+            }
+        }
+
+        return searchedStudents;
     }
 }
