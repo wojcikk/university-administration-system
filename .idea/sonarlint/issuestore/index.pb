@@ -15,16 +15,12 @@ S
 #src/main/java/org/example/Main.java,0\b\0ba1b9c7a4878802f938e331cc2d8a042087ec6b
 @
 app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
-m
-=app/src/main/java/unisystem/reader/console/ConsoleReader.java,6\9\69279a1031c40536a346c05fa57bb1900a338a69
 t
 Dapp/src/main/java/unisystem/reader/console/DefaultConsoleReader.java,d\5\d5f5d67566f573bc4930b0d2d622a29a5215bd8d
 `
 0data/src/main/java/unisystem/domain/Faculty.java,c\a\cafa68fa30c3475579da03aa3cd2cfb3152d8af6
 _
 /data/src/main/java/unisystem/domain/Degree.java,a\0\a0a872d90fb511d6344284bbc93c0d7836537f8f
-s
-Capp/src/main/java/unisystem/reader/file/DefaultMajorFileReader.java,c\d\cd89819e5cbafa9baa10369c9d7e2c18a7b1f51a
 @
 input/majors.csv,8\f\8f9cfe9d41f50cf702e145e526e6c7ee6a3ee4f2
 {
@@ -57,5 +53,3 @@ c
 0data/src/main/java/unisystem/domain/Teacher.java,5\0\50c12259f4790c30ac49540dd40bf70b23dfd62a
 Z
 *app/src/main/java/unisystem/view/View.java,4\1\41f5455841b84c890ef07f4a2133374880c55bb5
-{
-Kapp/src/main/java/unisystem/reader/console/DefaultStudentConsoleReader.java,2\e\2e8aee912ec05d448943c9b364744f98543f23f5

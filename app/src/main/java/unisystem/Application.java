@@ -1,10 +1,12 @@
 package unisystem;
 
+import unisystem.application.ApplicationServiceRun;
+import unisystem.application.ServiceRun;
 import unisystem.data.DataStore;
 import unisystem.data.FileDataStore;
+import unisystem.reader.file.view.CLIView;
+import unisystem.reader.file.view.View;
 import unisystem.service.*;
-import unisystem.view.CLIView;
-import unisystem.view.View;
 
 public class Application {
     public static void main(String[] args) {
@@ -25,84 +27,32 @@ public class Application {
 
         int decision = 1;
         while(decision != 0) {
+            view.printStartingApplicationModeOptions();
+            decision = view.selectOption(2);
+            if (decision == 1) {    // user
+                runServiceOptions(studentService, majorService, teacherService, view, false);
+            } else if (decision == 2) {   // admin
+                runServiceOptions(studentService, majorService, teacherService, view, true);
+            }
+        }
+
+    }
+
+    private static void runServiceOptions(StudentService studentService, MajorService majorService, TeacherService teacherService, View view, boolean adminPermission) {
+        ServiceRun applicationServiceRun = new ApplicationServiceRun();
+
+        int decision = 1;
+        while(decision != 0) {
             view.printEntryMenuOptions();
-            decision = view.selectOption();
+            decision = view.selectOption(3);
 
             if (decision == 1) {
-                runStudentService(studentService, view);
+                applicationServiceRun.getStudentServiceRun().runStudentService(studentService, view, adminPermission);
             } else if (decision == 2) {
-                runUniStructureService(majorService, view);
+                applicationServiceRun.getUniStructureServiceRun().runUniStructureService(majorService, view, adminPermission);
             } else if (decision == 3) {
-                runTeachersService(teacherService, view);
+                applicationServiceRun.getTeacherServiceRun().runTeacherService(teacherService, view, adminPermission);
             }
-        }
-    }
-
-    private static void runStudentService(StudentService studentService, View view) {
-        System.out.println("::: STUDENT SERVICE :::");
-        int decision = 1;
-        while (decision != 0) {
-            view.printStudentMenuOptions();
-            decision = view.selectOption();
-
-            if (decision == 1) {
-                System.out.println("\n::: LISTING STUDENT FUNCTIONALITY :::");
-                studentService.listAllStudents();
-            } else if (decision == 2) {
-                System.out.println("\n::: ADDING STUDENT FUNCTIONALITY :::");
-                studentService.addStudent();
-            } else if (decision == 3) {
-                System.out.println("\n::: DELETING STUDENT FUNCTIONALITY :::");
-                studentService.deleteStudent();
-            } else if (decision == 4) {
-                System.out.println("\n::: SEARCHING STUDENT FUNCTIONALITY :::");
-                studentService.searchStudent(view.selectSearchingOption());
-            }
-        }
-    }
-    private static void runUniStructureService(MajorService majorService, View view) {
-        System.out.println("::: UNI STRUCTURE SERVICE :::");
-        int decision = 1;
-        while (decision != 0) {
-            view.printUniStructureMenuOptions();
-            decision = view.selectOption();
-            if (decision == 1) {
-                System.out.println("\n::: LISTING MAJORS FUNCTIONALITY :::");
-                majorService.listAllMajors();
-            } else if (decision == 2) {
-                System.out.println("\n::: LISTING FIELDS OF STUDY FUNCTIONALITY :::");
-                majorService.listAllFieldsOfStudy();
-            } else if (decision == 3) {
-                System.out.println("\n::: LISTING DEGREES FUNCTIONALITY :::");
-                majorService.listAllDegrees();
-            } else if (decision == 4) {
-                System.out.println("\n::: LISTING FACULTIES FUNCTIONALITY :::");
-                majorService.listAllFaculties();
-            }
-
-        }
-    }
-
-    private static void runTeachersService(TeacherService teacherService, View view) {
-        System.out.println("::: TEACHERS STRUCTURE SERVICE :::");
-        int decision = 1;
-        while (decision != 0) {
-            view.printTeacherMenuOptions();
-            decision = view.selectOption();
-            if (decision == 1) {
-                System.out.println("\n::: LISTING TEACHERS FUNCTIONALITY :::");
-                teacherService.listAllTeachers();
-            } else if (decision == 2) {
-                System.out.println("\n::: ADDING TEACHER FUNCTIONALITY :::");
-                teacherService.addTeacher();
-            } else if (decision == 3) {
-                System.out.println("\n::: DELETING TEACHER FUNCTIONALITY :::");
-                teacherService.deleteTeacher();
-            } else if (decision == 4) {
-                System.out.println("\n::: SEARCHING TEACHER FUNCTIONALITY :::");
-                teacherService.searchTeacher(view.selectSearchingOption());
-            }
-
         }
     }
 }

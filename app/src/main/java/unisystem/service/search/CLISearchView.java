@@ -31,7 +31,7 @@ public class CLISearchView implements SearchView {
         if(searchedTeacher != null) {
             System.out.println("\nSearching completed:\n" + searchedTeacher);
         } else {
-            System.out.println("\nSearching completed:\nstudent do not exist");
+            System.out.println("\nSearching completed:\nteacher do not exist");
         }
     }
 
@@ -41,7 +41,7 @@ public class CLISearchView implements SearchView {
             System.out.println("\nSearching completed:");
             searchedTeachers.stream().forEach(System.out::println);
         } else {
-            System.out.println("\nSearching completed:\nstudent do not exist");
+            System.out.println("\nSearching completed:\nteacher do not exist");
         }
     }
 }

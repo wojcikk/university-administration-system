@@ -1,4 +1,4 @@
-package unisystem.view;
+package unisystem.reader.file.view;
 
 import unisystem.reader.console.ConsoleReader;
 import unisystem.reader.console.DefaultConsoleReader;
@@ -9,12 +9,27 @@ public class CLIView implements View {
     private InputVerification inputVerification = new DefaultInputVerification();
     private ConsoleReader consoleReader = new DefaultConsoleReader();
 
+    private AdminView adminView = new CLIAdminView();
+    private UserView userView = new CLIUserView();
+
     @Override
     public void printWelcomeMessage() {
         System.out.println("\n--------------------------------------------");
         System.out.println("----- UNIVERSITY ADMINISTRATION SYSTEM -----");
         System.out.println("--------------------------------------------\n");
     }
+
+    @Override
+    public void printStartingApplicationModeOptions() {
+        System.out.println("\n- - - - - - - - - - - - - - - - - - - - - - - -");
+        System.out.println("\nSelect mode:");
+
+        System.out.println("1 - user mode");
+        System.out.println("2 - admin mode");
+
+        System.out.println("\n0 - quit");
+    }
+
 
     @Override
     public void printEntryMenuOptions() {
@@ -25,40 +40,6 @@ public class CLIView implements View {
         System.out.println("2 - uni structure service");
         System.out.println("3 - teacher service");
 
-        System.out.println("\n0 - quit");
-    }
-    @Override
-    public void printStudentMenuOptions() {
-        System.out.println("\n- - - - - - - - - - - - - - - - - - - - - - - -");
-        System.out.println("\nSelect action:");
-
-        System.out.println("1 - list students");
-        System.out.println("2 - add student");
-        System.out.println("3 - delete student");
-        System.out.println("4 - search student");
-        System.out.println("\n0 - quit");
-    }
-    @Override
-    public void printUniStructureMenuOptions() {
-        System.out.println("\n- - - - - - - - - - - - - - - - - - - - - - - -");
-        System.out.println("\nSelect action:");
-
-        System.out.println("1 - list majors");
-        System.out.println("2 - list fields of study");
-        System.out.println("3 - list degrees");
-        System.out.println("4 - list faculties");
-        System.out.println("\n0 - quit");
-    }
-
-    @Override
-    public void printTeacherMenuOptions() {
-        System.out.println("\n- - - - - - - - - - - - - - - - - - - - - - - -");
-        System.out.println("\nSelect action:");
-
-        System.out.println("1 - list teachers");
-        System.out.println("2 - add teacher");
-        System.out.println("3 - delete teacher");
-        System.out.println("4 - search teacher");
         System.out.println("\n0 - quit");
     }
 
@@ -76,13 +57,13 @@ public class CLIView implements View {
     }
 
     @Override
-    public int selectOption() {
+    public int selectOption(int maxRange) {
         int option = 0;
 
         do {
             System.out.print("\nSelect option: ");
             option = consoleReader.readInteger();
-        } while(!inputVerification.checkNumberInput(option, 0, 5));
+        } while(!inputVerification.checkNumberInput(option, 0, maxRange));
 
         System.out.println("\n- - - - - - - - - - - - - - - - - - - - - - - -\n");
 
@@ -92,6 +73,16 @@ public class CLIView implements View {
     public int selectSearchingOption() {
         printSearchingOptions();
 
-        return selectOption();
+        return selectOption(6);
+    }
+
+    @Override
+    public AdminView getAdminView() {
+        return adminView;
+    }
+
+    @Override
+    public UserView getUserView() {
+        return userView;
     }
 }
