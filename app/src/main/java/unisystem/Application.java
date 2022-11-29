@@ -4,6 +4,8 @@ import unisystem.application.ApplicationServiceRun;
 import unisystem.application.ServiceRun;
 import unisystem.data.DataStore;
 import unisystem.data.FileDataStore;
+import unisystem.domain.Entitlements;
+import unisystem.domain.User;
 import unisystem.reader.file.view.CLIView;
 import unisystem.reader.file.view.View;
 import unisystem.service.*;
@@ -21,20 +23,34 @@ public class Application {
         MajorService majorService = new DefaultMajorService(dataStore);
         TeacherService teacherService = new DefaultTeacherService(dataStore);
 
+        LoginService loginService = new DefaultLoginService(dataStore);
+
         View view = new CLIView();
+
+        User user = loginService.authenticate();
+
 
         view.printWelcomeMessage();
 
-        int decision = 1;
-        while(decision != 0) {
-            view.printStartingApplicationModeOptions();
-            decision = view.selectOption(2);
-            if (decision == 1) {    // user
-                runServiceOptions(studentService, majorService, teacherService, view, false);
-            } else if (decision == 2) {   // admin
-                runServiceOptions(studentService, majorService, teacherService, view, true);
+        if (user.getEntitlements().equals(Entitlements.USER)) {    // user
+            System.out.println("::: USER MODE :::");
+            runServiceOptions(studentService, majorService, teacherService, view, false);
+        } else if (user.getEntitlements().equals(Entitlements.ADMIN)) {   // admin
+            int decision = 1;
+            while(decision != 0 ) {
+                view.printStartingApplicationModeOptions();
+                decision = view.selectOption(2);
+                if(decision == 1) {
+                    System.out.println("\n::: USER MODE :::\n");
+                    runServiceOptions(studentService, majorService, teacherService, view, false);
+                } else if(decision == 2) {
+                    System.out.println("\n::: ADMIN MODE :::\n");
+                    runServiceOptions(studentService, majorService, teacherService, view, true);
+                }
             }
         }
+
+
 
     }
 

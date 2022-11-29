@@ -13,4 +13,5 @@ public interface DataStore {
     List<Degree> getDegrees();
     List<Faculty> getFaculties();
     List<Teacher> getTeachers();
+    List<User> getUsers();
 }

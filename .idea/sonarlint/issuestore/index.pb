@@ -26,8 +26,6 @@ _
 {
 Kapp/src/main/java/unisystem/reader/validation/DefaultInputVerification.java,0\6\062c24604d788a724fe4f68fb3fe2998b32d2a70
 l
-<app/src/main/java/unisystem/service/DefaultMajorService.java,b\2\b2317bf84404d92627b57c8967209a1ac0d67d67
-l
 <app/src/main/java/unisystem/reader/file/MajorFileReader.java,f\b\fb3e196d83289600328eb9f2ce115e3793d9153c
 g
 7app/src/main/java/unisystem/reader/file/FileReader.java,7\d\7dca490086f0e102339c6b52562df6ffc31058fb
@@ -37,18 +35,8 @@ n
 >app/src/main/java/unisystem/reader/file/StudentFileReader.java,f\8\f812bd973abf85e243192fccbabb448bfefefc85
 A
 input/degrees.csv,0\c\0cb6713ff2f281f087d777bab63bf3800ad25817
-n
->app/src/main/java/unisystem/reader/file/TeacherFileReader.java,a\0\a016f399d2b70ccac899436946869433735b1342
-t
-Dapp/src/main/java/unisystem/reader/console/StudentConsoleReader.java,6\7\67f3f64f795718725ed3e0e32c02800120cb7e75
 u
 Eapp/src/main/java/unisystem/reader/file/DefaultStudentFileReader.java,3\f\3f3cb3f4453f90ceb1d799ce7fc5cc87a6911506
-_
-/app/src/main/java/unisystem/data/DataStore.java,8\f\8f9803092d49d0ea36d46e55a92a498530d05f12
-u
-Eapp/src/main/java/unisystem/reader/file/DefaultTeacherFileReader.java,a\4\a4314f6ab029a1ba610620423eeb2cba97ec969c
-c
-3app/src/main/java/unisystem/data/FileDataStore.java,e\5\e581cc7f280628fc51f4b7c455114e02da75d965
 `
 0data/src/main/java/unisystem/domain/Teacher.java,5\0\50c12259f4790c30ac49540dd40bf70b23dfd62a
 Z

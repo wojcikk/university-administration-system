@@ -1,4 +1,4 @@
-1,adminlogin,adminpass,admin
-2,userlogin1,userpass1,user
-3,userlogin2,userpass2,user
-4,userlogin3,userpass3,user
+1,adminlogin,adminpass,ADMIN
+2,userlogin1,userpass1,USER
+3,userlogin2,userpass2,USER
+4,userlogin3,userpass3,USER
