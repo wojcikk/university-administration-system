@@ -34,7 +34,7 @@ public class DefaultTeacherConsoleReader implements TeacherConsoleReader {
 
         Faculty faculty = readTeacherFaculty();
 
-        return new Teacher(new Person(name, surname, gender, age), email, faculty);
+        return new Teacher(name, surname, gender, age, email, faculty);
     }
 
     @Override

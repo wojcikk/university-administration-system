@@ -38,7 +38,7 @@ public class DefaultStudentSearchService implements StudentSearchService {
         List<Student> searchedStudents = new ArrayList<>();
 
         for(Student student : dataStore.getStudents()) {
-            if(student.getPerson().getName().equalsIgnoreCase(name)) {
+            if(student.getName().equalsIgnoreCase(name)) {
                 searchedStudents.add(student);
             }
         }
@@ -52,7 +52,7 @@ public class DefaultStudentSearchService implements StudentSearchService {
         List<Student> searchedStudents = new ArrayList<>();
 
         for(Student student : dataStore.getStudents()) {
-            if(student.getPerson().getSurname().equalsIgnoreCase(surname)) {
+            if(student.getSurname().equalsIgnoreCase(surname)) {
                 searchedStudents.add(student);
             }
         }
@@ -66,7 +66,7 @@ public class DefaultStudentSearchService implements StudentSearchService {
         List<Student> searchedStudents = new ArrayList<>();
 
         for(Student student : dataStore.getStudents()) {
-            if(student.getPerson().getGender().equalsIgnoreCase(gender)) {
+            if(student.getGender().equalsIgnoreCase(gender)) {
                 searchedStudents.add(student);
             }
         }
@@ -80,7 +80,7 @@ public class DefaultStudentSearchService implements StudentSearchService {
         List<Student> searchedStudents = new ArrayList<>();
 
         for(Student student : dataStore.getStudents()) {
-            if(student.getPerson().getAge() == age) {
+            if(student.getAge() == age) {
                 searchedStudents.add(student);
             }
         }
@@ -94,7 +94,7 @@ public class DefaultStudentSearchService implements StudentSearchService {
         List<Student> searchedStudents = new ArrayList<>();
 
         for(Student student : dataStore.getStudents()) {
-            if(student.getPerson().getGender().equalsIgnoreCase(email)) {
+            if(student.getGender().equalsIgnoreCase(email)) {
                 searchedStudents.add(student);
             }
         }

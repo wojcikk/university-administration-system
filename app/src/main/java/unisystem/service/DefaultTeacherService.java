@@ -33,10 +33,10 @@ public class DefaultTeacherService implements TeacherService {
         dataStore.getTeachers().forEach(teacher -> {
             System.out.printf("%-5s %-20s %-20s %-10s %-10s %-30s %-40s\n",
                     teacher.getId(),
-                    teacher.getPerson().getName(),
-                    teacher.getPerson().getSurname(),
-                    teacher.getPerson().getGender(),
-                    teacher.getPerson().getAge(),
+                    teacher.getName(),
+                    teacher.getSurname(),
+                    teacher.getGender(),
+                    teacher.getAge(),
                     teacher.getEmail(),
                     teacher.getFaculty().getName());
         });

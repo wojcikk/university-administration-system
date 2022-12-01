@@ -19,13 +19,11 @@ public class DefaultStudentFileReader implements StudentFileReader {
             String[] lineElements = line.split(",");
 
             students.add(new Student(
+                    lineElements[1],
+                    lineElements[2],
+                    lineElements[3],
+                    Long.parseLong(lineElements[4]),
                     Long.parseLong(lineElements[0]),
-                    new Person(
-                            lineElements[1],
-                            lineElements[2],
-                            lineElements[3],
-                            Long.parseLong(lineElements[4])
-                    ),
                     lineElements[5],
                     new Major(
                             new FieldOfStudy(lineElements[6]),

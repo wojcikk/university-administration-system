@@ -38,7 +38,7 @@ public class DefaultTeacherSearchService implements TeacherSearchService {
         List<Teacher> searchedTeachers = new ArrayList<>();
 
         for(Teacher teacher : dataStore.getTeachers()) {
-            if(teacher.getPerson().getName().equalsIgnoreCase(name)) {
+            if(teacher.getName().equalsIgnoreCase(name)) {
                 searchedTeachers.add(teacher);
             }
         }
@@ -52,7 +52,7 @@ public class DefaultTeacherSearchService implements TeacherSearchService {
         List<Teacher> searchedTeacher = new ArrayList<>();
 
         for(Teacher teacher : dataStore.getTeachers()) {
-            if(teacher.getPerson().getSurname().equalsIgnoreCase(surname)) {
+            if(teacher.getSurname().equalsIgnoreCase(surname)) {
                 searchedTeacher.add(teacher);
             }
         }
@@ -66,7 +66,7 @@ public class DefaultTeacherSearchService implements TeacherSearchService {
         List<Teacher> searchedTeachers = new ArrayList<>();
 
         for(Teacher teacher : dataStore.getTeachers()) {
-            if(teacher.getPerson().getGender().equalsIgnoreCase(gender)) {
+            if(teacher.getGender().equalsIgnoreCase(gender)) {
                 searchedTeachers.add(teacher);
             }
         }
@@ -80,7 +80,7 @@ public class DefaultTeacherSearchService implements TeacherSearchService {
         List<Teacher> searchedTeachers = new ArrayList<>();
 
         for(Teacher teacher : dataStore.getTeachers()) {
-            if(teacher.getPerson().getAge() == age) {
+            if(teacher.getAge() == age) {
                 searchedTeachers.add(teacher);
             }
         }
@@ -94,7 +94,7 @@ public class DefaultTeacherSearchService implements TeacherSearchService {
         List<Teacher> searchedTeachers = new ArrayList<>();
 
         for(Teacher teacher : dataStore.getTeachers()) {
-            if(teacher.getPerson().getGender().equalsIgnoreCase(email)) {
+            if(teacher.getGender().equalsIgnoreCase(email)) {
                 searchedTeachers.add(teacher);
             }
         }

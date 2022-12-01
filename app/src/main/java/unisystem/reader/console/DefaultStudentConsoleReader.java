@@ -3,7 +3,6 @@ package unisystem.reader.console;
 import org.springframework.stereotype.Component;
 import unisystem.data.DataStore;
 import unisystem.domain.Major;
-import unisystem.domain.Person;
 import unisystem.domain.Student;
 import unisystem.reader.validation.DefaultInputVerification;
 import unisystem.reader.validation.InputVerification;
@@ -36,7 +35,7 @@ public class DefaultStudentConsoleReader implements StudentConsoleReader {
 
         Major major = readStudentMajor();
 
-        return new Student(new Person(name, surname, gender, age), email, major);
+        return new Student(name, surname, gender, age, email, major);
     }
 
     @Override
