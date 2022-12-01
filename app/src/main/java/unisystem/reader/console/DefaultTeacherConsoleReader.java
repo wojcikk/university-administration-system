@@ -1,5 +1,6 @@
 package unisystem.reader.console;
 
+import org.springframework.stereotype.Component;
 import unisystem.data.DataStore;
 import unisystem.domain.*;
 import unisystem.reader.validation.DefaultInputVerification;
@@ -8,6 +9,7 @@ import unisystem.reader.validation.InputVerification;
 import java.util.List;
 import java.util.Scanner;
 
+@Component
 public class DefaultTeacherConsoleReader implements TeacherConsoleReader {
     private static final Scanner scanner = new Scanner(System.in);
     private InputVerification inputVerification = new DefaultInputVerification();

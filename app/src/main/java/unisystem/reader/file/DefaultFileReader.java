@@ -1,12 +1,15 @@
 package unisystem.reader.file;
 
+import org.springframework.stereotype.Component;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 
+@Component
 public class DefaultFileReader implements FileReader {
     private BufferedReader reader;
 
-@Override
+    @Override
     public BufferedReader getReader(String filePath) {
         try {
             reader = new BufferedReader(new java.io.FileReader(filePath));
@@ -15,7 +18,7 @@ public class DefaultFileReader implements FileReader {
         }
         return reader;
     }
-@Override
+    @Override
     public void closeReader() {
         try {
             reader.close();

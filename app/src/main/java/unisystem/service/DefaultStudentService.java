@@ -1,5 +1,6 @@
 package unisystem.service;
 
+import org.springframework.stereotype.Service;
 import unisystem.data.DataStore;
 import unisystem.domain.Student;
 import unisystem.reader.console.DefaultStudentConsoleReader;
@@ -11,6 +12,7 @@ import unisystem.service.search.StudentSearchService;
 
 import java.util.List;
 
+@Service
 public class DefaultStudentService implements StudentService {
     private final DataStore dataStore;
     private final StudentConsoleReader studentConsoleReader;

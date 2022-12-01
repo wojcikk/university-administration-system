@@ -1,5 +1,8 @@
 package unisystem.reader.file.view;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class CLIAdminView implements AdminView {
     @Override
     public void printStudentMenuAdminOptions() {

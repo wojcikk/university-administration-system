@@ -1,8 +1,10 @@
 package unisystem.application;
 
+import org.springframework.stereotype.Component;
 import unisystem.reader.file.view.View;
 import unisystem.service.MajorService;
 
+@Component
 public class ApplicationUniStructureServiceRun implements UniStructureServiceRun {
 
     @Override

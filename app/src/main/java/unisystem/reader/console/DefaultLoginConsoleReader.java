@@ -1,10 +1,12 @@
 package unisystem.reader.console;
 
+import org.springframework.stereotype.Component;
 import unisystem.reader.validation.DefaultInputVerification;
 import unisystem.reader.validation.InputVerification;
 
 import java.util.Scanner;
 
+@Component
 public class DefaultLoginConsoleReader implements LoginConsoleReader {
     private static final Scanner scanner = new Scanner(System.in);
     private InputVerification inputVerification = new DefaultInputVerification();

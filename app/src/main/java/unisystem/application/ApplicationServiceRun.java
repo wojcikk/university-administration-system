@@ -1,5 +1,8 @@
 package unisystem.application;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class ApplicationServiceRun implements ServiceRun{
     private final StudentServiceRun studentServiceRun;
     private final UniStructureServiceRun uniStructureServiceRun;

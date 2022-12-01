@@ -1,7 +1,9 @@
 package unisystem.service;
 
+import org.springframework.stereotype.Service;
 import unisystem.data.DataStore;
 
+@Service
 public class DefaultMajorService implements MajorService {
     private final DataStore dataStore;
 

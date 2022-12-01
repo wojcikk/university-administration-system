@@ -1,11 +1,13 @@
 package unisystem.reader.file;
 
+import org.springframework.stereotype.Component;
 import unisystem.data.DirPath;
 import unisystem.domain.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class DefaultTeacherFileReader implements TeacherFileReader {
     private final FileReader reader = new DefaultFileReader();
 

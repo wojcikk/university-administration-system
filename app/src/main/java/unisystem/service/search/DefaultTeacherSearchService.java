@@ -1,5 +1,6 @@
 package unisystem.service.search;
 
+import org.springframework.stereotype.Service;
 import unisystem.data.DataStore;
 import unisystem.domain.Teacher;
 import unisystem.reader.console.DefaultTeacherConsoleReader;
@@ -8,6 +9,7 @@ import unisystem.reader.console.TeacherConsoleReader;
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class DefaultTeacherSearchService implements TeacherSearchService {
     private final DataStore dataStore;
     private final TeacherConsoleReader teacherConsoleReader;

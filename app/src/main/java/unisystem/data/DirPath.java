@@ -1,5 +1,8 @@
 package unisystem.data;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class DirPath {
     public static final String STUDENTS_FILE_PATH = "D:\\IT\\university-administration-system\\input\\students.csv";
     public static final String MAJORS_FILE_PATH = "D:\\IT\\university-administration-system\\input\\majors.csv";

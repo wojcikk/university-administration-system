@@ -1,10 +1,12 @@
 package unisystem.service;
 
+import org.springframework.stereotype.Service;
 import unisystem.data.DataStore;
 import unisystem.domain.User;
 import unisystem.reader.console.DefaultLoginConsoleReader;
 import unisystem.reader.console.LoginConsoleReader;
 
+@Service
 public class DefaultLoginService implements LoginService {
     private final LoginConsoleReader loginConsoleReader;
     private final DataStore dataStore;

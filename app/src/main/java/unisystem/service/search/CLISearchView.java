@@ -1,10 +1,12 @@
 package unisystem.service.search;
 
+import org.springframework.stereotype.Service;
 import unisystem.domain.Student;
 import unisystem.domain.Teacher;
 
 import java.util.List;
 
+@Service
 public class CLISearchView implements SearchView {
 
     @Override

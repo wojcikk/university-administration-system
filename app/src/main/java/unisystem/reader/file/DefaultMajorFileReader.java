@@ -1,5 +1,6 @@
 package unisystem.reader.file;
 
+import org.springframework.stereotype.Component;
 import unisystem.data.DirPath;
 import unisystem.domain.Degree;
 import unisystem.domain.Faculty;
@@ -9,6 +10,7 @@ import unisystem.domain.Major;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class DefaultMajorFileReader implements MajorFileReader {
     private final FileReader reader = new DefaultFileReader();
 

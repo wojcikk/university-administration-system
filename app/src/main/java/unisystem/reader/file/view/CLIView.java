@@ -1,10 +1,12 @@
 package unisystem.reader.file.view;
 
+import org.springframework.stereotype.Component;
 import unisystem.reader.console.ConsoleReader;
 import unisystem.reader.console.DefaultConsoleReader;
 import unisystem.reader.validation.DefaultInputVerification;
 import unisystem.reader.validation.InputVerification;
 
+@Component
 public class CLIView implements View {
     private InputVerification inputVerification = new DefaultInputVerification();
     private ConsoleReader consoleReader = new DefaultConsoleReader();

@@ -1,11 +1,13 @@
 package unisystem.data;
 
+import org.springframework.stereotype.Component;
 import unisystem.domain.*;
 import unisystem.reader.file.DefaultUserFileReader;
 import unisystem.reader.file.*;
 
 import java.util.List;
 
+@Component
 public class FileDataStore implements DataStore {
     private List<Student> students;
     private List<Teacher> teachers;
