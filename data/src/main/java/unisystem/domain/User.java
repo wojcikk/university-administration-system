@@ -1,31 +1,19 @@
 package unisystem.domain;
 
-public class User {
-    private final long id;
-    private final String login;
-    private final String password;
-    private final Entitlements entitlements;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
-    public User(long id, String login, String password, Entitlements entitlements) {
-        this.id = id;
+@AllArgsConstructor
+@Data
+public class User {
+    private long id;
+    private String login;
+    private String password;
+    private Entitlements entitlements;
+
+    public User(String login, String password, Entitlements entitlements) {
         this.login = login;
         this.password = password;
         this.entitlements = entitlements;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public Entitlements getEntitlements() {
-        return entitlements;
     }
 }
