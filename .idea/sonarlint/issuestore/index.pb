@@ -5,24 +5,16 @@
 gradlew.bat,2\a\2a45a911a8f1836b0b6c5b758962572012d8f8c3
 S
 #src/main/java/org/example/Main.java,0\b\0ba1b9c7a4878802f938e331cc2d8a042087ec6b
-@
-input/majors.csv,8\f\8f9cfe9d41f50cf702e145e526e6c7ee6a3ee4f2
 l
 <app/src/main/java/unisystem/reader/file/MajorFileReader.java,f\b\fb3e196d83289600328eb9f2ce115e3793d9153c
 g
 7app/src/main/java/unisystem/reader/file/FileReader.java,7\d\7dca490086f0e102339c6b52562df6ffc31058fb
 n
 >app/src/main/java/unisystem/reader/file/StudentFileReader.java,f\8\f812bd973abf85e243192fccbabb448bfefefc85
-A
-input/degrees.csv,0\c\0cb6713ff2f281f087d777bab63bf3800ad25817
 t
 Dapp/src/main/java/unisystem/service/search/StudentSearchService.java,c\e\ce6c188dbf6ec2a6c74f3a16ea4034cf1c7595dd
 t
 Dapp/src/main/java/unisystem/service/search/TeacherSearchService.java,4\6\4604043130e58e9f158c2f2d4aec1a6a0bb54c2a
-B
-input/teachers.csv,8\8\88218025915ad23d683b03bf3563afc8c7068902
-C
-input/faculties.csv,5\3\53572f3118b521e82b1e1b75a6ffe17d8baa91ab
 g
 7app/src/main/java/unisystem/service/StudentService.java,3\3\337b46719014048715af502f1492513d5beedb29
 e
@@ -31,8 +23,6 @@ g
 7app/src/main/java/unisystem/service/TeacherService.java,d\a\da09ea703efd461f407b01173440272cf222192c
 j
 :app/src/main/java/unisystem/service/search/SearchView.java,1\f\1fe85d2900a201581f0f0caab024fb04ccbe0d84
-G
-input/fieldsOfStudy.csv,e\8\e87058604a279cf9e60a2401042625aed1ee7886
 t
 Dapp/src/main/java/unisystem/reader/console/TeacherConsoleReader.java,b\b\bb58c7780f90f73b3856e5928846288922c52c5a
 m
@@ -55,5 +45,3 @@ e
 5app/src/main/java/unisystem/service/LoginService.java,5\e\5e1092a89d3776f2418725dbca808c0190c70ce2
 k
 ;app/src/main/java/unisystem/reader/file/UserFileReader.java,3\a\3ab195a523c665b94d922011a0bf263a24d3e6aa
-B
-input/students.csv,9\6\967932d18f7fbeceabc22b62b89d2c7a6e5937ae
