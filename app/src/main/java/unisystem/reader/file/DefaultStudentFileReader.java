@@ -25,11 +25,7 @@ public class DefaultStudentFileReader implements StudentFileReader {
                     Long.parseLong(lineElements[4]),
                     Long.parseLong(lineElements[0]),
                     lineElements[5],
-                    new Major(
-                            new FieldOfStudy(lineElements[6]),
-                            new Degree(lineElements[7]),
-                            new Faculty(lineElements[8], null)
-                    )
+                    null
             ));
         });
 
