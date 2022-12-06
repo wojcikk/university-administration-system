@@ -1,10 +1,10 @@
 package unisystem.service;
 
 import org.springframework.stereotype.Service;
-import unisystem.data.DataStore;
 import unisystem.domain.Student;
 import unisystem.reader.console.DefaultStudentConsoleReader;
 import unisystem.reader.console.StudentConsoleReader;
+import unisystem.repository.CentralRepository;
 import unisystem.service.search.CLISearchView;
 import unisystem.service.search.DefaultStudentSearchService;
 import unisystem.service.search.SearchView;
@@ -14,15 +14,15 @@ import java.util.List;
 
 @Service
 public class DefaultStudentService implements StudentService {
-    private final DataStore dataStore;
+    private final CentralRepository centralRepository;
     private final StudentConsoleReader studentConsoleReader;
     private StudentSearchService studentSearchService;
     private SearchView searchView = new CLISearchView();
 
-    public DefaultStudentService(DataStore dataStore) {
-        this.dataStore = dataStore;
-        this.studentConsoleReader = new DefaultStudentConsoleReader(this.dataStore);
-        this.studentSearchService = new DefaultStudentSearchService(this.dataStore);
+    public DefaultStudentService(CentralRepository centralRepository) {
+        this.centralRepository = centralRepository;
+        this.studentConsoleReader = new DefaultStudentConsoleReader(centralRepository);
+        this.studentSearchService = new DefaultStudentSearchService(centralRepository);
     }
 
     @Override
@@ -31,13 +31,13 @@ public class DefaultStudentService implements StudentService {
                 "ID", "NAME", "SURNAME", "GENDER", "AGE", "EMAIL", "FIELD OF STUDY", "DEGREE", "FACULTY"
         );
 
-        dataStore.getStudents().forEach(student -> {
+        this.centralRepository.getStudentRepository().findAll().forEach(student -> {
             System.out.printf("%-5s %-20s %-20s %-10s %-10s %-30s %-30s %-20s %-40s\n",
                     student.getId(),
-                    student.getPerson().getName(),
-                    student.getPerson().getSurname(),
-                    student.getPerson().getGender(),
-                    student.getPerson().getAge(),
+                    student.getName(),
+                    student.getSurname(),
+                    student.getGender(),
+                    student.getAge(),
                     student.getEmail(),
                     student.getMajor().getFieldOfStudy().getName(),
                     student.getMajor().getDegree().getName(),
@@ -50,21 +50,21 @@ public class DefaultStudentService implements StudentService {
     public void addStudent() {
         Student newStudent = studentConsoleReader.readStudentEntryData();
 
-        newStudent.setId(dataStore.getStudents().size());
+        newStudent.setId(this.centralRepository.getStudentRepository().findAll().size());
 
         System.out.println("Added student: " + newStudent.toString());
 
-        this.dataStore.getStudents().add(newStudent);
+        this.centralRepository.getStudentRepository().save(newStudent);
     }
 
 
     @Override
     public void deleteStudent() {
-        long idToDelete = studentConsoleReader.readStudentIdToDelete(dataStore.getStudents());
+        long idToDelete = studentConsoleReader.readStudentIdToDelete(this.centralRepository.getStudentRepository().findAll());
 
-        System.out.println("Deleted student: " + this.dataStore.getStudents().get((int) idToDelete).toString());
+        System.out.println("Deleted student: " + this.centralRepository.getStudentRepository().findAll().get((int) idToDelete).toString());
 
-        this.dataStore.getStudents().remove((int) idToDelete);
+        this.centralRepository.getStudentRepository().deleteById(idToDelete);
     }
 
     @Override

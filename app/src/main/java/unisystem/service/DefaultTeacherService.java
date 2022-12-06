@@ -1,10 +1,10 @@
 package unisystem.service;
 
 import org.springframework.stereotype.Service;
-import unisystem.data.DataStore;
 import unisystem.domain.Teacher;
 import unisystem.reader.console.DefaultTeacherConsoleReader;
 import unisystem.reader.console.TeacherConsoleReader;
+import unisystem.repository.CentralRepository;
 import unisystem.service.search.CLISearchView;
 import unisystem.service.search.DefaultTeacherSearchService;
 import unisystem.service.search.SearchView;
@@ -14,14 +14,14 @@ import java.util.List;
 
 @Service
 public class DefaultTeacherService implements TeacherService {
-    private final DataStore dataStore;
+    private final CentralRepository centralRepository;
     private final TeacherConsoleReader teacherConsoleReader;
     private TeacherSearchService teacherSearchService;
     private SearchView searchView = new CLISearchView();
-    public DefaultTeacherService(DataStore dataStore) {
-        this.dataStore = dataStore;
-        this.teacherConsoleReader = new DefaultTeacherConsoleReader(this.dataStore);
-        this.teacherSearchService = new DefaultTeacherSearchService(this.dataStore);
+    public DefaultTeacherService(CentralRepository centralRepository) {
+        this.centralRepository = centralRepository;
+        this.teacherConsoleReader = new DefaultTeacherConsoleReader(centralRepository);
+        this.teacherSearchService = new DefaultTeacherSearchService(centralRepository);
     }
 
     @Override
@@ -30,13 +30,13 @@ public class DefaultTeacherService implements TeacherService {
                 "ID", "NAME", "SURNAME", "GENDER", "AGE", "EMAIL", "FACULTY"
         );
 
-        dataStore.getTeachers().forEach(teacher -> {
+        this.centralRepository.getTeacherRepository().findAll().forEach(teacher -> {
             System.out.printf("%-5s %-20s %-20s %-10s %-10s %-30s %-40s\n",
                     teacher.getId(),
-                    teacher.getPerson().getName(),
-                    teacher.getPerson().getSurname(),
-                    teacher.getPerson().getGender(),
-                    teacher.getPerson().getAge(),
+                    teacher.getName(),
+                    teacher.getSurname(),
+                    teacher.getGender(),
+                    teacher.getAge(),
                     teacher.getEmail(),
                     teacher.getFaculty().getName());
         });
@@ -46,20 +46,21 @@ public class DefaultTeacherService implements TeacherService {
     public void addTeacher() {
         Teacher newTeacher = teacherConsoleReader.readTeacherEntryData();
 
-        newTeacher.setId(dataStore.getTeachers().size());
+        newTeacher.setId(this.centralRepository.getTeacherRepository().findAll().size());
 
         System.out.println("Added teacher: " + newTeacher.toString());
 
-        this.dataStore.getTeachers().add(newTeacher);
+        this.centralRepository.getTeacherRepository().save(newTeacher);
     }
 
     @Override
     public void deleteTeacher() {
-        long idToDelete = teacherConsoleReader.readTeacherIdToDelete(dataStore.getTeachers());
+        long idToDelete = teacherConsoleReader.readTeacherIdToDelete(this.centralRepository.getTeacherRepository().findAll());
 
-        System.out.println("Deleted teacher: " + this.dataStore.getTeachers().get((int) idToDelete).toString());
+        System.out.println("Deleted teacher: " + this.centralRepository.getTeacherRepository().findAll().get((int) idToDelete).toString());
 
-        this.dataStore.getTeachers().remove((int) idToDelete);
+        //this.centralRepository.getTeacherRepository().delete(this.centralRepository.getTeacherRepository().getById(idToDelete));
+        this.centralRepository.getTeacherRepository().deleteById(idToDelete);
     }
 
     @Override

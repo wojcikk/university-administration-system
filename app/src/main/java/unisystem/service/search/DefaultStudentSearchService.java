@@ -1,29 +1,29 @@
 package unisystem.service.search;
 
 import org.springframework.stereotype.Service;
-import unisystem.data.DataStore;
 import unisystem.domain.Student;
 import unisystem.reader.console.DefaultStudentConsoleReader;
 import unisystem.reader.console.StudentConsoleReader;
+import unisystem.repository.CentralRepository;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class DefaultStudentSearchService implements StudentSearchService {
-    private final DataStore dataStore;
+    private final CentralRepository centralRepository;
     private final StudentConsoleReader studentConsoleReader;
 
-    public DefaultStudentSearchService(DataStore dataStore) {
-        this.dataStore = dataStore;
-        this.studentConsoleReader = new DefaultStudentConsoleReader(dataStore);
+    public DefaultStudentSearchService(CentralRepository centralRepository) {
+        this.centralRepository = centralRepository;
+        this.studentConsoleReader = new DefaultStudentConsoleReader(centralRepository);
     }
 
     @Override
     public Student searchStudentById() {
         long id = studentConsoleReader.readStudentId();
 
-        for(Student student : dataStore.getStudents()) {
+        for(Student student : this.centralRepository.getStudentRepository().findAll()) {
            if(student.getId() == id) {
                return student;
            }
@@ -37,8 +37,8 @@ public class DefaultStudentSearchService implements StudentSearchService {
         String name = studentConsoleReader.readStudentName();
         List<Student> searchedStudents = new ArrayList<>();
 
-        for(Student student : dataStore.getStudents()) {
-            if(student.getPerson().getName().equalsIgnoreCase(name)) {
+        for(Student student : this.centralRepository.getStudentRepository().findAll()) {
+            if(student.getName().equalsIgnoreCase(name)) {
                 searchedStudents.add(student);
             }
         }
@@ -51,8 +51,8 @@ public class DefaultStudentSearchService implements StudentSearchService {
         String surname = studentConsoleReader.readStudentSurname();
         List<Student> searchedStudents = new ArrayList<>();
 
-        for(Student student : dataStore.getStudents()) {
-            if(student.getPerson().getSurname().equalsIgnoreCase(surname)) {
+        for(Student student : this.centralRepository.getStudentRepository().findAll()) {
+            if(student.getSurname().equalsIgnoreCase(surname)) {
                 searchedStudents.add(student);
             }
         }
@@ -65,8 +65,8 @@ public class DefaultStudentSearchService implements StudentSearchService {
         String gender = studentConsoleReader.readStudentGender();
         List<Student> searchedStudents = new ArrayList<>();
 
-        for(Student student : dataStore.getStudents()) {
-            if(student.getPerson().getGender().equalsIgnoreCase(gender)) {
+        for(Student student : this.centralRepository.getStudentRepository().findAll()) {
+            if(student.getGender().equalsIgnoreCase(gender)) {
                 searchedStudents.add(student);
             }
         }
@@ -79,8 +79,8 @@ public class DefaultStudentSearchService implements StudentSearchService {
         long age = studentConsoleReader.readStudentAge();
         List<Student> searchedStudents = new ArrayList<>();
 
-        for(Student student : dataStore.getStudents()) {
-            if(student.getPerson().getAge() == age) {
+        for(Student student : this.centralRepository.getStudentRepository().findAll()) {
+            if(student.getAge() == age) {
                 searchedStudents.add(student);
             }
         }
@@ -93,8 +93,8 @@ public class DefaultStudentSearchService implements StudentSearchService {
         String email = studentConsoleReader.readStudentEmail();
         List<Student> searchedStudents = new ArrayList<>();
 
-        for(Student student : dataStore.getStudents()) {
-            if(student.getPerson().getGender().equalsIgnoreCase(email)) {
+        for(Student student : this.centralRepository.getStudentRepository().findAll()) {
+            if(student.getGender().equalsIgnoreCase(email)) {
                 searchedStudents.add(student);
             }
         }

@@ -1,48 +1,48 @@
-0,Architecture,Bachelor,Faculty of Engineering
-1,Business Administration,Bachelor,Faculty od Economics and Business
-2,Commerce,Bachelor,Faculty of Economics and Business
-3,Civil Law,Bachelor,Faculty of Law
-4,Economics,Bachelor,Faculty of Economics and Business
-5,Education,Bachelor,Faculty of Education
-6,Engineering,Bachelor,Faculty of Engineering
-7,Fine Arts,Bachelor,Faculty of Art
-8,Laws,Bachelor,Faculty of Law
-9,Letters,Bachelor,Faculty of Humanities
-10,Music,Bachelor,Faculty of Art
-11,Pharmacy,Bachelor,Faculty of Medicine
-12,Philosophy,Bachelor,Faculty of Humanities
-13,Science in Nursing,Bachelor,Faculty of Medicine
-14,Social Work,Bachelor,Faculty of Education
-15,Technology,Bachelor,Faculty od Science
-16,Medicine,Bachelor,Faculty of Medicine
-17,Counselling,Master,Faculty of Humanities
-18,Education,Master,Faculty of Education
-19,Engineering,Master,Faculty of Engineering
-20,Fine Arts,Master,Faculty of Art
-21,Laws,Master,Faculty of Law
-22,Medicine,Master,Faculty of Medicine
-23,Philosophy,Master,Faculty of Humanities
-24,Public Administration,Master,Faculty of Humanities
-25,Public Health,Master,Faculty of Education
-26,Research,Master,Faculty of Education
-27,Sacred Theology,Master,Faculty of Humanities
-28,Science in Nursing,Master,Faculty of Education
-29,Social Work,Master,Faculty of Humanities
-30,Surgery,Master,Faculty of Education
-31,Arts,Doctor,Faculty of Art
-32,Business Administration,Doctor,Economics and Business
-33,Canon Law,Doctor,Faculty of Law
-34,Chiropractic,Doctor,Faculty of Medicine
-35,Dental Surgery,Doctor,Faculty of Medicine
-36,Education,Doctor,Faculty of Education
-37,Juridical Science,Doctor,Faculty of Law
-38,Medicine,Doctor,Faculty of Medicine
-39,Ministry,Doctor,Faculty of Law
-40,Naturopathic Medicine,Doctor,Faculty of Medicine
-41,Osteopathic Medicine,Doctor,Faculty of Medicine
-42,Pharmacy,Doctor,Faculty of Medicine
-43,Philosophy,Doctor,Faculty of Humanities
-44,Psychology,Doctor,Faculty of Humanities
-45,Science,Doctor,Faculty of Medicine
-46,Theology,Doctor,Faculty of Humanities
-47,Veterinary Medicine,Doctor,Faculty of Medicine
+0,0,0,0
+1,1,0,1
+2,2,0,1
+3,3,0,2
+4,4,0,1
+5,5,0,3
+6,6,0,0
+7,7,0,4
+8,8,0,2
+9,9,0,5
+10,10,0,4
+11,22,0,6
+12,12,0,5
+13,13,0,6
+14,14,0,3
+15,15,0,7
+16,16,0,6
+17,17,1,5
+18,5,1,3
+19,19,1,0
+20,20,1,4
+21,21,1,2
+22,22,1,6
+23,23,1,5
+24,24,1,5
+25,25,1,3
+26,26,1,3
+27,27,1,5
+28,28,1,7
+29,14,1,5
+30,30,1,7
+31,31,2,4
+32,1,2,1
+33,33,2,2
+34,34,2,6
+35,35,2,6
+36,36,2,3
+37,37,2,2
+38,22,2,6
+39,29,2,2
+40,18,2,6
+41,38,2,6
+42,32,2,6
+43,12,2,5
+44,16,2,5
+45,11,2,6
+46,19,2,5
+47,21,2,6

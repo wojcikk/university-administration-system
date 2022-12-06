@@ -2,17 +2,33 @@ package unisystem.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
 
 @AllArgsConstructor
+@NoArgsConstructor
 @Data
-public class Teacher {
+@Entity
+@Table(name = "teachers")
+public class Teacher extends Person {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private Person person;
     private String email;
+    @ManyToOne(cascade = {CascadeType.PERSIST})
+    @JoinColumn(name = "faculty_id")
     private Faculty faculty;
 
-    public Teacher(Person person, String email, Faculty faculty) {
-        this.person = person;
+    public Teacher(String name, String surname, String gender, long age, String email, Faculty faculty) {
+        super(name, surname, gender, age);
+        this.email = email;
+        this.faculty = faculty;
+    }
+
+    public Teacher(String name, String surname, String gender, long age, long id, String email, Faculty faculty) {
+        super(name, surname, gender, age);
+        this.id = id;
         this.email = email;
         this.faculty = faculty;
     }

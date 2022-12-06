@@ -1,5 +1,6 @@
 package unisystem;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import unisystem.application.ApplicationServiceRun;
@@ -10,21 +11,40 @@ import unisystem.domain.Entitlements;
 import unisystem.domain.User;
 import unisystem.reader.file.view.CLIView;
 import unisystem.reader.file.view.View;
+import unisystem.repository.*;
 import unisystem.service.*;
 
 @Component
 public class UniSystem implements CommandLineRunner {
+
+    @Autowired
+    StudentRepository studentRepository;
+    @Autowired
+    MajorRepository majorRepository;
+    @Autowired
+    DegreeRepository degreeRepository;
+    @Autowired
+    FacultyRepository facultyRepository;
+    @Autowired
+    FieldOfStudyRepository fieldOfStudyRepository;
+    @Autowired
+    TeacherRepository teacherRepository;
+    @Autowired
+    UserRepository userRepository;
 
     @Override
     public void run(String... args) throws Exception {
         DataStore dataStore = new FileDataStore();
         dataStore.init();
 
-        StudentService studentService = new DefaultStudentService(dataStore);
-        MajorService majorService = new DefaultMajorService(dataStore);
-        TeacherService teacherService = new DefaultTeacherService(dataStore);
+        CentralRepository centralRepository = new DefaultCentralRepository(studentRepository, majorRepository, degreeRepository, facultyRepository, fieldOfStudyRepository, teacherRepository, userRepository);
 
-        LoginService loginService = new DefaultLoginService(dataStore);
+
+        StudentService studentService = new DefaultStudentService(centralRepository);
+        MajorService majorService = new DefaultMajorService(centralRepository);
+        TeacherService teacherService = new DefaultTeacherService(centralRepository);
+
+        LoginService loginService = new DefaultLoginService(centralRepository);
 
         View view = new CLIView();
 
@@ -49,6 +69,7 @@ public class UniSystem implements CommandLineRunner {
                     runServiceOptions(studentService, majorService, teacherService, view, true);
                 }
             }
+            System.exit(0);
         }
 
 
