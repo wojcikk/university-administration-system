@@ -5,31 +5,28 @@ import unisystem.data.DataStore;
 import unisystem.domain.Student;
 import unisystem.reader.console.DefaultStudentConsoleReader;
 import unisystem.reader.console.StudentConsoleReader;
-import unisystem.repository.MajorRepository;
-import unisystem.repository.StudentRepository;
+import unisystem.repository.CentralRepository;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class DefaultStudentSearchService implements StudentSearchService {
+    private final CentralRepository centralRepository;
     private final StudentConsoleReader studentConsoleReader;
-    private final StudentRepository studentRepository;
-    private final MajorRepository majorRepository;
     private final DataStore dataStore;
 
-    public DefaultStudentSearchService(StudentRepository studentRepository, MajorRepository majorRepository, DataStore dataStore) {
-        this.studentRepository = studentRepository;
-        this.majorRepository = majorRepository;
+    public DefaultStudentSearchService(CentralRepository centralRepository, DataStore dataStore) {
+        this.centralRepository = centralRepository;
         this.dataStore = dataStore;
-        this.studentConsoleReader = new DefaultStudentConsoleReader(studentRepository, majorRepository, dataStore);
+        this.studentConsoleReader = new DefaultStudentConsoleReader(centralRepository, dataStore);
     }
 
     @Override
     public Student searchStudentById() {
         long id = studentConsoleReader.readStudentId();
 
-        for(Student student : this.studentRepository.findAll()) {
+        for(Student student : this.centralRepository.getStudentRepository().findAll()) {
            if(student.getId() == id) {
                return student;
            }
@@ -43,7 +40,7 @@ public class DefaultStudentSearchService implements StudentSearchService {
         String name = studentConsoleReader.readStudentName();
         List<Student> searchedStudents = new ArrayList<>();
 
-        for(Student student : this.studentRepository.findAll()) {
+        for(Student student : this.centralRepository.getStudentRepository().findAll()) {
             if(student.getName().equalsIgnoreCase(name)) {
                 searchedStudents.add(student);
             }
@@ -57,7 +54,7 @@ public class DefaultStudentSearchService implements StudentSearchService {
         String surname = studentConsoleReader.readStudentSurname();
         List<Student> searchedStudents = new ArrayList<>();
 
-        for(Student student : this.studentRepository.findAll()) {
+        for(Student student : this.centralRepository.getStudentRepository().findAll()) {
             if(student.getSurname().equalsIgnoreCase(surname)) {
                 searchedStudents.add(student);
             }
@@ -71,7 +68,7 @@ public class DefaultStudentSearchService implements StudentSearchService {
         String gender = studentConsoleReader.readStudentGender();
         List<Student> searchedStudents = new ArrayList<>();
 
-        for(Student student : this.studentRepository.findAll()) {
+        for(Student student : this.centralRepository.getStudentRepository().findAll()) {
             if(student.getGender().equalsIgnoreCase(gender)) {
                 searchedStudents.add(student);
             }
@@ -85,7 +82,7 @@ public class DefaultStudentSearchService implements StudentSearchService {
         long age = studentConsoleReader.readStudentAge();
         List<Student> searchedStudents = new ArrayList<>();
 
-        for(Student student : this.studentRepository.findAll()) {
+        for(Student student : this.centralRepository.getStudentRepository().findAll()) {
             if(student.getAge() == age) {
                 searchedStudents.add(student);
             }
@@ -99,7 +96,7 @@ public class DefaultStudentSearchService implements StudentSearchService {
         String email = studentConsoleReader.readStudentEmail();
         List<Student> searchedStudents = new ArrayList<>();
 
-        for(Student student : this.studentRepository.findAll()) {
+        for(Student student : this.centralRepository.getStudentRepository().findAll()) {
             if(student.getGender().equalsIgnoreCase(email)) {
                 searchedStudents.add(student);
             }

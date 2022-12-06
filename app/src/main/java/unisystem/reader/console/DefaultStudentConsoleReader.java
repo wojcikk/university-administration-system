@@ -6,8 +6,7 @@ import unisystem.domain.Major;
 import unisystem.domain.Student;
 import unisystem.reader.validation.DefaultInputVerification;
 import unisystem.reader.validation.InputVerification;
-import unisystem.repository.MajorRepository;
-import unisystem.repository.StudentRepository;
+import unisystem.repository.CentralRepository;
 
 import java.util.List;
 import java.util.Scanner;
@@ -18,12 +17,10 @@ public class DefaultStudentConsoleReader implements StudentConsoleReader {
     private InputVerification inputVerification = new DefaultInputVerification();
     private ConsoleReader consoleReader = new DefaultConsoleReader();
     private final DataStore dataStore;
-    private final StudentRepository studentRepository;
-    private final MajorRepository majorRepository;
+    private final CentralRepository centralRepository;
 
-    public DefaultStudentConsoleReader(StudentRepository studentRepository, MajorRepository majorRepository, DataStore dataStore) {
-        this.studentRepository = studentRepository;
-        this.majorRepository = majorRepository;
+    public DefaultStudentConsoleReader(CentralRepository centralRepository, DataStore dataStore) {
+        this.centralRepository = centralRepository;
         this.dataStore = dataStore;
     }
 
@@ -144,7 +141,7 @@ public class DefaultStudentConsoleReader implements StudentConsoleReader {
         do {
             System.out.print("\nChoose option: ");
             majorId = consoleReader.readInteger();
-        } while (!inputVerification.checkNumberInput((int) majorId, 1, majorRepository.findAll().size()));
+        } while (!inputVerification.checkNumberInput((int) majorId, 1, this.centralRepository.getMajorRepository().findAll().size()));
 
 
         return dataStore.getMajors().get((int) (majorId - 1));
@@ -152,7 +149,7 @@ public class DefaultStudentConsoleReader implements StudentConsoleReader {
 
     private void printMajorsOptions() {
         int i = 1;
-        for(Major major : majorRepository.findAll()) {
+        for(Major major : this.centralRepository.getMajorRepository().findAll()) {
             System.out.println(i++ + " - " + major.getFieldOfStudy().getName() + ", " + major.getDegree().getName() + ", " + major.getFaculty().getName());
         }
     }

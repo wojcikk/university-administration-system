@@ -5,8 +5,7 @@ import unisystem.data.DataStore;
 import unisystem.domain.Student;
 import unisystem.reader.console.DefaultStudentConsoleReader;
 import unisystem.reader.console.StudentConsoleReader;
-import unisystem.repository.MajorRepository;
-import unisystem.repository.StudentRepository;
+import unisystem.repository.CentralRepository;
 import unisystem.service.search.CLISearchView;
 import unisystem.service.search.DefaultStudentSearchService;
 import unisystem.service.search.SearchView;
@@ -16,19 +15,17 @@ import java.util.List;
 
 @Service
 public class DefaultStudentService implements StudentService {
-    private final StudentRepository studentRepository;
-    private final MajorRepository majorRepository;
+    private final CentralRepository centralRepository;
     private final StudentConsoleReader studentConsoleReader;
     private StudentSearchService studentSearchService;
     private SearchView searchView = new CLISearchView();
     private final DataStore dataStore;
 
-    public DefaultStudentService(StudentRepository studentRepository, MajorRepository majorRepository, DataStore dataStore) {
-        this.studentRepository = studentRepository;
-        this.majorRepository = majorRepository;
+    public DefaultStudentService(CentralRepository centralRepository, DataStore dataStore) {
+        this.centralRepository = centralRepository;
         this.dataStore = dataStore;
-        this.studentConsoleReader = new DefaultStudentConsoleReader(studentRepository, majorRepository, dataStore);
-        this.studentSearchService = new DefaultStudentSearchService(studentRepository, majorRepository, dataStore);
+        this.studentConsoleReader = new DefaultStudentConsoleReader(centralRepository, dataStore);
+        this.studentSearchService = new DefaultStudentSearchService(centralRepository, dataStore);
     }
 
     @Override
@@ -37,7 +34,7 @@ public class DefaultStudentService implements StudentService {
                 "ID", "NAME", "SURNAME", "GENDER", "AGE", "EMAIL", "FIELD OF STUDY", "DEGREE", "FACULTY"
         );
 
-        studentRepository.findAll().forEach(student -> {
+        this.centralRepository.getStudentRepository().findAll().forEach(student -> {
             System.out.printf("%-5s %-20s %-20s %-10s %-10s %-30s %-30s %-20s %-40s\n",
                     student.getId(),
                     student.getName(),
@@ -56,22 +53,22 @@ public class DefaultStudentService implements StudentService {
     public void addStudent() {
         Student newStudent = studentConsoleReader.readStudentEntryData();
 
-        newStudent.setId(studentRepository.findAll().size());
+        newStudent.setId(this.centralRepository.getStudentRepository().findAll().size());
 
         System.out.println("Added student: " + newStudent.toString());
 
-        this.studentRepository.save(newStudent);
+        this.centralRepository.getStudentRepository().save(newStudent);
     }
 
 
     @Override
     public void deleteStudent() {
-        long idToDelete = studentConsoleReader.readStudentIdToDelete(this.studentRepository.findAll());
+        long idToDelete = studentConsoleReader.readStudentIdToDelete(this.centralRepository.getStudentRepository().findAll());
 
-        System.out.println("Deleted student: " + this.studentRepository.findAll().get((int) idToDelete).toString());
+        System.out.println("Deleted student: " + this.centralRepository.getStudentRepository().findAll().get((int) idToDelete).toString());
 
         //this.studentRepository.findAll().remove((int) idToDelete);
-        this.studentRepository.delete(this.studentRepository.getById(idToDelete));
+        this.centralRepository.getStudentRepository().delete(this.centralRepository.getStudentRepository().getById(idToDelete));
     }
 
     @Override

@@ -11,8 +11,7 @@ import unisystem.domain.Entitlements;
 import unisystem.domain.User;
 import unisystem.reader.file.view.CLIView;
 import unisystem.reader.file.view.View;
-import unisystem.repository.MajorRepository;
-import unisystem.repository.StudentRepository;
+import unisystem.repository.*;
 import unisystem.service.*;
 
 @Component
@@ -22,14 +21,22 @@ public class UniSystem implements CommandLineRunner {
     StudentRepository studentRepository;
     @Autowired
     MajorRepository majorRepository;
+    @Autowired
+    DegreeRepository degreeRepository;
+    @Autowired
+    FacultyRepository facultyRepository;
+    @Autowired
+    FieldOfStudyRepository fieldOfStudyRepository;
 
     @Override
     public void run(String... args) throws Exception {
         DataStore dataStore = new FileDataStore();
         dataStore.init();
 
+        CentralRepository centralRepository = new DefaultCentralRepository(studentRepository, majorRepository, degreeRepository, facultyRepository, fieldOfStudyRepository);
 
-        StudentService studentService = new DefaultStudentService(studentRepository, majorRepository, dataStore);
+
+        StudentService studentService = new DefaultStudentService(centralRepository, dataStore);
         MajorService majorService = new DefaultMajorService(dataStore);
         TeacherService teacherService = new DefaultTeacherService(dataStore);
 
