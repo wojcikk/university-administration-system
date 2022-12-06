@@ -1,7 +1,6 @@
 package unisystem.service;
 
 import org.springframework.stereotype.Service;
-import unisystem.data.DataStore;
 import unisystem.domain.Student;
 import unisystem.reader.console.DefaultStudentConsoleReader;
 import unisystem.reader.console.StudentConsoleReader;
@@ -19,13 +18,11 @@ public class DefaultStudentService implements StudentService {
     private final StudentConsoleReader studentConsoleReader;
     private StudentSearchService studentSearchService;
     private SearchView searchView = new CLISearchView();
-    private final DataStore dataStore;
 
-    public DefaultStudentService(CentralRepository centralRepository, DataStore dataStore) {
+    public DefaultStudentService(CentralRepository centralRepository) {
         this.centralRepository = centralRepository;
-        this.dataStore = dataStore;
-        this.studentConsoleReader = new DefaultStudentConsoleReader(centralRepository, dataStore);
-        this.studentSearchService = new DefaultStudentSearchService(centralRepository, dataStore);
+        this.studentConsoleReader = new DefaultStudentConsoleReader(centralRepository);
+        this.studentSearchService = new DefaultStudentSearchService(centralRepository);
     }
 
     @Override
@@ -67,8 +64,7 @@ public class DefaultStudentService implements StudentService {
 
         System.out.println("Deleted student: " + this.centralRepository.getStudentRepository().findAll().get((int) idToDelete).toString());
 
-        //this.studentRepository.findAll().remove((int) idToDelete);
-        this.centralRepository.getStudentRepository().delete(this.centralRepository.getStudentRepository().getById(idToDelete));
+        this.centralRepository.getStudentRepository().deleteById(idToDelete);
     }
 
     @Override

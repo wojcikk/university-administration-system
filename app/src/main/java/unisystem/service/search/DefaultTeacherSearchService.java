@@ -1,29 +1,29 @@
 package unisystem.service.search;
 
 import org.springframework.stereotype.Service;
-import unisystem.data.DataStore;
 import unisystem.domain.Teacher;
 import unisystem.reader.console.DefaultTeacherConsoleReader;
 import unisystem.reader.console.TeacherConsoleReader;
+import unisystem.repository.CentralRepository;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class DefaultTeacherSearchService implements TeacherSearchService {
-    private final DataStore dataStore;
+    private final CentralRepository centralRepository;
     private final TeacherConsoleReader teacherConsoleReader;
 
-    public DefaultTeacherSearchService(DataStore dataStore) {
-        this.dataStore = dataStore;
-        this.teacherConsoleReader = new DefaultTeacherConsoleReader(dataStore);
+    public DefaultTeacherSearchService(CentralRepository centralRepository) {
+        this.centralRepository = centralRepository;
+        this.teacherConsoleReader = new DefaultTeacherConsoleReader(centralRepository);
     }
 
     @Override
     public Teacher searchTeacherById() {
         long id = teacherConsoleReader.readTeacherId();
 
-        for(Teacher teacher : dataStore.getTeachers()) {
+        for(Teacher teacher : this.centralRepository.getTeacherRepository().findAll()) {
             if(teacher.getId() == id) {
                 return teacher;
             }
@@ -37,7 +37,7 @@ public class DefaultTeacherSearchService implements TeacherSearchService {
         String name = teacherConsoleReader.readTeacherName();
         List<Teacher> searchedTeachers = new ArrayList<>();
 
-        for(Teacher teacher : dataStore.getTeachers()) {
+        for(Teacher teacher : this.centralRepository.getTeacherRepository().findAll()) {
             if(teacher.getName().equalsIgnoreCase(name)) {
                 searchedTeachers.add(teacher);
             }
@@ -51,7 +51,7 @@ public class DefaultTeacherSearchService implements TeacherSearchService {
         String surname = teacherConsoleReader.readTeacherSurname();
         List<Teacher> searchedTeacher = new ArrayList<>();
 
-        for(Teacher teacher : dataStore.getTeachers()) {
+        for(Teacher teacher : this.centralRepository.getTeacherRepository().findAll()) {
             if(teacher.getSurname().equalsIgnoreCase(surname)) {
                 searchedTeacher.add(teacher);
             }
@@ -65,7 +65,7 @@ public class DefaultTeacherSearchService implements TeacherSearchService {
         String gender = teacherConsoleReader.readTeacherGender();
         List<Teacher> searchedTeachers = new ArrayList<>();
 
-        for(Teacher teacher : dataStore.getTeachers()) {
+        for(Teacher teacher : this.centralRepository.getTeacherRepository().findAll()) {
             if(teacher.getGender().equalsIgnoreCase(gender)) {
                 searchedTeachers.add(teacher);
             }
@@ -79,7 +79,7 @@ public class DefaultTeacherSearchService implements TeacherSearchService {
         long age = teacherConsoleReader.readTeacherAge();
         List<Teacher> searchedTeachers = new ArrayList<>();
 
-        for(Teacher teacher : dataStore.getTeachers()) {
+        for(Teacher teacher : this.centralRepository.getTeacherRepository().findAll()) {
             if(teacher.getAge() == age) {
                 searchedTeachers.add(teacher);
             }
@@ -93,7 +93,7 @@ public class DefaultTeacherSearchService implements TeacherSearchService {
         String email = teacherConsoleReader.readTeacherEmail();
         List<Teacher> searchedTeachers = new ArrayList<>();
 
-        for(Teacher teacher : dataStore.getTeachers()) {
+        for(Teacher teacher : this.centralRepository.getTeacherRepository().findAll()) {
             if(teacher.getGender().equalsIgnoreCase(email)) {
                 searchedTeachers.add(teacher);
             }

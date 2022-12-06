@@ -6,4 +6,6 @@ public interface CentralRepository {
     DegreeRepository getDegreeRepository();
     FacultyRepository getFacultyRepository();
     FieldOfStudyRepository getFieldOfStudyRepository();
+    TeacherRepository getTeacherRepository();
+    UserRepository getUserRepository();
 }

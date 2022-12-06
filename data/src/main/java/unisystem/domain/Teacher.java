@@ -16,7 +16,7 @@ public class Teacher extends Person {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String email;
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST})
     @JoinColumn(name = "faculty_id")
     private Faculty faculty;
 

@@ -1,19 +1,19 @@
 package unisystem.service;
 
 import org.springframework.stereotype.Service;
-import unisystem.data.DataStore;
 import unisystem.domain.User;
 import unisystem.reader.console.DefaultLoginConsoleReader;
 import unisystem.reader.console.LoginConsoleReader;
+import unisystem.repository.CentralRepository;
 
 @Service
 public class DefaultLoginService implements LoginService {
     private final LoginConsoleReader loginConsoleReader;
-    private final DataStore dataStore;
+    private final CentralRepository centralRepository;
 
-    public DefaultLoginService(DataStore dataStore) {
+    public DefaultLoginService(CentralRepository centralRepository) {
         this.loginConsoleReader = new DefaultLoginConsoleReader();
-        this.dataStore = dataStore;
+        this.centralRepository = centralRepository;
     }
 
     @Override
@@ -22,13 +22,15 @@ public class DefaultLoginService implements LoginService {
         String login = loginConsoleReader.readLogin();
         String password = loginConsoleReader.readPassword();
 
-        for(User user : dataStore.getUsers()) {
+        for(User user : centralRepository.getUserRepository().findAll()) {
             if(user.getLogin().equals(login) && user.getPassword().equals(password)) {
                 return user;
             }
         }
 
         System.out.println("User did not found!");
+
+        System.exit(0);
 
         return null;
     }

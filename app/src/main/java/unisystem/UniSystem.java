@@ -27,20 +27,24 @@ public class UniSystem implements CommandLineRunner {
     FacultyRepository facultyRepository;
     @Autowired
     FieldOfStudyRepository fieldOfStudyRepository;
+    @Autowired
+    TeacherRepository teacherRepository;
+    @Autowired
+    UserRepository userRepository;
 
     @Override
     public void run(String... args) throws Exception {
         DataStore dataStore = new FileDataStore();
         dataStore.init();
 
-        CentralRepository centralRepository = new DefaultCentralRepository(studentRepository, majorRepository, degreeRepository, facultyRepository, fieldOfStudyRepository);
+        CentralRepository centralRepository = new DefaultCentralRepository(studentRepository, majorRepository, degreeRepository, facultyRepository, fieldOfStudyRepository, teacherRepository, userRepository);
 
 
-        StudentService studentService = new DefaultStudentService(centralRepository, dataStore);
-        MajorService majorService = new DefaultMajorService(dataStore);
-        TeacherService teacherService = new DefaultTeacherService(dataStore);
+        StudentService studentService = new DefaultStudentService(centralRepository);
+        MajorService majorService = new DefaultMajorService(centralRepository);
+        TeacherService teacherService = new DefaultTeacherService(centralRepository);
 
-        LoginService loginService = new DefaultLoginService(dataStore);
+        LoginService loginService = new DefaultLoginService(centralRepository);
 
         View view = new CLIView();
 
@@ -65,6 +69,7 @@ public class UniSystem implements CommandLineRunner {
                     runServiceOptions(studentService, majorService, teacherService, view, true);
                 }
             }
+            System.exit(0);
         }
 
 

@@ -1,10 +1,11 @@
 package unisystem.reader.console;
 
 import org.springframework.stereotype.Component;
-import unisystem.data.DataStore;
-import unisystem.domain.*;
+import unisystem.domain.Faculty;
+import unisystem.domain.Teacher;
 import unisystem.reader.validation.DefaultInputVerification;
 import unisystem.reader.validation.InputVerification;
+import unisystem.repository.CentralRepository;
 
 import java.util.List;
 import java.util.Scanner;
@@ -14,10 +15,10 @@ public class DefaultTeacherConsoleReader implements TeacherConsoleReader {
     private static final Scanner scanner = new Scanner(System.in);
     private InputVerification inputVerification = new DefaultInputVerification();
     private ConsoleReader consoleReader = new DefaultConsoleReader();
-    private final DataStore dataStore;
+    private final CentralRepository centralRepository;
 
-    public DefaultTeacherConsoleReader(DataStore dataStore) {
-        this.dataStore = dataStore;
+    public DefaultTeacherConsoleReader(CentralRepository centralRepository) {
+        this.centralRepository = centralRepository;
     }
 
     @Override
@@ -137,15 +138,15 @@ public class DefaultTeacherConsoleReader implements TeacherConsoleReader {
         do {
             System.out.print("\nChoose option: ");
             facultyId = consoleReader.readInteger();
-        } while (!inputVerification.checkNumberInput((int) facultyId, 1, dataStore.getFaculties().size()));
+        } while (!inputVerification.checkNumberInput((int) facultyId, 1, this.centralRepository.getFacultyRepository().findAll().size()));
 
 
-        return dataStore.getFaculties().get((int) (facultyId - 1));
+        return this.centralRepository.getFacultyRepository().findAll().get((int) (facultyId - 1));
     }
 
     private void printFacultyOptions() {
         int i = 1;
-        for(Faculty faculty : dataStore.getFaculties()) {
+        for(Faculty faculty : this.centralRepository.getFacultyRepository().findAll()) {
             System.out.println(i++ + " - " + faculty.getName());
         }
     }

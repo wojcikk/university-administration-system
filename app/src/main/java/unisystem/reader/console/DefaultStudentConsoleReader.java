@@ -1,7 +1,6 @@
 package unisystem.reader.console;
 
 import org.springframework.stereotype.Component;
-import unisystem.data.DataStore;
 import unisystem.domain.Major;
 import unisystem.domain.Student;
 import unisystem.reader.validation.DefaultInputVerification;
@@ -16,12 +15,10 @@ public class DefaultStudentConsoleReader implements StudentConsoleReader {
     private static final Scanner scanner = new Scanner(System.in);
     private InputVerification inputVerification = new DefaultInputVerification();
     private ConsoleReader consoleReader = new DefaultConsoleReader();
-    private final DataStore dataStore;
     private final CentralRepository centralRepository;
 
-    public DefaultStudentConsoleReader(CentralRepository centralRepository, DataStore dataStore) {
+    public DefaultStudentConsoleReader(CentralRepository centralRepository) {
         this.centralRepository = centralRepository;
-        this.dataStore = dataStore;
     }
 
     @Override
@@ -144,7 +141,7 @@ public class DefaultStudentConsoleReader implements StudentConsoleReader {
         } while (!inputVerification.checkNumberInput((int) majorId, 1, this.centralRepository.getMajorRepository().findAll().size()));
 
 
-        return dataStore.getMajors().get((int) (majorId - 1));
+        return centralRepository.getMajorRepository().findAll().get((int) (majorId - 1));
     }
 
     private void printMajorsOptions() {

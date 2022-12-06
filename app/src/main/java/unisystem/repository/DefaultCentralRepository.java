@@ -11,4 +11,6 @@ public class DefaultCentralRepository implements CentralRepository {
     private final DegreeRepository degreeRepository;
     private final FacultyRepository facultyRepository;
     private final FieldOfStudyRepository fieldOfStudyRepository;
+    private final TeacherRepository teacherRepository;
+    private final UserRepository userRepository;
 }
