@@ -15,8 +15,6 @@ t
 Dapp/src/main/java/unisystem/service/search/StudentSearchService.java,c\e\ce6c188dbf6ec2a6c74f3a16ea4034cf1c7595dd
 t
 Dapp/src/main/java/unisystem/service/search/TeacherSearchService.java,4\6\4604043130e58e9f158c2f2d4aec1a6a0bb54c2a
-g
-7app/src/main/java/unisystem/service/StudentService.java,3\3\337b46719014048715af502f1492513d5beedb29
 e
 5app/src/main/java/unisystem/service/MajorService.java,e\c\ecbce8ee6fbaf0c270a2742379c9d693314d2b25
 g
@@ -37,8 +35,6 @@ s
 Capp/src/main/java/unisystem/application/UniStructureServiceRun.java,7\4\7428ab3f383306f240fe25e0dfca844e94f08f27
 n
 >app/src/main/java/unisystem/reader/file/TeacherFileReader.java,a\0\a016f399d2b70ccac899436946869433735b1342
-t
-Dapp/src/main/java/unisystem/reader/console/StudentConsoleReader.java,6\7\67f3f64f795718725ed3e0e32c02800120cb7e75
 r
 Bapp/src/main/java/unisystem/reader/console/LoginConsoleReader.java,2\a\2a46547e9e517904e175586bd6698c582598005c
 e

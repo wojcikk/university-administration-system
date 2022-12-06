@@ -6,6 +6,8 @@ import unisystem.domain.Major;
 import unisystem.domain.Student;
 import unisystem.reader.validation.DefaultInputVerification;
 import unisystem.reader.validation.InputVerification;
+import unisystem.repository.MajorRepository;
+import unisystem.repository.StudentRepository;
 
 import java.util.List;
 import java.util.Scanner;
@@ -16,8 +18,12 @@ public class DefaultStudentConsoleReader implements StudentConsoleReader {
     private InputVerification inputVerification = new DefaultInputVerification();
     private ConsoleReader consoleReader = new DefaultConsoleReader();
     private final DataStore dataStore;
+    private final StudentRepository studentRepository;
+    private final MajorRepository majorRepository;
 
-    public DefaultStudentConsoleReader(DataStore dataStore) {
+    public DefaultStudentConsoleReader(StudentRepository studentRepository, MajorRepository majorRepository, DataStore dataStore) {
+        this.studentRepository = studentRepository;
+        this.majorRepository = majorRepository;
         this.dataStore = dataStore;
     }
 
@@ -138,7 +144,7 @@ public class DefaultStudentConsoleReader implements StudentConsoleReader {
         do {
             System.out.print("\nChoose option: ");
             majorId = consoleReader.readInteger();
-        } while (!inputVerification.checkNumberInput((int) majorId, 1, dataStore.getMajors().size()));
+        } while (!inputVerification.checkNumberInput((int) majorId, 1, majorRepository.findAll().size()));
 
 
         return dataStore.getMajors().get((int) (majorId - 1));
@@ -146,7 +152,7 @@ public class DefaultStudentConsoleReader implements StudentConsoleReader {
 
     private void printMajorsOptions() {
         int i = 1;
-        for(Major major : dataStore.getMajors()) {
+        for(Major major : majorRepository.findAll()) {
             System.out.println(i++ + " - " + major.getFieldOfStudy().getName() + ", " + major.getDegree().getName() + ", " + major.getFaculty().getName());
         }
     }

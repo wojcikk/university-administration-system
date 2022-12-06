@@ -1,5 +1,6 @@
 package unisystem;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import unisystem.application.ApplicationServiceRun;
@@ -10,17 +11,25 @@ import unisystem.domain.Entitlements;
 import unisystem.domain.User;
 import unisystem.reader.file.view.CLIView;
 import unisystem.reader.file.view.View;
+import unisystem.repository.MajorRepository;
+import unisystem.repository.StudentRepository;
 import unisystem.service.*;
 
 @Component
 public class UniSystem implements CommandLineRunner {
+
+    @Autowired
+    StudentRepository studentRepository;
+    @Autowired
+    MajorRepository majorRepository;
 
     @Override
     public void run(String... args) throws Exception {
         DataStore dataStore = new FileDataStore();
         dataStore.init();
 
-        StudentService studentService = new DefaultStudentService(dataStore);
+
+        StudentService studentService = new DefaultStudentService(studentRepository, majorRepository, dataStore);
         MajorService majorService = new DefaultMajorService(dataStore);
         TeacherService teacherService = new DefaultTeacherService(dataStore);
 
