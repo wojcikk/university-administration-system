@@ -29,7 +29,7 @@ public class DefaultDomainConsoleReader implements DomainConsoleReader {
 
             long age = readDomainAge();
 
-            String email = readDomainEmail();
+            String email = generateStudentEmail(name.toLowerCase(), surname.toLowerCase());
 
             Major major = readDomainMajor();
 
@@ -46,7 +46,7 @@ public class DefaultDomainConsoleReader implements DomainConsoleReader {
 
         long age = readDomainAge();
 
-        String email = readDomainEmail();
+        String email = generateTeacherEmail(name.toLowerCase(), surname.toLowerCase());
 
         Faculty faculty = readFaculty();
 
@@ -172,6 +172,36 @@ public class DefaultDomainConsoleReader implements DomainConsoleReader {
 
 
         return this.centralRepository.getFacultyRepository().findAll().get((int) (facultyId - 1));
+    }
+
+    private String generateStudentEmail(String name, String surname) {
+        int count = 0;
+        for(Student student : this.centralRepository.getStudentRepository().findAll()) {
+            if(student.getName().equalsIgnoreCase(name) && student.getSurname().equalsIgnoreCase(surname)) {
+                count++;
+            }
+        }
+
+        if(count == 0) {
+            return name + "." + surname + "@uni.student.gmail.com";
+        } else {
+            return name + "." + surname + count + "@uni.student.gmail.com";
+        }
+    }
+
+    private String generateTeacherEmail(String name, String surname) {
+        int count = 0;
+        for(Teacher teacher : this.centralRepository.getTeacherRepository().findAll()) {
+            if(teacher.getName().equalsIgnoreCase(name) && teacher.getSurname().equalsIgnoreCase(surname)) {
+                count++;
+            }
+        }
+
+        if(count == 0) {
+            return name + "." + surname + "@uni.teacher.gmail.com";
+        } else {
+            return name + "." + surname + count + "@uni.teacher.gmail.com";
+        }
     }
 
     private void printMajorsOptions() {
