@@ -1,14 +1,14 @@
 package unisystem.service.search;
 
-import unisystem.domain.Teacher;
+import unisystem.domain.Domain;
 
 import java.util.List;
 
 public interface TeacherSearchService {
-    Teacher searchTeacherById();
-    List<Teacher> searchTeacherByName();
-    List<Teacher> searchTeacherBySurname();
-    List<Teacher> searchTeacherByGender();
-    List<Teacher> searchTeacherByAge();
-    List<Teacher> searchTeacherByEmail();
+    Domain searchTeacherById();
+    List<Domain> searchTeacherByName();
+    List<Domain> searchTeacherBySurname();
+    List<Domain> searchTeacherByGender();
+    List<Domain> searchTeacherByAge();
+    List<Domain> searchTeacherByEmail();
 }

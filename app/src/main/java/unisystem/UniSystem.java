@@ -5,10 +5,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import unisystem.application.ApplicationServiceRun;
 import unisystem.application.ServiceRun;
-import unisystem.data.DataStore;
-import unisystem.data.FileDataStore;
-import unisystem.domain.Entitlements;
-import unisystem.domain.User;
 import unisystem.reader.file.view.CLIView;
 import unisystem.reader.file.view.View;
 import unisystem.repository.*;
@@ -34,8 +30,8 @@ public class UniSystem implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        DataStore dataStore = new FileDataStore();
-        dataStore.init();
+//        DataStore dataStore = new FileDataStore();
+//        dataStore.init();
 
         CentralRepository centralRepository = new DefaultCentralRepository(studentRepository, majorRepository, degreeRepository, facultyRepository, fieldOfStudyRepository, teacherRepository, userRepository);
 
@@ -48,15 +44,15 @@ public class UniSystem implements CommandLineRunner {
 
         View view = new CLIView();
 
-        User user = loginService.authenticate();
+        //User user = loginService.authenticate();
 
 
         view.printWelcomeMessage();
 
-        if (user.getEntitlements().equals(Entitlements.USER)) {    // user
-            System.out.println("::: USER MODE :::");
-            runServiceOptions(studentService, majorService, teacherService, view, false);
-        } else if (user.getEntitlements().equals(Entitlements.ADMIN)) {   // admin
+        //if (user.getEntitlements().equals(Entitlements.USER)) {    // user
+        //    System.out.println("::: USER MODE :::");
+        //    runServiceOptions(studentService, majorService, teacherService, view, false);
+        //} else if (user.getEntitlements().equals(Entitlements.ADMIN)) {   // admin
             int decision = 1;
             while(decision != 0 ) {
                 view.printStartingApplicationModeOptions();
@@ -70,7 +66,7 @@ public class UniSystem implements CommandLineRunner {
                 }
             }
             System.exit(0);
-        }
+        //}
 
 
 

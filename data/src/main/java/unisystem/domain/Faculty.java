@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Data
 @Entity
 @Table(name = "faculties")
-public class Faculty {
+public class Faculty implements Domain {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;

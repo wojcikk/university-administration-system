@@ -1,6 +1,7 @@
 package unisystem.service;
 
 import org.springframework.stereotype.Service;
+import unisystem.domain.Domain;
 import unisystem.domain.Teacher;
 import unisystem.reader.console.DefaultTeacherConsoleReader;
 import unisystem.reader.console.TeacherConsoleReader;
@@ -10,6 +11,7 @@ import unisystem.service.search.DefaultTeacherSearchService;
 import unisystem.service.search.SearchView;
 import unisystem.service.search.TeacherSearchService;
 
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -59,36 +61,27 @@ public class DefaultTeacherService implements TeacherService {
 
         System.out.println("Deleted teacher: " + this.centralRepository.getTeacherRepository().findAll().get((int) idToDelete).toString());
 
-        //this.centralRepository.getTeacherRepository().delete(this.centralRepository.getTeacherRepository().getById(idToDelete));
         this.centralRepository.getTeacherRepository().deleteById(idToDelete);
     }
 
     @Override
     public void searchTeacher(int option) {
+        List<Domain> searchedTeachers = null;
         if(option == 1) {
-            Teacher searchedTeacher = teacherSearchService.searchTeacherById();
-
-            searchView.printSearchedTeacherElement(searchedTeacher);
+            searchedTeachers= Collections.singletonList(teacherSearchService.searchTeacherById());
         } else if(option == 2) {
-            List<Teacher> searchedTeachers = teacherSearchService.searchTeacherByName();
-
-            searchView.printSearchedTeacherList(searchedTeachers);
+            searchedTeachers = teacherSearchService.searchTeacherByName();
         } else if(option == 3) {
-            List<Teacher> searchedTeachers = teacherSearchService.searchTeacherBySurname();
-
-            searchView.printSearchedTeacherList(searchedTeachers);
+            searchedTeachers = teacherSearchService.searchTeacherBySurname();
         } else if(option == 4) {
-            List<Teacher> searchedTeachers = teacherSearchService.searchTeacherByGender();
-
-            searchView.printSearchedTeacherList(searchedTeachers);
+            searchedTeachers = teacherSearchService.searchTeacherByGender();
         } else if(option == 5) {
-            List<Teacher> searchedTeachers = teacherSearchService.searchTeacherByAge();
-
-            searchView.printSearchedTeacherList(searchedTeachers);
+            searchedTeachers = teacherSearchService.searchTeacherByAge();
         } else if(option == 6) {
-            List<Teacher> searchedTeachers = teacherSearchService.searchTeacherByEmail();
+            searchedTeachers = teacherSearchService.searchTeacherByEmail();
 
-            searchView.printSearchedTeacherList(searchedTeachers);
         }
+        searchView.printSearchedList(searchedTeachers);
+
     }
 }

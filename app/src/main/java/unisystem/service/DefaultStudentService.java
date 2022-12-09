@@ -1,6 +1,7 @@
 package unisystem.service;
 
 import org.springframework.stereotype.Service;
+import unisystem.domain.Domain;
 import unisystem.domain.Student;
 import unisystem.reader.console.DefaultStudentConsoleReader;
 import unisystem.reader.console.StudentConsoleReader;
@@ -10,6 +11,7 @@ import unisystem.service.search.DefaultStudentSearchService;
 import unisystem.service.search.SearchView;
 import unisystem.service.search.StudentSearchService;
 
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -69,31 +71,22 @@ public class DefaultStudentService implements StudentService {
 
     @Override
     public void searchStudent(int option) {
+        List<Domain> searchedStudents = null;
         if(option == 1) {
-            Student searchedStudent = studentSearchService.searchStudentById();
-
-            searchView.printSearchedStudentElement(searchedStudent);
+            searchedStudents = Collections.singletonList(studentSearchService.searchStudentById());
         } else if(option == 2) {
-            List<Student> searchedStudents = studentSearchService.searchStudentByName();
-
-            searchView.printSearchedStudentList(searchedStudents);
+            searchedStudents = studentSearchService.searchStudentByName();
         } else if(option == 3) {
-            List<Student> searchedStudents = studentSearchService.searchStudentBySurname();
-
-            searchView.printSearchedStudentList(searchedStudents);
+            searchedStudents = studentSearchService.searchStudentBySurname();
         } else if(option == 4) {
-            List<Student> searchedStudents = studentSearchService.searchStudentByGender();
-
-            searchView.printSearchedStudentList(searchedStudents);
+            searchedStudents = studentSearchService.searchStudentByGender();
         } else if(option == 5) {
-            List<Student> searchedStudents = studentSearchService.searchStudentByAge();
-
-            searchView.printSearchedStudentList(searchedStudents);
+            searchedStudents = studentSearchService.searchStudentByAge();
         } else if(option == 6) {
-            List<Student> searchedStudents = studentSearchService.searchStudentByEmail();
+            searchedStudents = studentSearchService.searchStudentByEmail();
 
-            searchView.printSearchedStudentList(searchedStudents);
         }
+        searchView.printSearchedList(searchedStudents);
 
     }
 }
