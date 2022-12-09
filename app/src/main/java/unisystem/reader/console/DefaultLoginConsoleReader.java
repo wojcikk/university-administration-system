@@ -10,7 +10,6 @@ import java.util.Scanner;
 public class DefaultLoginConsoleReader implements LoginConsoleReader {
     private static final Scanner scanner = new Scanner(System.in);
     private InputVerification inputVerification = new DefaultInputVerification();
-    private ConsoleReader consoleReader = new DefaultConsoleReader();
 
     @Override
     public String readLogin() {

@@ -70,7 +70,7 @@ public class DefaultDomainConsoleReader implements DomainConsoleReader {
         long id = 0;
 
         do {
-            System.out.print("\nEnter student id to delete: ");
+            System.out.print("\nEnter id to delete: ");
             id = consoleReader.readInteger();
         } while (!inputVerification.checkNumberInput((int) id, 0, max));
 
