@@ -1,4 +1,4 @@
-package unisystem.reader.file.view;
+package unisystem.view;
 
 public interface View {
     void printWelcomeMessage();

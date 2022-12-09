@@ -1,49 +1,64 @@
 package unisystem.reader.console;
 
 import org.springframework.stereotype.Component;
-import unisystem.domain.Major;
-import unisystem.domain.Student;
+import unisystem.domain.*;
 import unisystem.reader.validation.DefaultInputVerification;
 import unisystem.reader.validation.InputVerification;
 import unisystem.repository.CentralRepository;
 
-import java.util.List;
 import java.util.Scanner;
 
 @Component
-public class DefaultStudentConsoleReader implements StudentConsoleReader {
+public class DefaultDomainConsoleReader implements DomainConsoleReader {
     private static final Scanner scanner = new Scanner(System.in);
     private InputVerification inputVerification = new DefaultInputVerification();
     private ConsoleReader consoleReader = new DefaultConsoleReader();
     private final CentralRepository centralRepository;
 
-    public DefaultStudentConsoleReader(CentralRepository centralRepository) {
+    public DefaultDomainConsoleReader(CentralRepository centralRepository) {
         this.centralRepository = centralRepository;
     }
 
     @Override
     public Student readStudentEntryData() {
-        String name = readStudentName();
+            String name = readDomainName();
 
-        String surname = readStudentSurname();
+            String surname = readDomainSurname();
 
-        String gender = readStudentGender();
+            String gender = readDomainGender();
 
-        long age = readStudentAge();
+            long age = readDomainAge();
 
-        String email = readStudentEmail();
+            String email = readDomainEmail();
 
-        Major major = readStudentMajor();
+            Major major = readDomainMajor();
 
-        return new Student(name, surname, gender, age, email, major);
+            return new Student(name, surname, gender, age, email, major);
     }
 
     @Override
-    public long readStudentId() {
+    public Teacher readTeacherEntryData() {
+        String name = readDomainName();
+
+        String surname = readDomainSurname();
+
+        String gender = readDomainGender();
+
+        long age = readDomainAge();
+
+        String email = readDomainEmail();
+
+        Faculty faculty = readFaculty();
+
+        return new Teacher(name, surname, gender, age, email, faculty);
+    }
+
+    @Override
+    public long readDomainId() {
         long id = 0;
 
         do {
-            System.out.print("\nEnter student id: ");
+            System.out.print("\nEnter id: ");
             id = consoleReader.readInteger();
         } while (!inputVerification.checkNumberInput((int) id, 0, Integer.MAX_VALUE));
 
@@ -51,34 +66,34 @@ public class DefaultStudentConsoleReader implements StudentConsoleReader {
     }
 
     @Override
-    public long readStudentIdToDelete(List<Student> students) {
+    public long readDomainIdToDelete(int max) {
         long id = 0;
 
         do {
             System.out.print("\nEnter student id to delete: ");
             id = consoleReader.readInteger();
-        } while (!inputVerification.checkNumberInput((int) id, 0, students.size()));
+        } while (!inputVerification.checkNumberInput((int) id, 0, max));
 
         return id;
     }
 
     @Override
-    public String readStudentName() {
+    public String readDomainName() {
         String name;
 
         do {
-            System.out.print("\nEnter student name: ");
+            System.out.print("\nEnter name: ");
             name = scanner.nextLine();
         } while(!(inputVerification.checkTextInput(name) && inputVerification.checkInputLength(name, 1, 24)));
 
         return name;
     }
     @Override
-    public String readStudentSurname() {
+    public String readDomainSurname() {
         String surname;
 
         do {
-            System.out.print("\nEnter student surname: ");
+            System.out.print("\nEnter surname: ");
             surname = scanner.nextLine();
         } while(!(inputVerification.checkTextInput(surname) && inputVerification.checkInputLength(surname, 1, 24)));
 
@@ -86,11 +101,11 @@ public class DefaultStudentConsoleReader implements StudentConsoleReader {
     }
 
     @Override
-    public String readStudentGender() {
+    public String readDomainGender() {
         int genderOption = 0;
 
         do {
-            System.out.print("\nChoose student gender: ");
+            System.out.print("\nChoose gender: ");
             printGenderOptions();
             System.out.println("\nChoose option: ");
             genderOption = consoleReader.readInteger();
@@ -106,11 +121,11 @@ public class DefaultStudentConsoleReader implements StudentConsoleReader {
     }
 
     @Override
-    public long readStudentAge() {
+    public long readDomainAge() {
         long age = 0;
 
         do {
-            System.out.print("\nEnter student age: ");
+            System.out.print("\nEnter age: ");
             age = consoleReader.readInteger();
         } while (!inputVerification.checkNumberInput((int) age, 1, Integer.MAX_VALUE));
 
@@ -118,11 +133,11 @@ public class DefaultStudentConsoleReader implements StudentConsoleReader {
     }
 
     @Override
-    public String readStudentEmail() {
+    public String readDomainEmail() {
         String email;
 
         do {
-            System.out.print("\nEnter student email: ");
+            System.out.print("\nEnter email: ");
             email = scanner.nextLine();
         } while(!(inputVerification.checkEmailInput(email) && inputVerification.checkInputLength(email, 1, 24)));
 
@@ -130,7 +145,7 @@ public class DefaultStudentConsoleReader implements StudentConsoleReader {
     }
 
     @Override
-    public Major readStudentMajor() {
+    public Major readDomainMajor() {
         System.out.println("\nChoose major option: ");
         printMajorsOptions();
         long majorId = 0;
@@ -144,10 +159,32 @@ public class DefaultStudentConsoleReader implements StudentConsoleReader {
         return centralRepository.getMajorRepository().findAll().get((int) (majorId - 1));
     }
 
+    @Override
+    public Faculty readFaculty() {
+        System.out.println("\nChoose faculty option: ");
+        printFacultyOptions();
+        long facultyId = 0;
+
+        do {
+            System.out.print("\nChoose option: ");
+            facultyId = consoleReader.readInteger();
+        } while (!inputVerification.checkNumberInput((int) facultyId, 1, this.centralRepository.getFacultyRepository().findAll().size()));
+
+
+        return this.centralRepository.getFacultyRepository().findAll().get((int) (facultyId - 1));
+    }
+
     private void printMajorsOptions() {
         int i = 1;
         for(Major major : this.centralRepository.getMajorRepository().findAll()) {
             System.out.println(i++ + " - " + major.getFieldOfStudy().getName() + ", " + major.getDegree().getName() + ", " + major.getFaculty().getName());
+        }
+    }
+
+    private void printFacultyOptions() {
+        int i = 1;
+        for(Faculty faculty : this.centralRepository.getFacultyRepository().findAll()) {
+            System.out.println(i++ + " - " + faculty.getName());
         }
     }
 

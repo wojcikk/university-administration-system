@@ -5,8 +5,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import unisystem.application.ApplicationServiceRun;
 import unisystem.application.ServiceRun;
-import unisystem.reader.file.view.CLIView;
-import unisystem.reader.file.view.View;
+import unisystem.view.CLIView;
+import unisystem.view.View;
 import unisystem.repository.*;
 import unisystem.service.*;
 

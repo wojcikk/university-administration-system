@@ -3,8 +3,8 @@ package unisystem.service;
 import org.springframework.stereotype.Service;
 import unisystem.domain.Domain;
 import unisystem.domain.Teacher;
-import unisystem.reader.console.DefaultTeacherConsoleReader;
-import unisystem.reader.console.TeacherConsoleReader;
+import unisystem.reader.console.DefaultDomainConsoleReader;
+import unisystem.reader.console.DomainConsoleReader;
 import unisystem.repository.CentralRepository;
 import unisystem.service.search.CLISearchView;
 import unisystem.service.search.DefaultTeacherSearchService;
@@ -17,12 +17,12 @@ import java.util.List;
 @Service
 public class DefaultTeacherService implements TeacherService {
     private final CentralRepository centralRepository;
-    private final TeacherConsoleReader teacherConsoleReader;
+    private final DomainConsoleReader domainConsoleReader;
     private TeacherSearchService teacherSearchService;
     private SearchView searchView = new CLISearchView();
     public DefaultTeacherService(CentralRepository centralRepository) {
         this.centralRepository = centralRepository;
-        this.teacherConsoleReader = new DefaultTeacherConsoleReader(centralRepository);
+        this.domainConsoleReader = new DefaultDomainConsoleReader(centralRepository);
         this.teacherSearchService = new DefaultTeacherSearchService(centralRepository);
     }
 
@@ -46,7 +46,7 @@ public class DefaultTeacherService implements TeacherService {
 
     @Override
     public void addTeacher() {
-        Teacher newTeacher = teacherConsoleReader.readTeacherEntryData();
+        Teacher newTeacher = domainConsoleReader.readTeacherEntryData();
 
         newTeacher.setId(this.centralRepository.getTeacherRepository().findAll().size());
 
@@ -57,7 +57,7 @@ public class DefaultTeacherService implements TeacherService {
 
     @Override
     public void deleteTeacher() {
-        long idToDelete = teacherConsoleReader.readTeacherIdToDelete(this.centralRepository.getTeacherRepository().findAll());
+        long idToDelete = domainConsoleReader.readDomainIdToDelete(this.centralRepository.getTeacherRepository().findAll().size());
 
         System.out.println("Deleted teacher: " + this.centralRepository.getTeacherRepository().findAll().get((int) idToDelete).toString());
 

@@ -1,6 +1,6 @@
 package unisystem.application;
 
-import unisystem.reader.file.view.View;
+import unisystem.view.View;
 import unisystem.service.MajorService;
 
 public interface UniStructureServiceRun {

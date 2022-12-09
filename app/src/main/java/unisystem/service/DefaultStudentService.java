@@ -3,8 +3,8 @@ package unisystem.service;
 import org.springframework.stereotype.Service;
 import unisystem.domain.Domain;
 import unisystem.domain.Student;
-import unisystem.reader.console.DefaultStudentConsoleReader;
-import unisystem.reader.console.StudentConsoleReader;
+import unisystem.reader.console.DefaultDomainConsoleReader;
+import unisystem.reader.console.DomainConsoleReader;
 import unisystem.repository.CentralRepository;
 import unisystem.service.search.CLISearchView;
 import unisystem.service.search.DefaultStudentSearchService;
@@ -17,13 +17,13 @@ import java.util.List;
 @Service
 public class DefaultStudentService implements StudentService {
     private final CentralRepository centralRepository;
-    private final StudentConsoleReader studentConsoleReader;
+    private final DomainConsoleReader domainConsoleReader;
     private StudentSearchService studentSearchService;
     private SearchView searchView = new CLISearchView();
 
     public DefaultStudentService(CentralRepository centralRepository) {
         this.centralRepository = centralRepository;
-        this.studentConsoleReader = new DefaultStudentConsoleReader(centralRepository);
+        this.domainConsoleReader = new DefaultDomainConsoleReader(centralRepository);
         this.studentSearchService = new DefaultStudentSearchService(centralRepository);
     }
 
@@ -50,7 +50,7 @@ public class DefaultStudentService implements StudentService {
 
     @Override
     public void addStudent() {
-        Student newStudent = studentConsoleReader.readStudentEntryData();
+        Student newStudent = domainConsoleReader.readStudentEntryData();
 
         newStudent.setId(this.centralRepository.getStudentRepository().findAll().size());
 
@@ -62,7 +62,7 @@ public class DefaultStudentService implements StudentService {
 
     @Override
     public void deleteStudent() {
-        long idToDelete = studentConsoleReader.readStudentIdToDelete(this.centralRepository.getStudentRepository().findAll());
+        long idToDelete = domainConsoleReader.readDomainIdToDelete(this.centralRepository.getStudentRepository().findAll().size());
 
         System.out.println("Deleted student: " + this.centralRepository.getStudentRepository().findAll().get((int) idToDelete).toString());
 
@@ -72,7 +72,7 @@ public class DefaultStudentService implements StudentService {
     @Override
     public void searchStudent(int option) {
         List<Domain> searchedStudents = null;
-        if(option == 1) {
+        if(option == 1) { // by id
             searchedStudents = Collections.singletonList(studentSearchService.searchStudentById());
         } else if(option == 2) {
             searchedStudents = studentSearchService.searchStudentByName();
