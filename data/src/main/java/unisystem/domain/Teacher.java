@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Data
 @Entity
 @Table(name = "teachers")
-public class Teacher extends Person {
+public class Teacher extends Person implements Domain {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;

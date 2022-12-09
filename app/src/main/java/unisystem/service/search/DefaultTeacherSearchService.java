@@ -1,6 +1,7 @@
 package unisystem.service.search;
 
 import org.springframework.stereotype.Service;
+import unisystem.domain.Domain;
 import unisystem.domain.Teacher;
 import unisystem.reader.console.DefaultTeacherConsoleReader;
 import unisystem.reader.console.TeacherConsoleReader;
@@ -20,7 +21,7 @@ public class DefaultTeacherSearchService implements TeacherSearchService {
     }
 
     @Override
-    public Teacher searchTeacherById() {
+    public Domain searchTeacherById() {
         long id = teacherConsoleReader.readTeacherId();
 
         for(Teacher teacher : this.centralRepository.getTeacherRepository().findAll()) {
@@ -33,9 +34,9 @@ public class DefaultTeacherSearchService implements TeacherSearchService {
     }
 
     @Override
-    public List<Teacher> searchTeacherByName() {
+    public List<Domain> searchTeacherByName() {
         String name = teacherConsoleReader.readTeacherName();
-        List<Teacher> searchedTeachers = new ArrayList<>();
+        List<Domain> searchedTeachers = new ArrayList<>();
 
         for(Teacher teacher : this.centralRepository.getTeacherRepository().findAll()) {
             if(teacher.getName().equalsIgnoreCase(name)) {
@@ -47,9 +48,9 @@ public class DefaultTeacherSearchService implements TeacherSearchService {
     }
 
     @Override
-    public List<Teacher> searchTeacherBySurname() {
+    public List<Domain> searchTeacherBySurname() {
         String surname = teacherConsoleReader.readTeacherSurname();
-        List<Teacher> searchedTeacher = new ArrayList<>();
+        List<Domain> searchedTeacher = new ArrayList<>();
 
         for(Teacher teacher : this.centralRepository.getTeacherRepository().findAll()) {
             if(teacher.getSurname().equalsIgnoreCase(surname)) {
@@ -61,9 +62,9 @@ public class DefaultTeacherSearchService implements TeacherSearchService {
     }
 
     @Override
-    public List<Teacher> searchTeacherByGender() {
+    public List<Domain> searchTeacherByGender() {
         String gender = teacherConsoleReader.readTeacherGender();
-        List<Teacher> searchedTeachers = new ArrayList<>();
+        List<Domain> searchedTeachers = new ArrayList<>();
 
         for(Teacher teacher : this.centralRepository.getTeacherRepository().findAll()) {
             if(teacher.getGender().equalsIgnoreCase(gender)) {
@@ -75,9 +76,9 @@ public class DefaultTeacherSearchService implements TeacherSearchService {
     }
 
     @Override
-    public List<Teacher> searchTeacherByAge() {
+    public List<Domain> searchTeacherByAge() {
         long age = teacherConsoleReader.readTeacherAge();
-        List<Teacher> searchedTeachers = new ArrayList<>();
+        List<Domain> searchedTeachers = new ArrayList<>();
 
         for(Teacher teacher : this.centralRepository.getTeacherRepository().findAll()) {
             if(teacher.getAge() == age) {
@@ -89,9 +90,9 @@ public class DefaultTeacherSearchService implements TeacherSearchService {
     }
 
     @Override
-    public List<Teacher> searchTeacherByEmail() {
+    public List<Domain> searchTeacherByEmail() {
         String email = teacherConsoleReader.readTeacherEmail();
-        List<Teacher> searchedTeachers = new ArrayList<>();
+        List<Domain> searchedTeachers = new ArrayList<>();
 
         for(Teacher teacher : this.centralRepository.getTeacherRepository().findAll()) {
             if(teacher.getGender().equalsIgnoreCase(email)) {

@@ -6,10 +6,13 @@ import javax.persistence.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
+@Getter
+@Setter
+@ToString(callSuper=true)
+@EqualsAndHashCode(callSuper=true)
 @Entity
 @Table(name = "students")
-public class Student extends Person {
+public class Student extends Person implements Domain {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;

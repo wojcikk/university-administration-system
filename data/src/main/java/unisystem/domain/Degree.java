@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Data
 @Entity
 @Table(name="degrees")
-public class Degree {
+public class Degree implements Domain {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;

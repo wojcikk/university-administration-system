@@ -11,12 +11,6 @@ g
 7app/src/main/java/unisystem/reader/file/FileReader.java,7\d\7dca490086f0e102339c6b52562df6ffc31058fb
 n
 >app/src/main/java/unisystem/reader/file/StudentFileReader.java,f\8\f812bd973abf85e243192fccbabb448bfefefc85
-t
-Dapp/src/main/java/unisystem/service/search/StudentSearchService.java,c\e\ce6c188dbf6ec2a6c74f3a16ea4034cf1c7595dd
-t
-Dapp/src/main/java/unisystem/service/search/TeacherSearchService.java,4\6\4604043130e58e9f158c2f2d4aec1a6a0bb54c2a
-j
-:app/src/main/java/unisystem/service/search/SearchView.java,1\f\1fe85d2900a201581f0f0caab024fb04ccbe0d84
 m
 =app/src/main/java/unisystem/reader/console/ConsoleReader.java,6\9\69279a1031c40536a346c05fa57bb1900a338a69
 g

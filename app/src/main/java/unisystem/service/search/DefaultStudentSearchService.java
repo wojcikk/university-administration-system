@@ -1,6 +1,7 @@
 package unisystem.service.search;
 
 import org.springframework.stereotype.Service;
+import unisystem.domain.Domain;
 import unisystem.domain.Student;
 import unisystem.reader.console.DefaultStudentConsoleReader;
 import unisystem.reader.console.StudentConsoleReader;
@@ -20,7 +21,7 @@ public class DefaultStudentSearchService implements StudentSearchService {
     }
 
     @Override
-    public Student searchStudentById() {
+    public Domain searchStudentById() {
         long id = studentConsoleReader.readStudentId();
 
         for(Student student : this.centralRepository.getStudentRepository().findAll()) {
@@ -33,9 +34,9 @@ public class DefaultStudentSearchService implements StudentSearchService {
     }
 
     @Override
-    public List<Student> searchStudentByName() {
+    public List<Domain> searchStudentByName() {
         String name = studentConsoleReader.readStudentName();
-        List<Student> searchedStudents = new ArrayList<>();
+        List<Domain> searchedStudents = new ArrayList<>();
 
         for(Student student : this.centralRepository.getStudentRepository().findAll()) {
             if(student.getName().equalsIgnoreCase(name)) {
@@ -47,9 +48,9 @@ public class DefaultStudentSearchService implements StudentSearchService {
     }
 
     @Override
-    public List<Student> searchStudentBySurname() {
+    public List<Domain> searchStudentBySurname() {
         String surname = studentConsoleReader.readStudentSurname();
-        List<Student> searchedStudents = new ArrayList<>();
+        List<Domain> searchedStudents = new ArrayList<>();
 
         for(Student student : this.centralRepository.getStudentRepository().findAll()) {
             if(student.getSurname().equalsIgnoreCase(surname)) {
@@ -61,9 +62,9 @@ public class DefaultStudentSearchService implements StudentSearchService {
     }
 
     @Override
-    public List<Student> searchStudentByGender() {
+    public List<Domain> searchStudentByGender() {
         String gender = studentConsoleReader.readStudentGender();
-        List<Student> searchedStudents = new ArrayList<>();
+        List<Domain> searchedStudents = new ArrayList<>();
 
         for(Student student : this.centralRepository.getStudentRepository().findAll()) {
             if(student.getGender().equalsIgnoreCase(gender)) {
@@ -75,9 +76,9 @@ public class DefaultStudentSearchService implements StudentSearchService {
     }
 
     @Override
-    public List<Student> searchStudentByAge() {
+    public List<Domain> searchStudentByAge() {
         long age = studentConsoleReader.readStudentAge();
-        List<Student> searchedStudents = new ArrayList<>();
+        List<Domain> searchedStudents = new ArrayList<>();
 
         for(Student student : this.centralRepository.getStudentRepository().findAll()) {
             if(student.getAge() == age) {
@@ -89,9 +90,9 @@ public class DefaultStudentSearchService implements StudentSearchService {
     }
 
     @Override
-    public List<Student> searchStudentByEmail() {
+    public List<Domain> searchStudentByEmail() {
         String email = studentConsoleReader.readStudentEmail();
-        List<Student> searchedStudents = new ArrayList<>();
+        List<Domain> searchedStudents = new ArrayList<>();
 
         for(Student student : this.centralRepository.getStudentRepository().findAll()) {
             if(student.getGender().equalsIgnoreCase(email)) {

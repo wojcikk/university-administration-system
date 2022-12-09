@@ -1,14 +1,14 @@
 package unisystem.service.search;
 
-import unisystem.domain.Student;
+import unisystem.domain.Domain;
 
 import java.util.List;
 
 public interface StudentSearchService {
-    Student searchStudentById();
-    List<Student> searchStudentByName();
-    List<Student> searchStudentBySurname();
-    List<Student> searchStudentByGender();
-    List<Student> searchStudentByAge();
-    List<Student> searchStudentByEmail();
+    Domain searchStudentById();
+    List<Domain> searchStudentByName();
+    List<Domain> searchStudentBySurname();
+    List<Domain> searchStudentByGender();
+    List<Domain> searchStudentByAge();
+    List<Domain> searchStudentByEmail();
 }
