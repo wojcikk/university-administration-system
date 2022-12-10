@@ -1,7 +1,10 @@
 package unisystem.reader.console;
 
 import org.springframework.stereotype.Component;
-import unisystem.domain.*;
+import unisystem.domain.Faculty;
+import unisystem.domain.Major;
+import unisystem.domain.Student;
+import unisystem.domain.Teacher;
 import unisystem.reader.validation.DefaultInputVerification;
 import unisystem.reader.validation.InputVerification;
 import unisystem.repository.CentralRepository;
@@ -11,8 +14,8 @@ import java.util.Scanner;
 @Component
 public class DefaultDomainConsoleReader implements DomainConsoleReader {
     private static final Scanner scanner = new Scanner(System.in);
-    private InputVerification inputVerification = new DefaultInputVerification();
-    private ConsoleReader consoleReader = new DefaultConsoleReader();
+    private final InputVerification inputVerification = new DefaultInputVerification();
+    private final ConsoleReader consoleReader = new DefaultConsoleReader();
     private final CentralRepository centralRepository;
 
     public DefaultDomainConsoleReader(CentralRepository centralRepository) {
@@ -55,7 +58,7 @@ public class DefaultDomainConsoleReader implements DomainConsoleReader {
 
     @Override
     public long readDomainId() {
-        long id = 0;
+        long id;
 
         do {
             System.out.print("\nEnter id: ");
@@ -67,7 +70,7 @@ public class DefaultDomainConsoleReader implements DomainConsoleReader {
 
     @Override
     public long readDomainIdToDelete(int max) {
-        long id = 0;
+        long id;
 
         do {
             System.out.print("\nEnter id to delete: ");
@@ -102,7 +105,7 @@ public class DefaultDomainConsoleReader implements DomainConsoleReader {
 
     @Override
     public String readDomainGender() {
-        int genderOption = 0;
+        int genderOption;
 
         do {
             System.out.print("\nChoose gender: ");
@@ -122,7 +125,7 @@ public class DefaultDomainConsoleReader implements DomainConsoleReader {
 
     @Override
     public long readDomainAge() {
-        long age = 0;
+        long age;
 
         do {
             System.out.print("\nEnter age: ");
@@ -148,7 +151,7 @@ public class DefaultDomainConsoleReader implements DomainConsoleReader {
     public Major readDomainMajor() {
         System.out.println("\nChoose major option: ");
         printMajorsOptions();
-        long majorId = 0;
+        long majorId;
 
         do {
             System.out.print("\nChoose option: ");
@@ -163,7 +166,7 @@ public class DefaultDomainConsoleReader implements DomainConsoleReader {
     public Faculty readFaculty() {
         System.out.println("\nChoose faculty option: ");
         printFacultyOptions();
-        long facultyId = 0;
+        long facultyId;
 
         do {
             System.out.print("\nChoose option: ");
@@ -183,9 +186,9 @@ public class DefaultDomainConsoleReader implements DomainConsoleReader {
         }
 
         if(count == 0) {
-            return name + "." + surname + "@uni.student.gmail.com";
+            return name + "." + surname + "@uni.student.com";
         } else {
-            return name + "." + surname + count + "@uni.student.gmail.com";
+            return name + "." + surname + count + "@uni.student.com";
         }
     }
 
@@ -198,9 +201,9 @@ public class DefaultDomainConsoleReader implements DomainConsoleReader {
         }
 
         if(count == 0) {
-            return name + "." + surname + "@uni.teacher.gmail.com";
+            return name + "." + surname + "@uni.teacher.com";
         } else {
-            return name + "." + surname + count + "@uni.teacher.gmail.com";
+            return name + "." + surname + count + "@uni.teacher.com";
         }
     }
 
