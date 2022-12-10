@@ -12,15 +12,15 @@ public class DefaultLoginConsoleReader implements LoginConsoleReader {
     private InputVerification inputVerification = new DefaultInputVerification();
 
     @Override
-    public String readLogin() {
-        String login;
+    public String readEmail() {
+        String email;
 
         do {
-            System.out.print("\nEnter login: ");
-            login = scanner.nextLine();
-        } while(!(inputVerification.checkInputLength(login, 1, 24)));
+            System.out.print("\nEnter email: ");
+            email = scanner.nextLine();
+        } while(!(inputVerification.checkEmailInput(email) && inputVerification.checkInputLength(email, 1, 24)));
 
-        return login;
+        return email;
     }
 
     @Override

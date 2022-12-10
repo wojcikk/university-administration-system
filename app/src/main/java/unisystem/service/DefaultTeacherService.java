@@ -2,6 +2,7 @@ package unisystem.service;
 
 import org.springframework.stereotype.Service;
 import unisystem.domain.Domain;
+import unisystem.domain.Entitlements;
 import unisystem.domain.Teacher;
 import unisystem.reader.console.DefaultDomainConsoleReader;
 import unisystem.reader.console.DomainConsoleReader;
@@ -20,10 +21,12 @@ public class DefaultTeacherService implements TeacherService {
     private final DomainConsoleReader domainConsoleReader;
     private TeacherSearchService teacherSearchService;
     private SearchView searchView = new CLISearchView();
+    private UserService userService;
     public DefaultTeacherService(CentralRepository centralRepository) {
         this.centralRepository = centralRepository;
         this.domainConsoleReader = new DefaultDomainConsoleReader(centralRepository);
         this.teacherSearchService = new DefaultTeacherSearchService(centralRepository);
+        this.userService = new DefaultUserService(centralRepository);
     }
 
     @Override
@@ -52,6 +55,8 @@ public class DefaultTeacherService implements TeacherService {
 
         System.out.println("Added teacher: " + newTeacher.toString());
 
+        this.userService.addUser(newTeacher.getEmail(), Entitlements.USER);
+
         this.centralRepository.getTeacherRepository().save(newTeacher);
     }
 
@@ -60,6 +65,8 @@ public class DefaultTeacherService implements TeacherService {
         long idToDelete = domainConsoleReader.readDomainIdToDelete(this.centralRepository.getTeacherRepository().findAll().size());
 
         System.out.println("Deleted teacher: " + this.centralRepository.getTeacherRepository().findAll().get((int) idToDelete).toString());
+
+        this.userService.deleteUser(this.centralRepository.getTeacherRepository().findAll().get((int) idToDelete).getEmail());
 
         this.centralRepository.getTeacherRepository().deleteById(idToDelete);
     }

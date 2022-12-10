@@ -15,14 +15,14 @@ public class User implements Domain {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String login;
+    private String email;
     private String password;
     @Enumerated(EnumType.STRING)
     @Column(name = "entitlements")
     private Entitlements entitlements;
 
-    public User(String login, String password, Entitlements entitlements) {
-        this.login = login;
+    public User(String email, String password, Entitlements entitlements) {
+        this.email = email;
         this.password = password;
         this.entitlements = entitlements;
     }

@@ -2,6 +2,7 @@ package unisystem.service;
 
 import org.springframework.stereotype.Service;
 import unisystem.domain.Domain;
+import unisystem.domain.Entitlements;
 import unisystem.domain.Student;
 import unisystem.reader.console.DefaultDomainConsoleReader;
 import unisystem.reader.console.DomainConsoleReader;
@@ -20,11 +21,13 @@ public class DefaultStudentService implements StudentService {
     private final DomainConsoleReader domainConsoleReader;
     private StudentSearchService studentSearchService;
     private SearchView searchView = new CLISearchView();
+    private UserService userService;
 
     public DefaultStudentService(CentralRepository centralRepository) {
         this.centralRepository = centralRepository;
         this.domainConsoleReader = new DefaultDomainConsoleReader(centralRepository);
         this.studentSearchService = new DefaultStudentSearchService(centralRepository);
+        this.userService = new DefaultUserService(centralRepository);
     }
 
     @Override
@@ -56,6 +59,8 @@ public class DefaultStudentService implements StudentService {
 
         System.out.println("Added student: " + newStudent.toString());
 
+        this.userService.addUser(newStudent.getEmail(), Entitlements.USER);
+
         this.centralRepository.getStudentRepository().save(newStudent);
     }
 
@@ -65,6 +70,8 @@ public class DefaultStudentService implements StudentService {
         long idToDelete = domainConsoleReader.readDomainIdToDelete(this.centralRepository.getStudentRepository().findAll().size());
 
         System.out.println("Deleted student: " + this.centralRepository.getStudentRepository().findAll().get((int) idToDelete).toString());
+
+        this.userService.deleteUser(this.centralRepository.getStudentRepository().findAll().get((int) idToDelete).getEmail());
 
         this.centralRepository.getStudentRepository().deleteById(idToDelete);
     }

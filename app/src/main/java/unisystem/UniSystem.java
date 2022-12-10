@@ -40,7 +40,7 @@ public class UniSystem implements CommandLineRunner {
         MajorService majorService = new DefaultMajorService(centralRepository);
         TeacherService teacherService = new DefaultTeacherService(centralRepository);
 
-        LoginService loginService = new DefaultLoginService(centralRepository);
+        UserService userService = new DefaultUserService(centralRepository);
 
         View view = new CLIView();
 

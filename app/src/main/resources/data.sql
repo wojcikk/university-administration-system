@@ -1,6 +1,6 @@
-INSERT INTO users(id, login, password, entitlements)
-SELECT CAST("id" AS INT), "login", "password", "entitlements"
-FROM CSVREAD('input/users.csv', 'id, login, password, entitlements', NULL);
+INSERT INTO users(id, email, password, entitlements)
+SELECT CAST("id" AS INT), "email", "password", "entitlements"
+FROM CSVREAD('input/users.csv', 'id, email, password, entitlements', NULL);
 
 
 INSERT INTO fields_Of_Study(id, name)

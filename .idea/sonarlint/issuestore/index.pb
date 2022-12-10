@@ -17,8 +17,6 @@ g
 7app/src/main/java/unisystem/application/ServiceRun.java,7\9\7958d25add9322dece90553599842c58b3927b08
 n
 >app/src/main/java/unisystem/reader/file/TeacherFileReader.java,a\0\a016f399d2b70ccac899436946869433735b1342
-r
-Bapp/src/main/java/unisystem/reader/console/LoginConsoleReader.java,2\a\2a46547e9e517904e175586bd6698c582598005c
 e
 5app/src/main/java/unisystem/service/LoginService.java,5\e\5e1092a89d3776f2418725dbca808c0190c70ce2
 k
