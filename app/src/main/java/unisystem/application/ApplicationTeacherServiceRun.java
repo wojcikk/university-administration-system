@@ -33,6 +33,9 @@ public class ApplicationTeacherServiceRun implements TeacherServiceRun{
                 System.out.println("\n::: DELETING TEACHER FUNCTIONALITY :::");
                 teacherService.deleteTeacher();
             } else if (decision == 4) {
+                System.out.println("\n::: EDIT STUDENT FUNCTIONALITY :::");
+                teacherService.editTeacher(view.selectTeacherEditingOption());
+            } else if (decision == 5) {
                 System.out.println("\n::: SEARCHING TEACHER FUNCTIONALITY :::");
                 teacherService.searchTeacher(view.selectSearchingOption());
             }

@@ -70,6 +70,21 @@ public class DefaultUserService implements UserService {
         }
     }
 
+    @Override
+    public User findUserByEmail(String email) {
+        for (User user : this.centralRepository.getUserRepository().findAll()) {
+            if (user.getEmail().equals(email)) {
+                return user;
+            }
+        }
+
+        System.out.println("User did not found!");
+
+        System.exit(0);
+
+        return null;
+    }
+
     private String generatePassword(int length) {
         String capitalCaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         String lowerCaseLetters = "abcdefghijklmnopqrstuvwxyz";

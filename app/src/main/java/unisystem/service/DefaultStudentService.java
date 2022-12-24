@@ -4,9 +4,14 @@ import org.springframework.stereotype.Service;
 import unisystem.domain.Domain;
 import unisystem.domain.Entitlements;
 import unisystem.domain.Student;
+import unisystem.domain.User;
 import unisystem.reader.console.DefaultDomainConsoleReader;
 import unisystem.reader.console.DomainConsoleReader;
 import unisystem.repository.CentralRepository;
+import unisystem.service.edit.DefaultStudentEditService;
+import unisystem.service.edit.DefaultUserEditService;
+import unisystem.service.edit.StudentEditService;
+import unisystem.service.edit.UserEditService;
 import unisystem.service.search.CLISearchView;
 import unisystem.service.search.DefaultStudentSearchService;
 import unisystem.service.search.SearchView;
@@ -20,6 +25,8 @@ public class DefaultStudentService implements StudentService {
     private final CentralRepository centralRepository;
     private final DomainConsoleReader domainConsoleReader;
     private StudentSearchService studentSearchService;
+    private StudentEditService studentEditService;
+    private UserEditService userEditService;
     private SearchView searchView = new CLISearchView();
     private UserService userService;
 
@@ -27,6 +34,8 @@ public class DefaultStudentService implements StudentService {
         this.centralRepository = centralRepository;
         this.domainConsoleReader = new DefaultDomainConsoleReader(centralRepository);
         this.studentSearchService = new DefaultStudentSearchService(centralRepository);
+        this.studentEditService = new DefaultStudentEditService(centralRepository);
+        this.userEditService = new DefaultUserEditService(centralRepository);
         this.userService = new DefaultUserService(centralRepository);
     }
 
@@ -75,6 +84,38 @@ public class DefaultStudentService implements StudentService {
 
         this.centralRepository.getStudentRepository().deleteById(idToDelete);
     }
+
+    @Override
+    public void editStudent(int option) {
+        long idToEdit = domainConsoleReader.readDomainIdToEdit(this.centralRepository.getStudentRepository().findAll().size());
+
+        Student student = this.centralRepository.getStudentRepository().findAll().get((int) idToEdit);
+
+        User user = userService.findUserByEmail(student.getEmail());
+
+        if(option == 1) { // all
+            studentEditService.editStudent(student);
+        } else if(option == 2) { // name
+            studentEditService.editStudentName(student);
+        } else if(option == 3) { // surname
+            studentEditService.editStudentSurname(student);
+        } else if(option == 4) { // gender
+            studentEditService.editStudentGender(student);
+        } else if(option == 5) { // age
+            studentEditService.editStudentAge(student);
+        } else if(option == 6) { // major
+           studentEditService.editStudentMajor(student);
+        }
+
+        userEditService.updateStudentUserEmail(user, student);
+
+        System.out.println("Edited student: " + student.toString());
+        System.out.println("Edited user: " + user.toString());
+
+        this.centralRepository.getUserRepository().save(user);
+        this.centralRepository.getStudentRepository().save(student);
+    }
+
 
     @Override
     public void searchStudent(int option) {

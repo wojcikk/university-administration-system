@@ -33,6 +33,9 @@ public class ApplicationStudentServiceRun implements StudentServiceRun{
                 System.out.println("\n::: DELETING STUDENT FUNCTIONALITY :::");
                 studentService.deleteStudent();
             } else if (decision == 4) {
+                System.out.println("\n::: EDIT STUDENT FUNCTIONALITY :::");
+                studentService.editStudent(view.selectStudentEditingOption());
+            } else if (decision == 5) {
                 System.out.println("\n::: SEARCHING STUDENT FUNCTIONALITY :::");
                 studentService.searchStudent(view.selectSearchingOption());
             }

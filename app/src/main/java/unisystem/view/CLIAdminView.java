@@ -12,7 +12,8 @@ public class CLIAdminView implements AdminView {
         System.out.println("1 - list students");
         System.out.println("2 - add student");
         System.out.println("3 - delete student");
-        System.out.println("4 - search student");
+        System.out.println("4 - edit student");
+        System.out.println("5 - search student");
         System.out.println("\n0 - quit");
     }
     @Override
@@ -35,7 +36,8 @@ public class CLIAdminView implements AdminView {
         System.out.println("1 - list teachers");
         System.out.println("2 - add teacher");
         System.out.println("3 - delete teacher");
-        System.out.println("4 - search teacher");
+        System.out.println("4 - edit teacher");
+        System.out.println("5 - search teacher");
         System.out.println("\n0 - quit");
     }
 }

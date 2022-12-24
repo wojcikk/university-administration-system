@@ -59,6 +59,32 @@ public class CLIView implements View {
     }
 
     @Override
+    public void printStudentEditOptions() {
+        System.out.println("\nSelect student parameters to edit:");
+
+        System.out.println("1 - edit all parameters");
+        System.out.println("2 - edit name");
+        System.out.println("3 - edit surname");
+        System.out.println("4 - edit gender");
+        System.out.println("5 - edit age");
+        System.out.println("6 - edit major");
+        System.out.println("0 - quit");
+    }
+
+    @Override
+    public void printTeacherEditOptions() {
+        System.out.println("\nSelect student parameters to edit:");
+
+        System.out.println("1 - edit all parameters");
+        System.out.println("2 - edit name");
+        System.out.println("3 - edit surname");
+        System.out.println("4 - edit gender");
+        System.out.println("5 - edit age");
+        System.out.println("6 - edit faculty");
+        System.out.println("0 - quit");
+    }
+
+    @Override
     public int selectOption(int maxRange) {
         int option = 0;
 
@@ -72,8 +98,22 @@ public class CLIView implements View {
         return option;
     }
 
+    @Override
     public int selectSearchingOption() {
         printSearchingOptions();
+
+        return selectOption(6);
+    }
+
+    @Override
+    public int selectStudentEditingOption() {
+        printStudentEditOptions();
+
+        return selectOption(6);
+    }
+    @Override
+    public int selectTeacherEditingOption() {
+        printTeacherEditOptions();
 
         return selectOption(6);
     }

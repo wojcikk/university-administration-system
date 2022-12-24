@@ -10,6 +10,7 @@ public interface DomainConsoleReader {
     Teacher readTeacherEntryData();
     public long readDomainId();
     long readDomainIdToDelete(int max);
+    long readDomainIdToEdit(int max);
 
     String readDomainName();
 
@@ -22,4 +23,6 @@ public interface DomainConsoleReader {
     String readDomainEmail();
     Major readDomainMajor();
     Faculty readFaculty();
+    String generateStudentEmail(String name, String surname);
+    String generateTeacherEmail(String name, String surname);
 }

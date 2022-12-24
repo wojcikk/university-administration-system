@@ -4,9 +4,14 @@ import org.springframework.stereotype.Service;
 import unisystem.domain.Domain;
 import unisystem.domain.Entitlements;
 import unisystem.domain.Teacher;
+import unisystem.domain.User;
 import unisystem.reader.console.DefaultDomainConsoleReader;
 import unisystem.reader.console.DomainConsoleReader;
 import unisystem.repository.CentralRepository;
+import unisystem.service.edit.DefaultTeacherEditService;
+import unisystem.service.edit.DefaultUserEditService;
+import unisystem.service.edit.TeacherEditService;
+import unisystem.service.edit.UserEditService;
 import unisystem.service.search.CLISearchView;
 import unisystem.service.search.DefaultTeacherSearchService;
 import unisystem.service.search.SearchView;
@@ -20,12 +25,16 @@ public class DefaultTeacherService implements TeacherService {
     private final CentralRepository centralRepository;
     private final DomainConsoleReader domainConsoleReader;
     private TeacherSearchService teacherSearchService;
+    private TeacherEditService teacherEditService;
+    private UserEditService userEditService;
     private SearchView searchView = new CLISearchView();
     private UserService userService;
     public DefaultTeacherService(CentralRepository centralRepository) {
         this.centralRepository = centralRepository;
         this.domainConsoleReader = new DefaultDomainConsoleReader(centralRepository);
         this.teacherSearchService = new DefaultTeacherSearchService(centralRepository);
+        this.teacherEditService = new DefaultTeacherEditService(centralRepository);
+        this.userEditService = new DefaultUserEditService(centralRepository);
         this.userService = new DefaultUserService(centralRepository);
     }
 
@@ -69,6 +78,36 @@ public class DefaultTeacherService implements TeacherService {
         this.userService.deleteUser(this.centralRepository.getTeacherRepository().findAll().get((int) idToDelete).getEmail());
 
         this.centralRepository.getTeacherRepository().deleteById(idToDelete);
+    }
+
+    @Override
+    public void editTeacher(int option) {
+        long idToEdit = domainConsoleReader.readDomainIdToEdit(this.centralRepository.getTeacherRepository().findAll().size());
+
+        Teacher teacher = this.centralRepository.getTeacherRepository().findAll().get((int) idToEdit);
+
+        User user = userService.findUserByEmail(teacher.getEmail());
+
+        if(option == 1) { // all
+            teacherEditService.editTeacher(teacher);
+        } else if(option == 2) { // name
+            teacherEditService.editTeacherName(teacher);
+        } else if(option == 3) { // surname
+            teacherEditService.editTeacherSurname(teacher);
+        } else if(option == 4) { // gender
+            teacherEditService.editTeacherGender(teacher);
+        } else if(option == 5) { // age
+            teacherEditService.editTeacherAge(teacher);
+        } else if(option == 6) { // faculty
+            teacherEditService.editTeacherFaculty(teacher);
+        }
+        userEditService.updateTeacherUserEmail(user, teacher);
+
+        System.out.println("Edited teacher: " + teacher.toString());
+        System.out.println("Edited user: " + user.toString());
+
+        this.centralRepository.getUserRepository().save(user);
+        this.centralRepository.getTeacherRepository().save(teacher);
     }
 
     @Override
