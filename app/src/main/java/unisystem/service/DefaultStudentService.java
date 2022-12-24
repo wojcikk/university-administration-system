@@ -40,6 +40,11 @@ public class DefaultStudentService implements StudentService {
     }
 
     @Override
+    public List<Student> getStudents() {
+        return this.centralRepository.getStudentRepository().findAll();
+    }
+
+    @Override
     public void listAllStudents() {
         System.out.printf("%-5s %-20s %-20s %-10s %-10s %-30s %-30s %-20s %-40s\n",
                 "ID", "NAME", "SURNAME", "GENDER", "AGE", "EMAIL", "FIELD OF STUDY", "DEGREE", "FACULTY"
