@@ -1,6 +1,8 @@
 package unisystem.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,8 +17,8 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping(value = "/users/all", method = RequestMethod.GET)
-    public List<User> listAllUsers() {
-        return userService.getUsers();
+    public ResponseEntity<List<User>> listAllUsers() {
+        List<User> users =  userService.getUsers();
+        return new ResponseEntity<>(users, HttpStatus.OK);
     }
-
 }
