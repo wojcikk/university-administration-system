@@ -39,6 +39,11 @@ public class DefaultTeacherService implements TeacherService {
     }
 
     @Override
+    public List<Teacher> getTeachers() {
+        return this.centralRepository.getTeacherRepository().findAll();
+    }
+
+    @Override
     public void listAllTeachers() {
         System.out.printf("%-5s %-20s %-20s %-10s %-10s %-30s %-40s\n",
                 "ID", "NAME", "SURNAME", "GENDER", "AGE", "EMAIL", "FACULTY"

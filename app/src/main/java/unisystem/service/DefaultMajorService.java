@@ -1,7 +1,10 @@
 package unisystem.service;
 
 import org.springframework.stereotype.Service;
+import unisystem.domain.Major;
 import unisystem.repository.CentralRepository;
+
+import java.util.List;
 
 @Service
 public class DefaultMajorService implements MajorService {
@@ -9,6 +12,11 @@ public class DefaultMajorService implements MajorService {
 
     public DefaultMajorService(CentralRepository centralRepository) {
         this.centralRepository = centralRepository;
+    }
+
+    @Override
+    public List<Major> getMajors() {
+        return this.centralRepository.getMajorRepository().findAll();
     }
 
     @Override

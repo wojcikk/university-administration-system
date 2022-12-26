@@ -4,19 +4,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import unisystem.domain.Student;
-import unisystem.service.StudentService;
+import unisystem.domain.Major;
+import unisystem.service.MajorService;
 
 import java.util.List;
 
 @RestController
-public class StudentController {
+public class MajorController {
     @Autowired
-    private StudentService studentService;
+    private MajorService majorService;
 
-    @RequestMapping(value = "/students/all", method = RequestMethod.GET)
-    public List<Student> listAllStudents() {
-        return studentService.getStudents();
+    @RequestMapping(value = "/majors/all", method = RequestMethod.GET)
+    public List<Major> listAllMajors() {
+        return majorService.getMajors();
     }
 
 }

@@ -7,6 +7,7 @@ import unisystem.reader.console.DefaultLoginConsoleReader;
 import unisystem.reader.console.LoginConsoleReader;
 import unisystem.repository.CentralRepository;
 
+import java.util.List;
 import java.util.Random;
 
 @Service
@@ -17,6 +18,11 @@ public class DefaultUserService implements UserService {
     public DefaultUserService(CentralRepository centralRepository) {
         this.loginConsoleReader = new DefaultLoginConsoleReader();
         this.centralRepository = centralRepository;
+    }
+
+    @Override
+    public List<User> getUsers() {
+        return this.centralRepository.getUserRepository().findAll();
     }
 
     @Override
