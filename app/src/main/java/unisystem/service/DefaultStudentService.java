@@ -47,8 +47,8 @@ public class DefaultStudentService implements StudentService {
 
 
     @Override
-    public Student addStudent(Student student) {
-        return this.centralRepository.getStudentRepository().save(student);
+    public Student addStudent(Student newStudent) {
+        return this.centralRepository.getStudentRepository().save(newStudent);
     }
 
     @Override

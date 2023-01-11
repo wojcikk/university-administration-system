@@ -1,10 +1,8 @@
 package unisystem.service;
 
 import org.springframework.stereotype.Service;
-import unisystem.domain.Domain;
-import unisystem.domain.Entitlements;
-import unisystem.domain.Teacher;
-import unisystem.domain.User;
+import unisystem.domain.*;
+import unisystem.exception.ObjectNotFoundException;
 import unisystem.reader.console.DefaultDomainConsoleReader;
 import unisystem.reader.console.DomainConsoleReader;
 import unisystem.repository.CentralRepository;
@@ -41,6 +39,44 @@ public class DefaultTeacherService implements TeacherService {
     @Override
     public List<Teacher> getTeachers() {
         return this.centralRepository.getTeacherRepository().findAll();
+    }
+
+    @Override
+    public Teacher addTeacher(Teacher newTeacher) {
+        return this.centralRepository.getTeacherRepository().save(newTeacher);
+    }
+
+    @Override
+    public Teacher findTeacherById(Long teacherId) {
+        return this.centralRepository.getTeacherRepository().findById(teacherId)
+                .orElseThrow(() -> new ObjectNotFoundException("Teacher with id " + teacherId + " not found"));
+    }
+
+    @Override
+    public Teacher updateTeacher(Long teacherId, Teacher newTeacher) {
+        this.centralRepository.getTeacherRepository().findById(teacherId)
+                .orElseThrow(() -> new ObjectNotFoundException("Teacher with id " + teacherId + " not found"));
+
+        Teacher teacher = findTeacherById(teacherId);
+
+        teacher.setName(newTeacher.getName());
+        teacher.setSurname(newTeacher.getSurname());
+        teacher.setGender(newTeacher.getGender());
+        teacher.setAge(newTeacher.getAge());
+        teacher.setFaculty(newTeacher.getFaculty());
+
+        String newEmail = domainConsoleReader.generateTeacherEmail(teacher.getName(), teacher.getSurname());
+
+        teacher.setEmail(newEmail);
+
+        return this.centralRepository.getTeacherRepository().save(teacher);
+    }
+
+    @Override
+    public void deleteTeacherById(Long teacherId) {
+        this.centralRepository.getTeacherRepository().findById(teacherId)
+                .orElseThrow(() -> new ObjectNotFoundException("Teacher with id " + teacherId + " not found"));
+        this.centralRepository.getTeacherRepository().deleteById(teacherId);
     }
 
     @Override
