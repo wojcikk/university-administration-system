@@ -5,6 +5,7 @@ import unisystem.domain.Domain;
 import unisystem.domain.Entitlements;
 import unisystem.domain.Student;
 import unisystem.domain.User;
+import unisystem.exception.ObjectNotFoundException;
 import unisystem.reader.console.DefaultDomainConsoleReader;
 import unisystem.reader.console.DomainConsoleReader;
 import unisystem.repository.CentralRepository;
@@ -42,6 +43,45 @@ public class DefaultStudentService implements StudentService {
     @Override
     public List<Student> getStudents() {
         return this.centralRepository.getStudentRepository().findAll();
+    }
+
+
+    @Override
+    public Student addStudent(Student student) {
+        return this.centralRepository.getStudentRepository().save(student);
+    }
+
+    @Override
+    public Student findStudentById(Long studentId) {
+        return this.centralRepository.getStudentRepository().findById(studentId)
+                .orElseThrow(() -> new ObjectNotFoundException("Student with id " + studentId + " not found"));
+    }
+
+    @Override
+    public Student updateStudent(Long studentId, Student newStudent) {
+        this.centralRepository.getStudentRepository().findById(studentId)
+                .orElseThrow(() -> new ObjectNotFoundException("Student with id " + studentId + " not found"));
+
+        Student student = findStudentById(studentId);
+
+        student.setName(newStudent.getName());
+        student.setSurname(newStudent.getSurname());
+        student.setGender(newStudent.getGender());
+        student.setAge(newStudent.getAge());
+        student.setMajor(newStudent.getMajor());
+
+        String newEmail = domainConsoleReader.generateStudentEmail(student.getName(), student.getSurname());
+
+        student.setEmail(newEmail);
+
+        return this.centralRepository.getStudentRepository().save(student);
+    }
+
+    @Override
+    public void deleteStudentById(Long studentId) {
+        this.centralRepository.getStudentRepository().findById(studentId)
+                .orElseThrow(() -> new ObjectNotFoundException("Student with id " + studentId + " not found"));
+        this.centralRepository.getStudentRepository().deleteById(studentId);
     }
 
     @Override
@@ -140,6 +180,5 @@ public class DefaultStudentService implements StudentService {
 
         }
         searchView.printSearchedList(searchedStudents);
-
     }
 }
