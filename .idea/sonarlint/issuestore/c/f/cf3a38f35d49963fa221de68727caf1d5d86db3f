@@ -1,0 +1,17 @@
+
+]
+java:S4488"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(¹áð,
+d
+java:S4488"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(‚ù¸,8¹îí”Ú0
+]
+java:S4684"@Replace this persistent entity with a simple POJO or DTO object.(ïÖôð8½îí”Ú0
+l
+java:S4488"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(¶Žß™üÿÿÿÿ8¾îí”Ú0
+b
+java:S4684$"@Replace this persistent entity with a simple POJO or DTO object.(è„ ×ùÿÿÿÿ8Àîí”Ú0
+j
+java:S4488#"HReplace "@RequestMapping(method = RequestMethod.PUT)" with "@PutMapping"(æÿ†¦üÿÿÿÿ8Ìîí”Ú0
+C
+java:S1452+"&Remove usage of generic wildcard type.(ª¸žö8Ïîí”Ú0
+e
+java:S4488*"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(Ä¤Ðß8Ðîí”Ú0

@@ -1,0 +1,9 @@
+
+U
+java:S1854+"?Remove this useless assignment to local variable "userService".(çûµ”
+Q	java:S125!"<This block of commented-out lines of code should be removed.(°­Èä
+F
+java:S1481+"0Remove this unused "userService" local variable.(çûµ”
+P	java:S125/"<This block of commented-out lines of code should be removed.(…“û
+V	java:S1254"<This block of commented-out lines of code should be removed.(œÖø„úÿÿÿÿ
+V	java:S125E"<This block of commented-out lines of code should be removed.(éØ»Úûÿÿÿÿ

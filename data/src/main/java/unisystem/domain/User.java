@@ -1,6 +1,7 @@
 package unisystem.domain;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
@@ -13,6 +14,7 @@ import java.util.Collection;
 @NoArgsConstructor
 @Data
 @Entity
+@Builder
 @Table(name="users")
 public class User implements Domain, UserDetails {
     @Id
@@ -29,6 +31,7 @@ public class User implements Domain, UserDetails {
         this.password = password;
         this.entitlements = entitlements;
     }
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
