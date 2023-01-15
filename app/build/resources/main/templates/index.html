@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap" rel="stylesheet">
+
+
+    <title>UNIVERSITY ADMINISTRATION SYSTEM</title>
+</head>
+<body>
+    <style>
+        html {
+            font-family: 'Nunito', sans-serif;
+            font-size: 15px;
+        }
+
+        .title {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px 0px;
+            margin: 20px 0px;
+        }
+
+        p {
+            text-align: center;
+        }
+
+        .nav-item{
+            margin: 0px 10px;
+            min-width: 150px;
+        }
+
+        .select-service-menu {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+    </style>
+    <div class="title bg-light text-dark">
+        <h2>UNIVERSITY ADMINISTRATION SYSTEM</h2>
+    </div>
+
+    <p>Services: </p>
+
+    <div class="select-service-menu">
+        <ul class="nav nav-pills nav-fill">
+            <li class="nav-item bg-light">
+                <a class="nav-link active bg-light text-dark" href="/studentService">Student</a>
+            </li>
+            <li class="nav-item bg-light">
+                <a class="nav-link active bg-light text-dark" href="#">Teacher</a>
+            </li>
+            <li class="nav-item bg-light">
+                <a class="nav-link active bg-light text-dark" href="#">Uni Structure</a>
+            </li>
+        </ul>
+    </div>
+
+<!--    <h1>Student List</h1>-->
+
+<!--&lt;!&ndash;    <a th:href="@{/showNewEmployeeForm}" class="btn btn-primary btn-sm mb-3"> Add Employee </a>&ndash;&gt;-->
+
+<!--    <table border="1" class="table table-striped table-responsive-md">-->
+<!--        <thead>-->
+<!--        <tr>-->
+<!--            <th>Student First Name</th>-->
+<!--            <th>Student Last Name</th>-->
+<!--            <th>Student Email</th>-->
+<!--        </tr>-->
+<!--        </thead>-->
+<!--        <tbody>-->
+<!--        <tr th:each="student : ${listStudents}">-->
+<!--            <td th:text="${student.name}"></td>-->
+<!--            <td th:text="${student.surname}"></td>-->
+<!--            <td th:text="${student.email}"></td>-->
+<!--        </tr>-->
+<!--        </tbody>-->
+<!--    </table>-->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>

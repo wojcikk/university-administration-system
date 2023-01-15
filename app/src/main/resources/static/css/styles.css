@@ -1,0 +1,10 @@
+html {
+    font-family: 'Nunito', sans-serif; !important
+    font-size: 15px;
+}
+
+.title {
+    background-color: black;
+    color: white;
+    text-align: center;
+}

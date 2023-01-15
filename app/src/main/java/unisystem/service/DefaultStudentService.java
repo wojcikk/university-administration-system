@@ -48,6 +48,12 @@ public class DefaultStudentService implements StudentService {
 
     @Override
     public Student addStudent(Student newStudent) {
+
+        String newEmail = domainConsoleReader.generateStudentEmail(newStudent.getName(), newStudent.getSurname());
+
+        newStudent.setEmail(newEmail);
+        this.userService.addUser(newStudent.getEmail(), Entitlements.USER);
+
         return this.centralRepository.getStudentRepository().save(newStudent);
     }
 
@@ -81,6 +87,7 @@ public class DefaultStudentService implements StudentService {
     public void deleteStudentById(Long studentId) {
         this.centralRepository.getStudentRepository().findById(studentId)
                 .orElseThrow(() -> new ObjectNotFoundException("Student with id " + studentId + " not found"));
+        System.out.println("id: " + studentId);
         this.centralRepository.getStudentRepository().deleteById(studentId);
     }
 

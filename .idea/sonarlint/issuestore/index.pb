@@ -3,8 +3,6 @@
 gradlew,5\b\5bbfa66edb4db3c7c33c5181f43510990d3307f9
 ;
 gradlew.bat,2\a\2a45a911a8f1836b0b6c5b758962572012d8f8c3
-S
-#src/main/java/org/example/Main.java,0\b\0ba1b9c7a4878802f938e331cc2d8a042087ec6b
 m
 =app/src/main/java/unisystem/reader/console/ConsoleReader.java,6\9\69279a1031c40536a346c05fa57bb1900a338a69
 g
@@ -39,16 +37,10 @@ Capp/src/main/java/unisystem/application/UniStructureServiceRun.java,7\4\7428ab
 Napp/src/main/java/unisystem/application/ApplicationUniStructureServiceRun.java,d\5\d5f418605d838195288f2839514aab7a704b5db4
 r
 Bapp/src/main/java/unisystem/reader/console/LoginConsoleReader.java,2\a\2a46547e9e517904e175586bd6698c582598005c
-b
-2app/src/main/java/unisystem/ApplicationConfig.java,4\8\486f1ceded4e98fb4ee4b2bf1a63fd2bf052381c
-k
-;app/src/main/java/unisystem/controller/MajorController.java,2\9\29e2bbd828059098b2eab3f839ea7144edd68945
 r
 Bapp/src/main/java/unisystem/exception/ObjectNotFoundException.java,b\9\b9c4dcec6c6d9830e1278e467ea1aa1ec073ebfe
 m
 =app/src/main/java/unisystem/controller/TeacherController.java,c\f\cf3a38f35d49963fa221de68727caf1d5d86db3f
-`
-0data/src/main/java/unisystem/domain/Student.java,9\f\9f31036733d4464d3341d2d8263c71a3cc85df1b
 w
 Gapp/src/main/java/unisystem/service/edit/DefaultStudentEditService.java,1\b\1b83171871ead540492891ea2ae67585d1d44a45
 g
