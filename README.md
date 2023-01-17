@@ -5,7 +5,7 @@ Application designed to support the university database using Java technologies 
 Supported by h2 database with Jpa repositories. Providing API for further UI implementations. 
 Project settled on Gradle.
 
-This project is part of my `self-study process.
+This project is part of my self-study process.
 
 The application is still in the process of development.
 
