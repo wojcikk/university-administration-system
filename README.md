@@ -13,7 +13,7 @@ The application is still in the process of development.
 ## Features
 
 - Managing records in the database
-- Admin/user roles with provided services
+- Admin/User roles with provided services
 - Console Reader with data validation
 - Login procedure
 
@@ -53,7 +53,7 @@ Postman:
 
 ![Postman](https://snipboard.io/I5QcUo.jpg)
 
-Class Diagram:
+Entities Class Diagram:
 
 ![Class Diagram](https://snipboard.io/psf0Xv.jpg)
 
