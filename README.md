@@ -41,17 +41,13 @@ Work in progress...
 
 ## Project preview
 Run:
-<<<<<<< HEAD
-![Run](https://snipboard.io/FObr8J.jpg)
-
-Postman:
-=======
 
 ![Run](https://snipboard.io/FObr8J.jpg)
 
+![Run](https://snipboard.io/FObr8J.jpg)
+
 Postman:
 
->>>>>>> origin/master
 ![Postman](https://snipboard.io/rqh3D8.jpg)
 
 ![Postman](https://snipboard.io/4pU16b.jpg)
