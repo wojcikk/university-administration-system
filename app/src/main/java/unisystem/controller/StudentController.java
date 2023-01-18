@@ -10,36 +10,37 @@ import unisystem.service.StudentService;
 import java.util.List;
 
 @RestController
+@RequestMapping("/students")
 public class StudentController {
     @Autowired
     private StudentService studentService;
 
-    @RequestMapping(value = "/students/all", method = RequestMethod.GET)
+    @GetMapping("/all")
     public ResponseEntity<List<Student>> getStudents() {
         List<Student> students = studentService.getStudents();
         return new ResponseEntity<>(students, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/students/find/{id}", method = RequestMethod.GET)
+    @GetMapping("/find/{id}")
     public ResponseEntity<Student> getStudentById(@PathVariable(value = "id") Long studentId) {
         Student student = studentService.findStudentById(studentId);
         return new ResponseEntity<>(student, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/students/add", method = RequestMethod.POST)
+    @PostMapping("/add")
     public ResponseEntity<Student> addStudent(@RequestBody Student student) {
         Student newStudent = studentService.addStudent(student);
         return new ResponseEntity<>(newStudent, HttpStatus.CREATED);
     }
 
-    @RequestMapping(value = "/students/update/{id}", method = RequestMethod.PUT)
+    @PutMapping("/update/{id}")
     public ResponseEntity<Student> updateStudent(@PathVariable long id,@RequestBody Student newStudentDetails) {
         Student updateStudent = this.studentService.updateStudent(id, newStudentDetails);
 
         return new ResponseEntity<>(updateStudent, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/students/delete/{id}", method = RequestMethod.GET)
+    @GetMapping("/delete/{id}")
     public ResponseEntity<?> deleteStudentById(@PathVariable(value = "id") Long studentId) {
         studentService.deleteStudentById(studentId);
         return new ResponseEntity<>(HttpStatus.OK);

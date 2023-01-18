@@ -5,10 +5,12 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import unisystem.application.ApplicationServiceRun;
 import unisystem.application.ServiceRun;
-import unisystem.view.CLIView;
-import unisystem.view.View;
+import unisystem.domain.Entitlements;
+import unisystem.domain.User;
 import unisystem.repository.*;
 import unisystem.service.*;
+import unisystem.view.CLIView;
+import unisystem.view.View;
 
 @Component
 public class UniSystem implements CommandLineRunner {
@@ -30,9 +32,6 @@ public class UniSystem implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-//        DataStore dataStore = new FileDataStore();
-//        dataStore.init();
-
         CentralRepository centralRepository = new DefaultCentralRepository(studentRepository, majorRepository, degreeRepository, facultyRepository, fieldOfStudyRepository, teacherRepository, userRepository);
 
 
@@ -44,15 +43,15 @@ public class UniSystem implements CommandLineRunner {
 
         View view = new CLIView();
 
-        //User user = loginService.authenticate();
+        User user = userService.authenticate();
 
 
         view.printWelcomeMessage();
 
-        //if (user.getEntitlements().equals(Entitlements.USER)) {    // user
-        //    System.out.println("::: USER MODE :::");
-        //    runServiceOptions(studentService, majorService, teacherService, view, false);
-        //} else if (user.getEntitlements().equals(Entitlements.ADMIN)) {   // admin
+        if (user.getEntitlements().equals(Entitlements.USER)) {    // user
+            System.out.println("::: USER MODE :::");
+            runServiceOptions(studentService, majorService, teacherService, view, false);
+        } else if (user.getEntitlements().equals(Entitlements.ADMIN)) {   // admin
             int decision = 1;
             while(decision != 0 ) {
                 view.printStartingApplicationModeOptions();
@@ -66,7 +65,7 @@ public class UniSystem implements CommandLineRunner {
                 }
             }
             System.exit(0);
-        //}
+        }
 
 
 
