@@ -5,11 +5,9 @@ Application designed to support the university database using Java technologies 
 Supported by h2 database with Jpa repositories. Providing API for further UI implementations. 
 Project settled on Gradle.
 
-<<<<<<< HEAD
 This project is part of my `self-study process.
-=======
+
 This project is part of my self-study process.
->>>>>>> origin/master
 
 The application is still in the process of development.
 
@@ -17,11 +15,8 @@ The application is still in the process of development.
 ## Features
 
 - Managing records in the database
-<<<<<<< HEAD
 - Admin/user roles with provided services
-=======
 - Admin/User roles with provided services
->>>>>>> origin/master
 - Console Reader with data validation
 - Login procedure
 
@@ -67,12 +62,8 @@ Postman:
 
 ![Postman](https://snipboard.io/I5QcUo.jpg)
 
-<<<<<<< HEAD
-Class Diagram:
-=======
 Entities Class Diagram:
 
->>>>>>> origin/master
 ![Class Diagram](https://snipboard.io/psf0Xv.jpg)
 
 
