@@ -24,7 +24,7 @@ The application is still in the process of development.
 
 
 Work in progress...
-- Spring Security and JWT - (on branch "security")
+- Spring Security and JWT - (on branch "jwt")
 - UI provided by Thymeleaf - (on branch "ui")
  
 
